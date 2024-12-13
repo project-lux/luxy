@@ -53,10 +53,6 @@ class BaseLux:
     def get(self):
         query_ands = []
         
-        # Add default recordType for PeopleGroups
-        # if isinstance(self, PeopleGroups):
-        #     query_ands.append({"recordType": "person"})
-
         # Process all filters
         for filter_dict in self.filters:
             for key, value in filter_dict.items():
