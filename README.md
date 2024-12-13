@@ -63,6 +63,7 @@ JSON: {'@context': 'https://linked.art/ns/v1/search.json'...
 - [ ] Add support for Places
 - [ ] Add support for Concepts
 - [ ] Add support for Events
+- [ ] Add support for Pagination
 - [ ] Add more filters
 - [ ] Add more tests
 - [ ] Add more documentation
