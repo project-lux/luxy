@@ -1,4 +1,4 @@
-PyLux is a Python wrapper for Yale's Lux API.
+PyLux is a Python wrapper for Yale's Lux API. Currently, there is minimal support for the API, but it is in active development.
 
 # Installation
 
