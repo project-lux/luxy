@@ -48,7 +48,7 @@ JSON: {'@context': 'https://linked.art/ns/v1/search.json'...
         - [ ] Nationality
         - [x] Person or Group Class
         - [ ] Categorized As
-        - [ ] Born/Formed At
+        - [x] Born/Formed At
         - [ ] Born/Formed Date
         - [ ] Died/Dissolved At
         - [ ] Died/Dissolved Date

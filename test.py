@@ -3,9 +3,12 @@ from pylux import PeopleGroups
 result = (
     PeopleGroups()
     .filter(recordType="person")
+    .filter(name="rembrandt")
     .filter(hasDigitalImage=True)
     .filter(text="rembrandt")
     .filter(gender="male")
+    .filter(gender={"name": "male"})
+    .filter(startAt={"name": "Amsterdam"})
     .get()
 )
 

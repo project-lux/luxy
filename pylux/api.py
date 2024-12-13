@@ -38,6 +38,8 @@ class BaseLux:
             return 1
         elif value is False:
             return 0
+        elif isinstance(value, dict):
+            return value
         elif value.lower() == "male":
             return {"id": GENDER_MALE}
         elif value.lower() == "female":
