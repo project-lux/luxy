@@ -73,5 +73,10 @@ JSON: {'@context': 'https://linked.art/ns/v1/search.json'...
 - [ ] Add support for Events
 - [ ] Add support for Pagination
 - [ ] Add more filters
+- [x] Add And support for filters
+- [ ] Add support for OR filters
+- [ ] Add support for have All of
+- [ ] Add support for have Any of
+- [ ] Add support for have None of
 - [ ] Add more tests
 - [ ] Add more documentation
