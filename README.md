@@ -47,22 +47,45 @@ URL: https://lux.collections.yale.edu/api/search/agent?q=%7B%22AND%22%3A%20%5B%7
 JSON: {'@context': 'https://linked.art/ns/v1/search.json'...
 ```
 
+## Working with Pagination
+
+```python
+from luxy import PeopleGroups
+
+result = (
+    PeopleGroups()
+    .filter(endAt={"name": "Amsterdam"})
+    .get()
+)
+
+# print the number of results
+print("Number of results:", result.num_results)
+print("Number of pages:", result.num_pages())
+
+for i, page in enumerate(result.get_page_data_all(), 1):
+    if i > 2: # Break after 2 pages
+        break
+    print(f"Page {i}:", page["id"])
+    for j, item in enumerate(result.get_items(page)):
+        print(f"Item {j}:", result.get_item_data(item)["_label"])
+```
+
 # Roadmap
 
 - [x] Add support for People/Groups
     - [ ] Filter by:
         - [x] Has Digital Image
         - [x] Gender
-        - [ ] Nationality
+        - [ ] Nationality (nationality)
         - [x] Person or Group Class
-        - [ ] Categorized As
+        - [ ] Categorized As (classification)
         - [x] Born/Formed At (startAt)
         - [ ] Born/Formed Date
-        - [ ] Carried Out
-        - [ ] Created Object
-        - [ ] Created Works
-        - [ ] Curated
-        - [ ] Died/Dissolved At
+        - [ ] Carried Out (carriedOut)
+        - [x] Created Object (produced)
+        - [x] Created Works (created)
+        - [x] Curated (curated)
+        - [x] Died/Dissolved At (endAt)
         - [ ] Died/Dissolved Date
         - [ ] Encountered
         - [ ] Founded By
@@ -70,22 +93,24 @@ JSON: {'@context': 'https://linked.art/ns/v1/search.json'...
         - [ ] Have Member
         - [ ] ID
         - [ ] Identifier
-        - [ ] Influenced
+        - [x] Influenced (influenced)
         - [ ] Influenced Creation Of Objects
         - [ ] Influenced Creation Of Works
-        - [ ] Member Of
-        - [ ] Occupation/Role
-        - [ ] Professional Activity Categorized As
-        - [ ] Professionally Active At
+        - [ ] Member Of (memberOf)
+        - [x] Occupation/Role (occupation)
+        - [x] Professional Activity Categorized As (professionalActivity)
+        - [x] Professionally Active At (activeAt)
         - [ ] Professionally Active Date
-        - [ ] Published
+        - [x] Published (published)
         - [ ] Subject Of
 - [ ] Add support for Objects
 - [ ] Add support for Works
 - [ ] Add support for Places
 - [ ] Add support for Concepts
 - [ ] Add support for Events
-- [ ] Add support for Pagination
+- [x] Add support for Pagination
+- [x] Add support for Downloading Page JSON
+- [x] Add support for Downloading Item JSON
 - [ ] Add more filters
 - [x] Add And support for filters
 - [ ] Add support for OR filters

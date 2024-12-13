@@ -26,6 +26,7 @@ class BaseLux:
     def __init__(self):
         self.url = config["lux_url"]
         self.filters = []
+        self.page_size = 20
 
     def _encode_query(self, query: str):
         return urllib.parse.quote(json.dumps(query))
@@ -80,7 +81,32 @@ class BaseLux:
         except (KeyError, IndexError):
             logger.warning("Could not find total items in response")
             return 0
+        
+    def num_pages(self):
+        return (self.num_results // self.page_size) + (1 if self.num_results % self.page_size else 0)
+    
+    def get_page_urls(self):
+        page_urls = []
+        for page in range(1, self.num_pages() + 1):
+            temp_url = self.url + f"&page={page}"
+            page_urls.append(temp_url)
+        return page_urls
+    
+    def get_page_data(self, page_url):
+        response = requests.get(page_url)
+        return self.get_json(response)
+    
+    def get_page_data_all(self):
+        page_urls = self.get_page_urls()
+        for page_url in page_urls:
+            yield self.get_page_data(page_url)
 
+    def get_items(self, page_data):
+        return page_data['orderedItems']
+    
+    def get_item_data(self, item):
+        return self.get_page_data(item['id'])
+    
 class PeopleGroups(BaseLux):
     def __init__(self):
         self.name = config["people_groups"]
