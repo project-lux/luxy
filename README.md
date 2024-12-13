@@ -80,7 +80,6 @@ JSON: {'@context': 'https://linked.art/ns/v1/search.json'...
         - [ ] Professionally Active Date
         - [ ] Published
         - [ ] Subject Of
-    - [x] Add support for Groups
 - [ ] Add support for Objects
 - [ ] Add support for Works
 - [ ] Add support for Places
