@@ -1,3 +1,10 @@
+# PyLux
+
+[![PyPI version](https://badge.fury.io/py/pylux.svg)](https://badge.fury.io/py/pylux)
+[![GitHub stars](https://img.shields.io/github/stars/project-lux/pylux.svg)](https://github.com/project-lux/pylux/stargazers)
+[![GitHub version](https://badge.fury.io/gh/project-lux%2Fpylux.svg)](https://badge.fury.io/gh/project-lux%2Fpylux)
+
+
 PyLux is a Python wrapper for Yale's Lux API. Currently, there is minimal support for the API, but it is in active development.
 
 # Installation
