@@ -56,15 +56,30 @@ JSON: {'@context': 'https://linked.art/ns/v1/search.json'...
         - [ ] Nationality
         - [x] Person or Group Class
         - [ ] Categorized As
-        - [x] Born/Formed At
+        - [x] Born/Formed At (startAt)
         - [ ] Born/Formed Date
+        - [ ] Carried Out
+        - [ ] Created Object
+        - [ ] Created Works
+        - [ ] Curated
         - [ ] Died/Dissolved At
         - [ ] Died/Dissolved Date
+        - [ ] Encountered
+        - [ ] Founded By
+        - [ ] Founded Group
+        - [ ] Have Member
+        - [ ] ID
+        - [ ] Identifier
+        - [ ] Influenced
+        - [ ] Influenced Creation Of Objects
+        - [ ] Influenced Creation Of Works
+        - [ ] Member Of
         - [ ] Occupation/Role
+        - [ ] Professional Activity Categorized As
         - [ ] Professionally Active At
         - [ ] Professionally Active Date
-        - [ ] Member Of
-        - [ ] Professional Activity Categorized As
+        - [ ] Published
+        - [ ] Subject Of
     - [x] Add support for Groups
 - [ ] Add support for Objects
 - [ ] Add support for Works
