@@ -87,7 +87,7 @@ class BaseLux:
     
     def get_page_urls(self):
         page_urls = []
-        for page in range(1, self.num_pages() + 1):
+        for page in range(1, self.num_pages()+1):
             temp_url = self.url + f"&page={page}"
             page_urls.append(temp_url)
         return page_urls
@@ -96,9 +96,15 @@ class BaseLux:
         response = requests.get(page_url)
         return self.get_json(response)
     
-    def get_page_data_all(self):
+    def get_page_data_all(self, start_page=0, end_page=None):
+        if start_page > self.num_pages():
+            logger.warning(f"Start page is greater than the number of pages ({self.num_pages()}). Setting start page to {self.num_pages()-1}")
+            start_page = self.num_pages()-1
+        if end_page > self.num_pages():
+            logger.warning(f"End page is greater than the number of pages ({self.num_pages()}). Setting end page to {self.num_pages()+1}")
+            end_page = self.num_pages()+1
         page_urls = self.get_page_urls()
-        for page_url in page_urls:
+        for page_url in page_urls[start_page:end_page]:
             yield self.get_page_data(page_url)
 
     def get_items(self, page_data):

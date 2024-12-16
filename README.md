@@ -1,4 +1,4 @@
-![Lux Logo](./docs/images/luxy-logo.jpg)
+![Lux Logo](https://github.com/project-lux/luxy/blob/main/docs/images/luxy-logo.jpg?raw=true)
 
 [![PyPI version](https://badge.fury.io/py/luxy.svg)](https://badge.fury.io/py/luxy)
 [![GitHub stars](https://img.shields.io/github/stars/project-lux/luxy.svg)](https://github.com/project-lux/luxy/stargazers)

@@ -7,8 +7,8 @@ setup(
     install_requires=[
         "requests>=2.25.0"
     ],
-    author="Yale University",
-    description="A Python wrapper for Yale's Lux API.",
+    author="William J.B. Mattingly",
+    description="A Python wrapper for Yale's Lux API, provided by Yale University.",
     long_description=open("README.md").read(),
     long_description_content_type="text/markdown",
     url="https://github.com/project-lux/pylux",
