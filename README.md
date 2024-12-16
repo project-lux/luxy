@@ -101,15 +101,22 @@ for i, page in enumerate(result.get_page_data_all(), 1):
         - [ ] Professionally Active Date
         - [x] Published (published)
         - [ ] Subject Of
-- [ ] Add support for Objects
-- [ ] Add support for Works
-- [ ] Add support for Places
-- [ ] Add support for Concepts
-- [ ] Add support for Events
+- [x] Add support for Objects
+- [x] Add support for Works
+- [x] Add support for Places
+- [x] Add support for Concepts
+- [x] Add support for Events
 - [x] Add support for Pagination
 - [x] Add support for Downloading Page JSON
 - [x] Add support for Downloading Item JSON
 - [ ] Add more filters
+- [ ] Add support for numbers
+    - [ ] Greater Than
+    - [ ] Less Than
+    - [ ] Greater Than or Equal To
+    - [ ] Less Than or Equal To
+    - [ ] Equal To
+    - [ ] Not Equal To
 - [x] Add And support for filters
 - [ ] Add support for OR filters
 - [ ] Add support for have All of

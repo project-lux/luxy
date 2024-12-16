@@ -10,14 +10,19 @@ config = dict(
     lux_url="https://lux.collections.yale.edu/api",
     max_retries=0,
     retry_backoff_factor=0.1,
-    default="objects",
-    objects="objects",
-    works="works",
+    default="item",
+    objects="item",
+    works="work",
     people_groups="agent",
-    places="places",
-    concepts="concepts",
-    events="events"
+    places="place",
+    concepts="concept",
+    events="event",
+    lux_config="https://lux.collections.yale.edu/api/advanced-search-config"
 )
+
+def get_lux_config():
+    response = requests.get(config["lux_config"])
+    return response.json()
 
 GENDER_MALE = "https://lux.collections.yale.edu/data/concept/6f652917-4c07-4d51-8209-fcdd4f285343"
 GENDER_FEMALE = "https://lux.collections.yale.edu/data/concept/a309a746-9e51-4c34-b207-7f4773d2ac1a"
@@ -41,10 +46,11 @@ class BaseLux:
             return 0
         elif isinstance(value, dict):
             return value
-        elif value.lower() == "male":
-            return {"id": GENDER_MALE}
-        elif value.lower() == "female":
-            return {"id": GENDER_FEMALE}
+        elif isinstance(value, str):
+            if value.lower() == "male":
+                return {"id": GENDER_MALE}
+            elif value.lower() == "female":
+                return {"id": GENDER_FEMALE}
         return value
 
     def filter(self, **kwargs):
@@ -116,4 +122,29 @@ class BaseLux:
 class PeopleGroups(BaseLux):
     def __init__(self):
         self.name = config["people_groups"]
+        super().__init__()
+
+class Objects(BaseLux):
+    def __init__(self):
+        self.name = config["objects"]
+        super().__init__()
+
+class Works(BaseLux):
+    def __init__(self):
+        self.name = config["works"]
+        super().__init__()
+
+class Places(BaseLux):
+    def __init__(self):
+        self.name = config["places"]
+        super().__init__()
+
+class Concepts(BaseLux):
+    def __init__(self):
+        self.name = config["concepts"]
+        super().__init__()
+
+class Events(BaseLux):
+    def __init__(self):
+        self.name = config["events"]
         super().__init__()
