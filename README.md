@@ -9,8 +9,6 @@ LuxY is a Python wrapper for Yale's Lux API. Currently, there is minimal support
 
 # Installation
 
-**warning** not on pypi yet...
-
 ```bash
 pip install luxy
 ```
