@@ -1,1 +1,1 @@
-from .api import PeopleGroups, Objects, Works, Places, Concepts, Events, Sets, FilterBuilder
+from .api import PeopleGroups, Objects, Works, Places, Concepts, Events, Collections, FilterBuilder

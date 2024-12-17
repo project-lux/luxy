@@ -36,7 +36,24 @@ class FilterBuilder:
         new_path = self.path + [name]
         return FilterBuilder(new_path)
 
-    def __call__(self, value):
+    def __call__(self, value, depth=None):
+        if depth is not None:
+            if depth < 1:
+                raise ValueError("Depth must be at least 1")
+            
+            # Use the last path element for nesting
+            if not self.path:
+                raise ValueError("No path specified for depth-based nesting")
+            
+            nest_key = self.path[-1]
+            
+            # Create nested structure based on depth
+            current = {"name": value}
+            for _ in range(depth):
+                current = {nest_key: current}
+            return current
+        
+        # Original behavior for non-depth calls
         current = {"name": value}
         for key in reversed(self.path):
             current = {key: current}
@@ -184,7 +201,7 @@ class Events(BaseLux):
         self.name = config["events"]
         super().__init__()
 
-class Sets(BaseLux):
+class Collections(BaseLux):
     def __init__(self):
         self.name = config["set"]
         super().__init__()

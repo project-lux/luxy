@@ -15,6 +15,89 @@ pip install luxy
 
 # Usage
 
+The classes of LuxY replicate the classes of the Lux API. They are:
+
+1. PeopleGroups (agent) - People and Groups that are either individuals or organizations
+2. Objects (item) - Physical objects in Yale's collections
+3. Works (work) - Visual and textual works, including images, texts, and other creative expressions
+4. Places (place) - Geographic locations and named spaces
+5. Concepts (concept) - Types, materials, languages, measurement units, currencies and other conceptual entities
+6. Events (event) - Historical events and occurrences
+7. Collections (set) - Collections and sets of objects curated by Yale's institutions
+
+Each of these has common and unique filters that take different data types, from strings to numbers to dates. LuxY also supports nested filters, which are used to filter by multiple levels of the hierarchy. This allows users to create complex queries similar to the ones found in the Lux UI.
+
+## People Groups
+
+```python
+from luxy import PeopleGroups
+
+result = PeopleGroups().filter(name="Rembrandt").get()
+print(result.url)
+print(result.json)
+```
+
+## Objects
+
+```python
+from luxy import Objects
+
+result = Objects().filter(name="Rembrandt").get()
+print(result.url)
+print(result.json)
+```
+
+## Works
+
+```python
+from luxy import Works
+
+result = Works().filter(name="Painting").get()
+print(result.url)
+print(result.json)
+```
+
+## Places
+
+```python
+from luxy import Places
+
+result = Places().filter(name="Amsterdam").get()
+print(result.url)
+print(result.json)
+```
+
+## Concepts
+
+```python
+from luxy import Concepts
+
+result = Concepts().filter(name="gilding").get()
+print(result.url)
+print(result.json)
+```
+
+## Events
+
+```python
+from luxy import Events
+
+result = Events().filter(name="Thirty Years War").get()
+print(result.url)
+print(result.json)
+```
+
+## Collections
+
+```python
+from luxy import Collections
+
+result = Collections().filter(name="Letters").get()
+print(result.url)
+print(result.json)
+```
+
+### Complex Example
 ```python
 from luxy import PeopleGroups
 
@@ -37,7 +120,7 @@ print("URL:", result.url)
 print("JSON:", result.json)
 ```
 
-## Expected Output
+#### Expected Output
 
 ```bash
 Number of results: 131
@@ -67,6 +150,28 @@ for i, page in enumerate(result.get_page_data_all(), 1):
     for j, item in enumerate(result.get_items(page)):
         print(f"Item {j}:", result.get_item_data(item)["_label"])
 ```
+
+## Nested MemberOf Filters
+
+```python
+result = (
+    Objects()
+    .filter(hasDigitalImage=True)
+    .filter(
+        OR=[
+            Objects().memberOf("Letters", depth=2),
+            Objects().memberOf("Letters", depth=3),
+            Objects().memberOf("Letters", depth=4)
+        ]
+    )
+    .filter(name="letter")
+    .get()
+)
+
+print(result.url)
+print(result.json)
+```
+
 
 # Roadmap
 
