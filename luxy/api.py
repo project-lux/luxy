@@ -141,7 +141,7 @@ class BaseLux:
         if start_page > self.num_pages():
             logger.warning(f"Start page is greater than the number of pages ({self.num_pages()}). Setting start page to {self.num_pages()-1}")
             start_page = self.num_pages()-1
-        if end_page > self.num_pages():
+        if end_page is None or end_page > self.num_pages():
             logger.warning(f"End page is greater than the number of pages ({self.num_pages()}). Setting end page to {self.num_pages()+1}")
             end_page = self.num_pages()+1
         page_urls = self.get_page_urls()
