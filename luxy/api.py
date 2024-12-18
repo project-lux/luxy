@@ -191,6 +191,49 @@ class BaseLux:
     def get_item_data(self, item):
         return self.get_page_data(item['id'])
     
+    def get_options(self):
+        """Get available filter options for this entity type.
+        
+        Returns:
+            dict: A formatted dictionary where each key is a filter name and 
+                 the value contains information about that filter including:
+                 - description: What the filter does
+                 - type: The data type expected
+                 - values: List of possible values (if applicable)
+        """
+        options = get_lux_config()["terms"][self.name]
+        
+        # Format the options for better readability
+        formatted_options = {}
+        for key, details in options.items():
+            formatted_options[key] = {
+                "label": details.get("label", "No label available"),
+                "description": details.get("helpText", "No description available"),
+                "relation": details.get("relation", "Unknown type"),
+                "allowedOptionsName": details.get("allowedOptionsName", "Unknown type"),
+                "defaultOptionsName": details.get("defaultOptionsName", "Unknown type"),
+            }
+            
+            # Add possible values if they exist
+            if "values" in details:
+                formatted_options[key]["values"] = details["values"]
+                
+        return formatted_options
+
+    def list_filters(self):
+        """Print a human-readable list of available filters and their descriptions."""
+        options = self.get_options()
+        print(f"\nAvailable filters for {self.name}:")
+        print("-" * 50)
+        
+        for filter_name, details in options.items():
+            print(f"\n{filter_name} ({details["label"]}) - ({details['relation']}):")
+            print(f"  Description: {details['description']}")
+            if "values" in details:
+                print("  Possible values:")
+                for value in details["values"]:
+                    print(f"    - {value}")
+
 class PeopleGroups(BaseLux):
     def __init__(self):
         self.name = config["people_groups"]
