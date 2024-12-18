@@ -63,8 +63,7 @@ class BaseLux:
         self.page_size = 20
         self.memberOf = FilterBuilder(["memberOf"])
         self.partOf = FilterBuilder(["partOf"])
-        # memberOf can also work for organizations, works (rare)
-        # partOf (most things, especially places)
+        self.broader = FilterBuilder(["broader"])
         # broader (for concepts)
         # Add cache attributes
         self._cached_response = None
