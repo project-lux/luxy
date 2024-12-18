@@ -121,6 +121,7 @@ class BaseLux:
 
         # If we have a cached response and the query hasn't changed, return cached data
         if self._cached_response and self._cached_query_dict == query_dict:
+            logger.warning("Returning cached data...")
             return self
 
         # Otherwise, make the request and cache the results
