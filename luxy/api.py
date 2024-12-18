@@ -25,9 +25,6 @@ def get_lux_config():
     response = requests.get(config["lux_config"])
     return response.json()
 
-GENDER_MALE = "https://lux.collections.yale.edu/data/concept/6f652917-4c07-4d51-8209-fcdd4f285343"
-GENDER_FEMALE = "https://lux.collections.yale.edu/data/concept/a309a746-9e51-4c34-b207-7f4773d2ac1a"
-
 class FilterBuilder:
     def __init__(self, path=None):
         self.path = path or []
@@ -65,6 +62,9 @@ class BaseLux:
         self.filters = []
         self.page_size = 20
         self.memberOf = FilterBuilder(["memberOf"])
+        # memberOf can also work for organizations, works (rare)
+        # partOf (most things, especially places)
+        # broader (for concepts)
 
     def _encode_query(self, query: str):
         return urllib.parse.quote(json.dumps(query))
@@ -79,11 +79,6 @@ class BaseLux:
             return 0
         elif isinstance(value, dict):
             return value
-        elif isinstance(value, str):
-            if value.lower() == "male":
-                return {"id": GENDER_MALE}
-            elif value.lower() == "female":
-                return {"id": GENDER_FEMALE}
         return value
 
     def filter(self, **kwargs):

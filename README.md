@@ -106,7 +106,7 @@ result = (
     .filter(recordType="person")
     .filter(hasDigitalImage=True)
     .filter(text="rembrandt")
-    .filter(gender="male")
+    .filter(gender={"name": "male"})
     .get()
 )
 
@@ -224,8 +224,8 @@ print(result.json)
     - [ ] Not Equal To
 - [x] Add And support for filters
 - [ ] Add support for OR filters
-- [ ] Add support for have All of
-- [ ] Add support for have Any of
-- [ ] Add support for have None of
+- [ ] Add support for have All of # AND
+- [ ] Add support for have Any of # OR
+- [ ] Add support for have None of # NOT
 - [ ] Add more tests
 - [ ] Add more documentation
