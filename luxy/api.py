@@ -65,6 +65,9 @@ class BaseLux:
         # memberOf can also work for organizations, works (rare)
         # partOf (most things, especially places)
         # broader (for concepts)
+        # Add cache attributes
+        self._cached_response = None
+        self._cached_query_dict = None
 
     def _encode_query(self, query: str):
         return urllib.parse.quote(json.dumps(query))
@@ -104,31 +107,46 @@ class BaseLux:
         return result
 
     def get(self):
+        # Build the query
         query_ands = []
-        
-        # Process all filters
         for filter_dict in self.filters:
             if "OR" in filter_dict:
-                # Handle OR conditions
                 query_ands.append({"OR": filter_dict["OR"]})
             else:
-                # Handle regular conditions
                 for key, value in filter_dict.items():
                     processed_value = self._process_value(value)
                     query_ands.append({key: processed_value})
 
         query_dict = {"AND": query_ands} if query_ands else {}
+
+        # If we have a cached response and the query hasn't changed, return cached data
+        if self._cached_response and self._cached_query_dict == query_dict:
+            return self
+
+        # Otherwise, make the request and cache the results
         query_url = self._query_builder(self._encode_query(query_dict))
         response = requests.get(query_url)
+        
+        # Cache the results
+        self._cached_query_dict = query_dict
+        self._cached_response = response
+        
+        # Update instance attributes
         self.url = query_url
         self.json = self.get_json(response)
-        self.num_results = self.num_results(self.json)
+        self.num_results = self.get_num_results(self.json)
+        return self
+
+    def clear_cache(self):
+        """Clear the cached response to force a new request"""
+        self._cached_response = None
+        self._cached_query_dict = None
         return self
 
     def get_json(self, response):
         return response.json()
 
-    def num_results(self, json):
+    def get_num_results(self, json):
         try:
             return json['partOf'][0]['totalItems']
         except (KeyError, IndexError):
