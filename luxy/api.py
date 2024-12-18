@@ -58,14 +58,12 @@ class FilterBuilder:
 
 class BaseLux:
     def __init__(self):
-        self.url = config["lux_url"]
+        self.base_url = config["lux_url"]
         self.filters = []
         self.page_size = 20
         self.memberOf = FilterBuilder(["memberOf"])
         self.partOf = FilterBuilder(["partOf"])
         self.broader = FilterBuilder(["broader"])
-        # broader (for concepts)
-        # Add cache attributes
         self._cached_response = None
         self._cached_query_dict = None
 
@@ -73,7 +71,7 @@ class BaseLux:
         return urllib.parse.quote(json.dumps(query))
 
     def _query_builder(self, query: str):
-        return f"{self.url}/search/{self.name}?q={query}"
+        return f"{self.base_url}/search/{self.name}?q={query}"
 
     def _process_value(self, value):
         if value is True:
