@@ -107,6 +107,10 @@ class BaseLux:
         return result
 
     def get(self):
+        # Check if there are any filters
+        if not self.filters:
+            raise ValueError("No filters specified. Please add at least one filter before calling get()")
+
         # Build the query
         query_ands = []
         for filter_dict in self.filters:
