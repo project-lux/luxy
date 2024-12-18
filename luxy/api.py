@@ -62,6 +62,7 @@ class BaseLux:
         self.filters = []
         self.page_size = 20
         self.memberOf = FilterBuilder(["memberOf"])
+        self.partOf = FilterBuilder(["partOf"])
         # memberOf can also work for organizations, works (rare)
         # partOf (most things, especially places)
         # broader (for concepts)
@@ -138,6 +139,10 @@ class BaseLux:
         
         # Update instance attributes
         self.url = query_url
+        # Create a reversed mapping from config values to keys
+        reversed_config = {v: k for k, v in config.items()}
+        self.view_url = query_url.replace(f"/api/search/{self.name}", f"/view/results/{reversed_config[self.name]}")
+     
         self.json = self.get_json(response)
         self.num_results = self.get_num_results(self.json)
         return self
