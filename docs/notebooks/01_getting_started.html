@@ -167,6 +167,7 @@
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">1. Installing LuxY</a></li>
 
 
+
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Getting Started</span></p>
 <ul class="nav bd-sidenav">
@@ -414,6 +415,7 @@
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">1. Installing LuxY</a></li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#importing-luxy">2. Importing LuxY</a></li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#getting-options-for-filters">3. Getting Options for Filters</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#building-a-filter">4. Building a Filter</a></li>
 </ul>
 
             </nav>
@@ -452,9 +454,335 @@ Successfully installed luxy-0.0.2
 </section>
 <section id="importing-luxy">
 <h1><span class="section-number">2. </span>Importing LuxY<a class="headerlink" href="#importing-luxy" title="Link to this heading">#</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">luxy</span> <span class="kn">import</span> <span class="n">PeopleGroups</span>
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 <section id="getting-options-for-filters">
 <h1><span class="section-number">3. </span>Getting Options for Filters<a class="headerlink" href="#getting-options-for-filters" title="Link to this heading">#</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">PeopleGroups</span><span class="p">()</span><span class="o">.</span><span class="n">get_options</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;name&#39;: {&#39;label&#39;: &#39;Name&#39;,
+  &#39;description&#39;: &#39;Enter term(s) to be found within the title or name of the Person or Group. &quot;AND&quot;, &quot;OR&quot;, and &quot;-&quot; do not have special meaning in Advanced Search as they do in Simple Search. Instead use multiple fields connected with &quot;have All of&quot;, &quot;have Any of&quot;, and &quot;have None of&quot; respectively.&#39;,
+  &#39;relation&#39;: &#39;text&#39;,
+  &#39;allowedOptionsName&#39;: &#39;keyword&#39;,
+  &#39;defaultOptionsName&#39;: &#39;keyword&#39;},
+ &#39;text&#39;: {&#39;label&#39;: &#39;Anywhere&#39;,
+  &#39;description&#39;: &#39;Search for People &amp; Groups by terms anywhere in the record. &quot;AND&quot;, &quot;OR&quot;, and &quot;-&quot; do not have special meaning in Advanced Search as they do in Simple Search. Instead use multiple fields connected with &quot;have All of&quot;, &quot;have Any of&quot;, and &quot;have None of&quot; respectively.&#39;,
+  &#39;relation&#39;: &#39;text&#39;,
+  &#39;allowedOptionsName&#39;: &#39;keyword&#39;,
+  &#39;defaultOptionsName&#39;: &#39;keyword&#39;},
+ &#39;startAt&#39;: {&#39;label&#39;: &#39;Born/Formed At&#39;,
+  &#39;description&#39;: &#39;Search for People &amp; Groups that were born or formed in the specified Place.&#39;,
+  &#39;relation&#39;: &#39;place&#39;,
+  &#39;allowedOptionsName&#39;: &#39;keyword&#39;,
+  &#39;defaultOptionsName&#39;: &#39;keyword&#39;},
+ &#39;startDate&#39;: {&#39;label&#39;: &#39;Born/Formed Date&#39;,
+  &#39;description&#39;: &#39;Search People &amp; Groups by the date on which they were born or formed.&#39;,
+  &#39;relation&#39;: &#39;date&#39;,
+  &#39;allowedOptionsName&#39;: &#39;Unknown type&#39;,
+  &#39;defaultOptionsName&#39;: &#39;Unknown type&#39;},
+ &#39;carriedOut&#39;: {&#39;label&#39;: &#39;Carried Out&#39;,
+  &#39;description&#39;: &#39;Search for People &amp; Groups that carried out the specified Event.&#39;,
+  &#39;relation&#39;: &#39;event&#39;,
+  &#39;allowedOptionsName&#39;: &#39;Unknown type&#39;,
+  &#39;defaultOptionsName&#39;: &#39;Unknown type&#39;},
+ &#39;classification&#39;: {&#39;label&#39;: &#39;Categorized As&#39;,
+  &#39;description&#39;: &#39;Search for People &amp; Groups that are categorized with the specified Concept or Type terms.&#39;,
+  &#39;relation&#39;: &#39;concept&#39;,
+  &#39;allowedOptionsName&#39;: &#39;keyword&#39;,
+  &#39;defaultOptionsName&#39;: &#39;keyword&#39;},
+ &#39;produced&#39;: {&#39;label&#39;: &#39;Created Object&#39;,
+  &#39;description&#39;: &#39;Search for People &amp; Groups that created the specified Objects.&#39;,
+  &#39;relation&#39;: &#39;item&#39;,
+  &#39;allowedOptionsName&#39;: &#39;Unknown type&#39;,
+  &#39;defaultOptionsName&#39;: &#39;Unknown type&#39;},
+ &#39;created&#39;: {&#39;label&#39;: &#39;Created Works&#39;,
+  &#39;description&#39;: &#39;Search for People &amp; Groups that authored or created the specified Works.&#39;,
+  &#39;relation&#39;: &#39;work&#39;,
+  &#39;allowedOptionsName&#39;: &#39;Unknown type&#39;,
+  &#39;defaultOptionsName&#39;: &#39;Unknown type&#39;},
+ &#39;curated&#39;: {&#39;label&#39;: &#39;Curated&#39;,
+  &#39;description&#39;: &quot;Search for Groups responsible for the curation of Yale&#39;s collections.&quot;,
+  &#39;relation&#39;: &#39;set&#39;,
+  &#39;allowedOptionsName&#39;: &#39;Unknown type&#39;,
+  &#39;defaultOptionsName&#39;: &#39;Unknown type&#39;},
+ &#39;endAt&#39;: {&#39;label&#39;: &#39;Died/Dissolved At&#39;,
+  &#39;description&#39;: &#39;Search for People &amp; Groups that died or were dissolved in the specified Place.&#39;,
+  &#39;relation&#39;: &#39;place&#39;,
+  &#39;allowedOptionsName&#39;: &#39;keyword&#39;,
+  &#39;defaultOptionsName&#39;: &#39;keyword&#39;},
+ &#39;endDate&#39;: {&#39;label&#39;: &#39;Died/Dissolved Date&#39;,
+  &#39;description&#39;: &#39;Search for People &amp; Groups by the date on which they died or were dissolved.&#39;,
+  &#39;relation&#39;: &#39;date&#39;,
+  &#39;allowedOptionsName&#39;: &#39;Unknown type&#39;,
+  &#39;defaultOptionsName&#39;: &#39;Unknown type&#39;},
+ &#39;encountered&#39;: {&#39;label&#39;: &#39;Encountered&#39;,
+  &#39;description&#39;: &#39;Search for People &amp; Groups that encountered or found the specified Objects.&#39;,
+  &#39;relation&#39;: &#39;item&#39;,
+  &#39;allowedOptionsName&#39;: &#39;Unknown type&#39;,
+  &#39;defaultOptionsName&#39;: &#39;Unknown type&#39;},
+ &#39;foundedBy&#39;: {&#39;label&#39;: &#39;Founded By&#39;,
+  &#39;description&#39;: &#39;Search for Groups by the specified People that were responsible for their foundation.&#39;,
+  &#39;relation&#39;: &#39;agent&#39;,
+  &#39;allowedOptionsName&#39;: &#39;keyword&#39;,
+  &#39;defaultOptionsName&#39;: &#39;keyword&#39;},
+ &#39;founded&#39;: {&#39;label&#39;: &#39;Founded Group&#39;,
+  &#39;description&#39;: &#39;Search for People who were responsible for the foundation of the specified Groups.&#39;,
+  &#39;relation&#39;: &#39;agent&#39;,
+  &#39;allowedOptionsName&#39;: &#39;Unknown type&#39;,
+  &#39;defaultOptionsName&#39;: &#39;Unknown type&#39;},
+ &#39;gender&#39;: {&#39;label&#39;: &#39;Gender&#39;,
+  &#39;description&#39;: &#39;Search for People by the specified Gender. This information comes from external sources, and gender information may not match expected results.&#39;,
+  &#39;relation&#39;: &#39;concept&#39;,
+  &#39;allowedOptionsName&#39;: &#39;keyword&#39;,
+  &#39;defaultOptionsName&#39;: &#39;keyword&#39;},
+ &#39;hasDigitalImage&#39;: {&#39;label&#39;: &#39;Have Digital Image&#39;,
+  &#39;description&#39;: &#39;Search for People &amp; Groups for which digital images are available.&#39;,
+  &#39;relation&#39;: &#39;boolean&#39;,
+  &#39;allowedOptionsName&#39;: &#39;exact&#39;,
+  &#39;defaultOptionsName&#39;: &#39;exact&#39;},
+ &#39;memberOfInverse&#39;: {&#39;label&#39;: &#39;Have Member&#39;,
+  &#39;description&#39;: &#39;Search for Groups that have the specified People &amp; Groups as members.&#39;,
+  &#39;relation&#39;: &#39;agent&#39;,
+  &#39;allowedOptionsName&#39;: &#39;Unknown type&#39;,
+  &#39;defaultOptionsName&#39;: &#39;Unknown type&#39;},
+ &#39;id&#39;: {&#39;label&#39;: &#39;ID&#39;,
+  &#39;description&#39;: &#39;Search for People &amp; Groups by their LUX data URI (e.g. starting with https://lux.collections.yale.edu/data/ and followed by a URI path containing a UUID, not the URI with /view/ in it).&#39;,
+  &#39;relation&#39;: &#39;text&#39;,
+  &#39;allowedOptionsName&#39;: &#39;Unknown type&#39;,
+  &#39;defaultOptionsName&#39;: &#39;Unknown type&#39;},
+ &#39;identifier&#39;: {&#39;label&#39;: &#39;Identifier&#39;,
+  &#39;description&#39;: &#39;Search for People &amp; Groups by a string identifier or an external authority URI, such as ULAN, VIAF or wikidata.&#39;,
+  &#39;relation&#39;: &#39;text&#39;,
+  &#39;allowedOptionsName&#39;: &#39;exact&#39;,
+  &#39;defaultOptionsName&#39;: &#39;exact&#39;},
+ &#39;influenced&#39;: {&#39;label&#39;: &#39;Influenced&#39;,
+  &#39;description&#39;: &#39;Search for People &amp; Groups that influenced the specified Concepts&#39;,
+  &#39;relation&#39;: &#39;concept&#39;,
+  &#39;allowedOptionsName&#39;: &#39;Unknown type&#39;,
+  &#39;defaultOptionsName&#39;: &#39;Unknown type&#39;},
+ &#39;influencedProduction&#39;: {&#39;label&#39;: &#39;Influenced Creation Of Objects&#39;,
+  &#39;description&#39;: &#39;Search for People &amp; Groups that influenced the creation of the specified Objects&#39;,
+  &#39;relation&#39;: &#39;item&#39;,
+  &#39;allowedOptionsName&#39;: &#39;Unknown type&#39;,
+  &#39;defaultOptionsName&#39;: &#39;Unknown type&#39;},
+ &#39;influencedCreation&#39;: {&#39;label&#39;: &#39;Influenced Creation Of Works&#39;,
+  &#39;description&#39;: &#39;Search for People &amp; Groups that influenced the creation of the specified Works&#39;,
+  &#39;relation&#39;: &#39;work&#39;,
+  &#39;allowedOptionsName&#39;: &#39;Unknown type&#39;,
+  &#39;defaultOptionsName&#39;: &#39;Unknown type&#39;},
+ &#39;memberOf&#39;: {&#39;label&#39;: &#39;Member of&#39;,
+  &#39;description&#39;: &#39;Search for People &amp; Groups that are members of other Groups.&#39;,
+  &#39;relation&#39;: &#39;agent&#39;,
+  &#39;allowedOptionsName&#39;: &#39;keyword&#39;,
+  &#39;defaultOptionsName&#39;: &#39;keyword&#39;},
+ &#39;nationality&#39;: {&#39;label&#39;: &#39;Nationality&#39;,
+  &#39;description&#39;: &#39;Search for People &amp; Groups with the specified Nationality.&#39;,
+  &#39;relation&#39;: &#39;concept&#39;,
+  &#39;allowedOptionsName&#39;: &#39;keyword&#39;,
+  &#39;defaultOptionsName&#39;: &#39;keyword&#39;},
+ &#39;occupation&#39;: {&#39;label&#39;: &#39;Occupation/Role&#39;,
+  &#39;description&#39;: &#39;Search for People &amp; Groups with the specified Occupation or Role.&#39;,
+  &#39;relation&#39;: &#39;concept&#39;,
+  &#39;allowedOptionsName&#39;: &#39;keyword&#39;,
+  &#39;defaultOptionsName&#39;: &#39;keyword&#39;},
+ &#39;recordType&#39;: {&#39;label&#39;: &#39;Person or Group Class&#39;,
+  &#39;description&#39;: &#39;Search for records categorized as either a &quot;Person&quot; or a &quot;Group&quot;. Person is an individual either real or fictionalized. Group is an organization, either real or fictionalized, with one or more members.&#39;,
+  &#39;relation&#39;: &#39;text&#39;,
+  &#39;allowedOptionsName&#39;: &#39;keyword&#39;,
+  &#39;defaultOptionsName&#39;: &#39;Unknown type&#39;},
+ &#39;professionalActivity&#39;: {&#39;label&#39;: &#39;Professional Activity Categorized As&#39;,
+  &#39;description&#39;: &#39;Search for people and groups that carried out professional activities of the given categorization.&#39;,
+  &#39;relation&#39;: &#39;concept&#39;,
+  &#39;allowedOptionsName&#39;: &#39;keyword&#39;,
+  &#39;defaultOptionsName&#39;: &#39;keyword&#39;},
+ &#39;activeAt&#39;: {&#39;label&#39;: &#39;Professionally Active At&#39;,
+  &#39;description&#39;: &#39;Search for People &amp; Groups that were professionally active in the specified Places.&#39;,
+  &#39;relation&#39;: &#39;place&#39;,
+  &#39;allowedOptionsName&#39;: &#39;keyword&#39;,
+  &#39;defaultOptionsName&#39;: &#39;keyword&#39;},
+ &#39;activeDate&#39;: {&#39;label&#39;: &#39;Professionally Active Date&#39;,
+  &#39;description&#39;: &#39;Search for People &amp; Groups by the dates on which they were professionally active.&#39;,
+  &#39;relation&#39;: &#39;date&#39;,
+  &#39;allowedOptionsName&#39;: &#39;Unknown type&#39;,
+  &#39;defaultOptionsName&#39;: &#39;Unknown type&#39;},
+ &#39;published&#39;: {&#39;label&#39;: &#39;Published&#39;,
+  &#39;description&#39;: &#39;Search for People &amp; Groups that published the specified Works.&#39;,
+  &#39;relation&#39;: &#39;work&#39;,
+  &#39;allowedOptionsName&#39;: &#39;Unknown type&#39;,
+  &#39;defaultOptionsName&#39;: &#39;Unknown type&#39;},
+ &#39;subjectOfAgent&#39;: {&#39;label&#39;: &#39;Subject Of&#39;,
+  &#39;description&#39;: &#39;Search for People &amp; Groups that are the subject of the specified Works.&#39;,
+  &#39;relation&#39;: &#39;work&#39;,
+  &#39;allowedOptionsName&#39;: &#39;Unknown type&#39;,
+  &#39;defaultOptionsName&#39;: &#39;Unknown type&#39;}}
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">PeopleGroups</span><span class="p">()</span><span class="o">.</span><span class="n">list_filters</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Available filters for agent:
+--------------------------------------------------
+
+name (Name) - (text):
+  Description: Enter term(s) to be found within the title or name of the Person or Group. &quot;AND&quot;, &quot;OR&quot;, and &quot;-&quot; do not have special meaning in Advanced Search as they do in Simple Search. Instead use multiple fields connected with &quot;have All of&quot;, &quot;have Any of&quot;, and &quot;have None of&quot; respectively.
+
+text (Anywhere) - (text):
+  Description: Search for People &amp; Groups by terms anywhere in the record. &quot;AND&quot;, &quot;OR&quot;, and &quot;-&quot; do not have special meaning in Advanced Search as they do in Simple Search. Instead use multiple fields connected with &quot;have All of&quot;, &quot;have Any of&quot;, and &quot;have None of&quot; respectively.
+
+startAt (Born/Formed At) - (place):
+  Description: Search for People &amp; Groups that were born or formed in the specified Place.
+
+startDate (Born/Formed Date) - (date):
+  Description: Search People &amp; Groups by the date on which they were born or formed.
+
+carriedOut (Carried Out) - (event):
+  Description: Search for People &amp; Groups that carried out the specified Event.
+
+classification (Categorized As) - (concept):
+  Description: Search for People &amp; Groups that are categorized with the specified Concept or Type terms.
+
+produced (Created Object) - (item):
+  Description: Search for People &amp; Groups that created the specified Objects.
+
+created (Created Works) - (work):
+  Description: Search for People &amp; Groups that authored or created the specified Works.
+
+curated (Curated) - (set):
+  Description: Search for Groups responsible for the curation of Yale&#39;s collections.
+
+endAt (Died/Dissolved At) - (place):
+  Description: Search for People &amp; Groups that died or were dissolved in the specified Place.
+
+endDate (Died/Dissolved Date) - (date):
+  Description: Search for People &amp; Groups by the date on which they died or were dissolved.
+
+encountered (Encountered) - (item):
+  Description: Search for People &amp; Groups that encountered or found the specified Objects.
+
+foundedBy (Founded By) - (agent):
+  Description: Search for Groups by the specified People that were responsible for their foundation.
+
+founded (Founded Group) - (agent):
+  Description: Search for People who were responsible for the foundation of the specified Groups.
+
+gender (Gender) - (concept):
+  Description: Search for People by the specified Gender. This information comes from external sources, and gender information may not match expected results.
+
+hasDigitalImage (Have Digital Image) - (boolean):
+  Description: Search for People &amp; Groups for which digital images are available.
+
+memberOfInverse (Have Member) - (agent):
+  Description: Search for Groups that have the specified People &amp; Groups as members.
+
+id (ID) - (text):
+  Description: Search for People &amp; Groups by their LUX data URI (e.g. starting with https://lux.collections.yale.edu/data/ and followed by a URI path containing a UUID, not the URI with /view/ in it).
+
+identifier (Identifier) - (text):
+  Description: Search for People &amp; Groups by a string identifier or an external authority URI, such as ULAN, VIAF or wikidata.
+
+influenced (Influenced) - (concept):
+  Description: Search for People &amp; Groups that influenced the specified Concepts
+
+influencedProduction (Influenced Creation Of Objects) - (item):
+  Description: Search for People &amp; Groups that influenced the creation of the specified Objects
+
+influencedCreation (Influenced Creation Of Works) - (work):
+  Description: Search for People &amp; Groups that influenced the creation of the specified Works
+
+memberOf (Member of) - (agent):
+  Description: Search for People &amp; Groups that are members of other Groups.
+
+nationality (Nationality) - (concept):
+  Description: Search for People &amp; Groups with the specified Nationality.
+
+occupation (Occupation/Role) - (concept):
+  Description: Search for People &amp; Groups with the specified Occupation or Role.
+
+recordType (Person or Group Class) - (text):
+  Description: Search for records categorized as either a &quot;Person&quot; or a &quot;Group&quot;. Person is an individual either real or fictionalized. Group is an organization, either real or fictionalized, with one or more members.
+
+professionalActivity (Professional Activity Categorized As) - (concept):
+  Description: Search for people and groups that carried out professional activities of the given categorization.
+
+activeAt (Professionally Active At) - (place):
+  Description: Search for People &amp; Groups that were professionally active in the specified Places.
+
+activeDate (Professionally Active Date) - (date):
+  Description: Search for People &amp; Groups by the dates on which they were professionally active.
+
+published (Published) - (work):
+  Description: Search for People &amp; Groups that published the specified Works.
+
+subjectOfAgent (Subject Of) - (work):
+  Description: Search for People &amp; Groups that are the subject of the specified Works.
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="building-a-filter">
+<h1><span class="section-number">4. </span>Building a Filter<a class="headerlink" href="#building-a-filter" title="Link to this heading">#</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pg</span> <span class="o">=</span> <span class="n">PeopleGroups</span><span class="p">()</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;John&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pg</span><span class="o">.</span><span class="n">num_results</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>107044
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pg</span><span class="o">.</span><span class="n">url</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;https://lux.collections.yale.edu/api/search/agent?q=%7B%22AND%22%3A%20%5B%7B%22name%22%3A%20%22John%22%7D%5D%7D&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pg</span><span class="o">.</span><span class="n">view_url</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;https://lux.collections.yale.edu/view/results/people_groups?q=%7B%22AND%22%3A%20%5B%7B%22name%22%3A%20%22John%22%7D%5D%7D&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<p>PeopleGroups().filter(name=”John”)</p>
 </section>
 
     <script type="text/x-thebe-config">
@@ -525,6 +853,7 @@ Successfully installed luxy-0.0.2
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">1. Installing LuxY</a></li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#importing-luxy">2. Importing LuxY</a></li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#getting-options-for-filters">3. Getting Options for Filters</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#building-a-filter">4. Building a Filter</a></li>
 </ul>
 
   </nav></div>
