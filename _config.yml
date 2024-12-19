@@ -1,7 +1,7 @@
 # Book settings
 title: LuxY Documentation
 author: William J.B. Mattingly
-# logo: 'images/chapman-logo.jpg'
+logo: 'docs/images/luxy-logo.jpg'
 execute:
   execute_notebooks: 'off'
 parse:
