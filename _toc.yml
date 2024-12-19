@@ -6,8 +6,15 @@ parts:
   numbered: true
   chapters:
   - file: docs/notebooks/01_getting_started.ipynb
+  - file: docs/notebooks/02_simple_filters.ipynb
 
-- caption: Building Filters
+- caption: LuxY Classes
   numbered: true
   chapters:
-  - file: docs/notebooks/02_simple_filters.ipynb
+  - file: docs/notebooks/03_PeopleGroups.ipynb
+  - file: docs/notebooks/04_Objects.ipynb
+  - file: docs/notebooks/05_Works.ipynb
+  - file: docs/notebooks/06_Places.ipynb
+  - file: docs/notebooks/07_Events.ipynb
+  - file: docs/notebooks/08_Collections.ipynb
+  - file: docs/notebooks/09_Concepts.ipynb
