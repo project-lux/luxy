@@ -1,0 +1,13 @@
+format: jb-book
+root: docs/intro
+
+parts:
+- caption: 'Getting Started'
+  numbered: true
+  chapters:
+  - file: docs/notebooks/01_getting_started.ipynb
+
+- caption: Getting Started
+  numbered: true
+  chapters:
+  - file: docs/notebooks/02_building_filters.ipynb

@@ -5,9 +5,13 @@
 [![GitHub release](https://img.shields.io/github/v/release/project-lux/luxy)](https://github.com/project-lux/luxy/releases)
 
 
-LuxY is a Python wrapper for Yale's Lux API. Currently, there is minimal support for the API, but it is in active development.
+LuxY is a Python wrapper for Yale's [Lux API](https://lux.collections.yale.edu/). Lux allows users to search and filter the collections of Yale's museums and libraries, as well as external collections. This lets you find and connect with the cultural heritage collections across Yale's museums, archives, and libraries in new ways and all in one place.
+
+LuxY gives you a Pythonic way to interact with the Lux API, making it easier to search and filter the collections and even download the data in JSON format. It can handle pagination, nested filters, and more.
 
 # Installation
+
+To get started, install LuxY using pip:
 
 ```bash
 pip install luxy
@@ -27,100 +31,6 @@ The classes of LuxY replicate the classes of the Lux API. They are:
 
 Each of these has common and unique filters that take different data types, from strings to numbers to dates. LuxY also supports nested filters, which are used to filter by multiple levels of the hierarchy. This allows users to create complex queries similar to the ones found in the Lux UI.
 
-## People Groups
-
-```python
-from luxy import PeopleGroups
-
-result = PeopleGroups().filter(name="Rembrandt").get()
-print(result.url)
-print(result.json)
-```
-
-## Objects
-
-```python
-from luxy import Objects
-
-result = Objects().filter(name="Rembrandt").get()
-print(result.url)
-print(result.json)
-```
-
-## Works
-
-```python
-from luxy import Works
-
-result = Works().filter(name="Painting").get()
-print(result.url)
-print(result.json)
-```
-
-## Places
-
-```python
-from luxy import Places
-
-result = Places().filter(name="Amsterdam").get()
-print(result.url)
-print(result.json)
-```
-
-## Concepts
-
-```python
-from luxy import Concepts
-
-result = Concepts().filter(name="gilding").get()
-print(result.url)
-print(result.json)
-```
-
-## Events
-
-```python
-from luxy import Events
-
-result = Events().filter(name="Thirty Years War").get()
-print(result.url)
-print(result.json)
-```
-
-## Collections
-
-```python
-from luxy import Collections
-
-result = Collections().filter(name="Letters").get()
-print(result.url)
-print(result.json)
-```
-
-## Working with Numerical Filters
-
-Numerical filters are a bit tricky because they require a tuple with the value and the comparison operator.
-
-```python
-from luxy import Objects
-
-result = Objects().filter(height=(1, ">=")).get()
-print(result.url)
-print(result.json)
-```
-
-## Working with Date Filters
-
-Date filters are a bit tricky because they require a tuple with the value and the comparison operator. The value should be a string in the format of `YYYY-MM-DDTHH:MM:SS.SSSZ`.
-
-```python
-from luxy import Objects
-
-result = Objects().filter(encounteredDate=("1987-01-01T00:00:00.000Z", ">=")).get()
-print(result.url)
-print(result.json)
-```
-
 ## Understanding Options
 
 Each filter has a set of options that can be used to filter the data. These options are stored in the `get_options()` method.
@@ -133,6 +43,109 @@ print(options)
 
 # pretty print the options
 PeopleGroups().list_filters()
+```
+
+## People Groups
+
+```python
+from luxy import PeopleGroups
+
+result = PeopleGroups().filter(name="Rembrandt").get()
+print(result.url)
+print(result.view_url)
+print(result.json)
+```
+
+## Objects
+
+```python
+from luxy import Objects
+
+result = Objects().filter(name="Rembrandt").get()
+print(result.url)
+print(result.view_url)
+print(result.json)
+```
+
+## Works
+
+```python
+from luxy import Works
+
+result = Works().filter(name="Painting").get()
+print(result.url)
+print(result.view_url)
+print(result.json)
+```
+
+## Places
+
+```python
+from luxy import Places
+
+result = Places().filter(name="Amsterdam").get()
+print(result.url)
+print(result.view_url)
+print(result.json)
+```
+
+## Concepts
+
+```python
+from luxy import Concepts
+
+result = Concepts().filter(name="gilding").get()
+print(result.url)
+print(result.view_url)
+print(result.json)
+```
+
+## Events
+
+```python
+from luxy import Events
+
+result = Events().filter(name="Thirty Years War").get()
+print(result.url)
+print(result.view_url)
+print(result.json)
+```
+
+## Collections
+
+```python
+from luxy import Collections
+
+result = Collections().filter(name="Letters").get()
+print(result.url)
+print(result.view_url)
+print(result.json)
+```
+
+## Working with Numerical Filters
+
+Numerical filters are a bit tricky because they require a tuple with the value and the comparison operator.
+
+```python
+from luxy import Objects
+
+result = Objects().filter(height=(1, ">=")).get()
+print(result.url)
+print(result.view_url)
+print(result.json)
+```
+
+## Working with Date Filters
+
+Date filters are a bit tricky because they require a tuple with the value and the comparison operator. The value should be a string in the format of `YYYY-MM-DDTHH:MM:SS.SSSZ`.
+
+```python
+from luxy import Objects
+
+result = Objects().filter(encounteredDate=("1987-01-01T00:00:00.000Z", ">=")).get()
+print(result.url)
+print(result.view_url)
+print(result.json)
 ```
 
 ### Complex Example
