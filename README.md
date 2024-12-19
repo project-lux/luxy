@@ -97,6 +97,18 @@ print(result.url)
 print(result.json)
 ```
 
+## Working with Numerical Filters
+
+Numerical filters are a bit tricky because they require a tuple with the value and the comparison operator.
+
+```python
+from luxy import Objects
+
+result = Objects().filter(height=(1, ">=")).get()
+print(result.url)
+print(result.json)
+```
+
 ### Complex Example
 ```python
 from luxy import PeopleGroups
@@ -215,17 +227,17 @@ print(result.json)
 - [x] Add support for Downloading Page JSON
 - [x] Add support for Downloading Item JSON
 - [ ] Add more filters
-- [ ] Add support for numbers
-    - [ ] Greater Than
-    - [ ] Less Than
-    - [ ] Greater Than or Equal To
-    - [ ] Less Than or Equal To
-    - [ ] Equal To
-    - [ ] Not Equal To
+- [x] Add support for numbers
+    - [x] Greater Than
+    - [x] Less Than
+    - [x] Greater Than or Equal To
+    - [x] Less Than or Equal To
+    - [x] Equal To
+    - [x] Not Equal To
 - [x] Add And support for filters
-- [ ] Add support for OR filters
-- [ ] Add support for have All of # AND
-- [ ] Add support for have Any of # OR
-- [ ] Add support for have None of # NOT
-- [ ] Add more tests
+- [x] Add support for OR filters
+- [x] Add support for have All of # AND
+- [x] Add support for have Any of # OR
+- [x] Add support for have None of # NOT
+- [x] Add more tests
 - [ ] Add more documentation

@@ -83,16 +83,26 @@ class BaseLux:
         return value
 
     def filter(self, **kwargs):
-        # Handle nested memberOf queries by allowing dict values to be nested
-        processed_kwargs = {}
         for key, value in kwargs.items():
-            if isinstance(value, dict):
-                # Handle nested structure recursively
-                processed_kwargs[key] = self._process_nested_dict(value)
+            # Handle tuple case (value, comparison operator)
+            if isinstance(value, tuple) and len(value) == 2:
+                val, comp = value
+                if not isinstance(val, (int, float)):
+                    raise ValueError(f"Comparison operator '{comp}' can only be used with numeric values")
+                if comp not in ['>', '>=', '<', '<=', '==', '!=']:
+                    raise ValueError(f"Invalid comparison operator: {comp}")
+                
+                # Create a single filter object with both properties
+                filter_obj = {
+                    key: str(val),
+                    "_comp": comp
+                }
+                self.filters = [filter_obj]  # Replace any existing filters
             else:
-                processed_kwargs[key] = self._process_value(value)
+                # Handle other cases
+                processed_value = self._process_value(value) if not isinstance(value, dict) else self._process_nested_dict(value)
+                self.filters.append({key: processed_value})
         
-        self.filters.append(processed_kwargs)
         return self
 
     def _process_nested_dict(self, d):
@@ -111,9 +121,15 @@ class BaseLux:
 
         # Build the query
         query_ands = []
+        
         for filter_dict in self.filters:
+            # If it's already an OR condition, append as is
             if "OR" in filter_dict:
                 query_ands.append({"OR": filter_dict["OR"]})
+            # If it contains both a value and _comp, keep them together
+            elif "_comp" in filter_dict:
+                query_ands.append(filter_dict)
+            # Otherwise process as normal
             else:
                 for key, value in filter_dict.items():
                     processed_value = self._process_value(value)
@@ -139,7 +155,7 @@ class BaseLux:
         # Create a reversed mapping from config values to keys
         reversed_config = {v: k for k, v in config.items()}
         self.view_url = query_url.replace(f"/api/search/{self.name}", f"/view/results/{reversed_config[self.name]}")
-     
+    
         self.json = self.get_json(response)
         self.num_results = self.get_num_results(self.json)
         return self
