@@ -1,0 +1,729 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>4. Pagination and Downloading Data &#8212; LuxY Documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'docs/notebooks/02_01_pagination';</script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="1. PeopleGroups" href="03_PeopleGroups.html" />
+    <link rel="prev" title="2. Working with Filters" href="02_simple_filters.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/luxy-logo.jpg" class="logo__image only-light" alt="LuxY Documentation - Home"/>
+    <img src="../../_static/luxy-logo.jpg" class="logo__image only-dark pst-js-only" alt="LuxY Documentation - Home"/>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    <p align="center">Workflow and Documentation</p>
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Getting Started</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="01_getting_started.html">1. Introduction to LuxY</a></li>
+<li class="toctree-l1"><a class="reference internal" href="02_simple_filters.html">2. Working with Filters</a></li>
+
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">4. Pagination and Downloading Data</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">LuxY Classes</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="03_PeopleGroups.html">1. PeopleGroups</a></li>
+<li class="toctree-l1"><a class="reference internal" href="04_Objects.html">2. Ojects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="05_Works.html">3. Works</a></li>
+<li class="toctree-l1"><a class="reference internal" href="06_Places.html">4. Places</a></li>
+<li class="toctree-l1"><a class="reference internal" href="07_Events.html">5. Events</a></li>
+<li class="toctree-l1"><a class="reference internal" href="08_Collections.html">6. Collections</a></li>
+<li class="toctree-l1"><a class="reference internal" href="09_Concepts.html">7. Concepts</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/project-lux/luxy/blob/main/docs/notebooks/02_01_pagination.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch on Colab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img alt="Colab logo" src="../../_static/images/logo_colab.png">
+  </span>
+<span class="btn__text-container">Colab</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/project-lux/luxy" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/project-lux/luxy/edit/main/docs/notebooks/02_01_pagination.ipynb" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/project-lux/luxy/issues/new?title=Issue%20on%20page%20%2Fdocs/notebooks/02_01_pagination.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/docs/notebooks/02_01_pagination.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Pagination and Downloading Data</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bringing-it-all-together">4.1. Bringing it All Together</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="pagination-and-downloading-data">
+<h1><span class="section-number">4. </span>Pagination and Downloading Data<a class="headerlink" href="#pagination-and-downloading-data" title="Link to this heading">#</a></h1>
+<p>LuxY is designed to handle pagination in alignment with the Lux API. To learn about how to work with pagination and download data from Lux, let’s start by trying to find all the PeopleGroups that have the name “John Adams”.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">luxy</span> <span class="kn">import</span> <span class="n">PeopleGroups</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pg</span> <span class="o">=</span> <span class="n">PeopleGroups</span><span class="p">()</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;John Adams&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
+<span class="c1"># print the number of results</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Number of results:&quot;</span><span class="p">,</span> <span class="n">pg</span><span class="o">.</span><span class="n">num_results</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Number of pages:&quot;</span><span class="p">,</span> <span class="n">pg</span><span class="o">.</span><span class="n">num_pages</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Number of results: 276
+Number of pages: 14
+</pre></div>
+</div>
+</div>
+</div>
+<p>Here, we can see our results. As of the creation of this notebook, there are 276 total results and 14 pages. We can use LuxY to iterate over those pages by using the <code class="docutils literal notranslate"><span class="pre">get_page_data_all</span></code> method. We can pass two arguments to this method: <code class="docutils literal notranslate"><span class="pre">start_page</span></code> and <code class="docutils literal notranslate"><span class="pre">end_page</span></code>. These arguments are optional, and if not provided, will default to 1 and the total number of pages, respectively.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pages</span> <span class="o">=</span> <span class="n">pg</span><span class="o">.</span><span class="n">get_page_data_all</span><span class="p">(</span><span class="n">start_page</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">end_page</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>As we can see below, this returns a generator object. We can convert this to a list by using the <code class="docutils literal notranslate"><span class="pre">list</span></code> function.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pages</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;generator object BaseLux.get_page_data_all at 0x111c21640&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pages</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">pages</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Let’s take a look at the first page.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">pages</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[{&#39;@context&#39;: &#39;https://linked.art/ns/v1/search.json&#39;, &#39;id&#39;: &#39;https://lux.collections.yale.edu/api/search/agent?q=%7B%22AND%22%3A%5B%7B%22name%22%3A%22John%20Adams%22%7D%5D%7D&amp;page=2&amp;pageLength=20&#39;, &#39;type&#39;: &#39;OrderedCollectionPage&#39;, &#39;partOf&#39;: [{&#39;id&#39;: &#39;https://lux.collections.yale.edu/api/search-estimate/agent?q=%7B%22AND%22%3A%5B%7B%22name%22%3A%22John%20Adams%22%7D%5D%7D&#39;, &#39;type&#39;: &#39;OrderedCollection&#39;, &#39;label&#39;: {&#39;en&#39;: [&#39;People &amp; Groups&#39;]}, &#39;summary&#39;: {&#39;en&#39;: [&#39;Records representing individuals and organizations that match your search.&#39;]}, &#39;totalItems&#39;: 276}], &#39;orderedItems&#39;: [{&#39;id&#39;: &#39;https://lux.collections.yale.edu/data/person/22e467d0-8f37-4fd8-a317-7eb096375ee0&#39;, &#39;type&#39;: &#39;Person&#39;}, {&#39;id&#39;: &#39;https://lux.collections.yale.edu/data/person/4c7f7739-f7be-4e0d-9c88-987ee8bbc3f8&#39;, &#39;type&#39;: &#39;Person&#39;}, {&#39;id&#39;: &#39;https://lux.collections.yale.edu/data/person/67e1c047-f6b7-412e-a000-c095333e649b&#39;, &#39;type&#39;: &#39;Person&#39;}, {&#39;id&#39;: &#39;https://lux.collections.yale.edu/data/person/bb5f8245-4d82-4d0f-8ce8-b8b81230ac6f&#39;, &#39;type&#39;: &#39;Person&#39;}, {&#39;id&#39;: &#39;https://lux.collections.yale.edu/data/group/4bc5c738-924c-425e-8438-d1a10487ffbd&#39;, &#39;type&#39;: &#39;Group&#39;}, {&#39;id&#39;: &#39;https://lux.collections.yale.edu/data/person/64f2091b-e04e-4ec1-8bfd-9b147bea4752&#39;, &#39;type&#39;: &#39;Person&#39;}, {&#39;id&#39;: &#39;https://lux.collections.yale.edu/data/person/4a0b85a6-d940-4fb0-bb5a-6d66658f39de&#39;, &#39;type&#39;: &#39;Person&#39;}, {&#39;id&#39;: &#39;https://lux.collections.yale.edu/data/person/169c72b0-c082-4c5f-8241-2bca27853e8d&#39;, &#39;type&#39;: &#39;Person&#39;}, {&#39;id&#39;: &#39;https://lux.collections.yale.edu/data/person/15a71bca-ec29-485c-af93-1a85106f72f7&#39;, &#39;type&#39;: &#39;Person&#39;}, {&#39;id&#39;: &#39;https://lux.collections.yale.edu/data/person/de79c7d1-2d8e-4d98-a1bf-6ca79c0b1c25&#39;, &#39;type&#39;: &#39;Person&#39;}, {&#39;id&#39;: &#39;https://lux.collections.yale.edu/data/person/b31f0298-11e8-460f-b670-127e9d1180ba&#39;, &#39;type&#39;: &#39;Person&#39;}, {&#39;id&#39;: &#39;https://lux.collections.yale.edu/data/person/0ef94574-75ef-4664-abfb-ffe0d1ee323c&#39;, &#39;type&#39;: &#39;Person&#39;}, {&#39;id&#39;: &#39;https://lux.collections.yale.edu/data/person/a5cdffd8-3fb0-4188-a607-a8c26ac33667&#39;, &#39;type&#39;: &#39;Person&#39;}, {&#39;id&#39;: &#39;https://lux.collections.yale.edu/data/person/8934ce8c-9869-481a-923f-384969569570&#39;, &#39;type&#39;: &#39;Person&#39;}, {&#39;id&#39;: &#39;https://lux.collections.yale.edu/data/person/d6e18c49-7d49-4dc1-b780-acfb4768c2f1&#39;, &#39;type&#39;: &#39;Person&#39;}, {&#39;id&#39;: &#39;https://lux.collections.yale.edu/data/person/26480195-63db-4196-ac46-1b98b721bb4d&#39;, &#39;type&#39;: &#39;Person&#39;}, {&#39;id&#39;: &#39;https://lux.collections.yale.edu/data/person/63dde3ce-956c-4aa1-bb53-977c233d9160&#39;, &#39;type&#39;: &#39;Person&#39;}, {&#39;id&#39;: &#39;https://lux.collections.yale.edu/data/person/07e940cb-0f8a-4540-97b8-d23958f7b8d3&#39;, &#39;type&#39;: &#39;Person&#39;}, {&#39;id&#39;: &#39;https://lux.collections.yale.edu/data/person/e64b7680-a014-47bf-bff0-7facf50f1ab2&#39;, &#39;type&#39;: &#39;Person&#39;}, {&#39;id&#39;: &#39;https://lux.collections.yale.edu/data/person/f8257cc4-455c-46c0-8dff-a4e0c227faef&#39;, &#39;type&#39;: &#39;Person&#39;}], &#39;prev&#39;: {&#39;id&#39;: &#39;https://lux.collections.yale.edu/api/search/agent?q=%7B%22AND%22%3A%5B%7B%22name%22%3A%22John%20Adams%22%7D%5D%7D&amp;page=1&amp;pageLength=20&#39;, &#39;type&#39;: &#39;OrderedCollectionPage&#39;}, &#39;next&#39;: {&#39;id&#39;: &#39;https://lux.collections.yale.edu/api/search/agent?q=%7B%22AND%22%3A%5B%7B%22name%22%3A%22John%20Adams%22%7D%5D%7D&amp;page=3&amp;pageLength=20&#39;, &#39;type&#39;: &#39;OrderedCollectionPage&#39;}}, {&#39;@context&#39;: &#39;https://linked.art/ns/v1/search.json&#39;, &#39;id&#39;: &#39;https://lux.collections.yale.edu/api/search/agent?q=%7B%22AND%22%3A%5B%7B%22name%22%3A%22John%20Adams%22%7D%5D%7D&amp;page=3&amp;pageLength=20&#39;, &#39;type&#39;: &#39;OrderedCollectionPage&#39;, &#39;partOf&#39;: [{&#39;id&#39;: &#39;https://lux.collections.yale.edu/api/search-estimate/agent?q=%7B%22AND%22%3A%5B%7B%22name%22%3A%22John%20Adams%22%7D%5D%7D&#39;, &#39;type&#39;: &#39;OrderedCollection&#39;, &#39;label&#39;: {&#39;en&#39;: [&#39;People &amp; Groups&#39;]}, &#39;summary&#39;: {&#39;en&#39;: [&#39;Records representing individuals and organizations that match your search.&#39;]}, &#39;totalItems&#39;: 276}], &#39;orderedItems&#39;: [{&#39;id&#39;: &#39;https://lux.collections.yale.edu/data/person/6d4be5fe-b0ee-4606-a064-f3551bcfb186&#39;, &#39;type&#39;: &#39;Person&#39;}, {&#39;id&#39;: &#39;https://lux.collections.yale.edu/data/group/c4cddf21-aee6-4e11-b1fc-cde7da156727&#39;, &#39;type&#39;: &#39;Group&#39;}, {&#39;id&#39;: &#39;https://lux.collections.yale.edu/data/person/f05d50a5-e764-4e3a-8b46-002138c7c089&#39;, &#39;type&#39;: &#39;Person&#39;}, {&#39;id&#39;: &#39;https://lux.collections.yale.edu/data/person/2be789a5-86e2-4e48-8fa2-fcad90429a57&#39;, &#39;type&#39;: &#39;Person&#39;}, {&#39;id&#39;: &#39;https://lux.collections.yale.edu/data/person/df78116e-5c74-4ef6-880e-e1dfbfd17cde&#39;, &#39;type&#39;: &#39;Person&#39;}, {&#39;id&#39;: &#39;https://lux.collections.yale.edu/data/person/6ab9b888-57e7-47c0-a05b-fd1c8467b13c&#39;, &#39;type&#39;: &#39;Person&#39;}, {&#39;id&#39;: &#39;https://lux.collections.yale.edu/data/person/f8887237-b8a4-4d02-9966-d07aff8674a2&#39;, &#39;type&#39;: &#39;Person&#39;}, {&#39;id&#39;: &#39;https://lux.collections.yale.edu/data/person/789aad70-fa4c-474f-99a9-7ec27abc70af&#39;, &#39;type&#39;: &#39;Person&#39;}, {&#39;id&#39;: &#39;https://lux.collections.yale.edu/data/person/5545fe57-5df2-49f2-a93e-2d44e53832a2&#39;, &#39;type&#39;: &#39;Person&#39;}, {&#39;id&#39;: &#39;https://lux.collections.yale.edu/data/person/7fe6ad4c-6d3d-48bd-9d79-3f9254794359&#39;, &#39;type&#39;: &#39;Person&#39;}, {&#39;id&#39;: &#39;https://lux.collections.yale.edu/data/person/4dda5864-2d26-4383-8b44-43bfbf3a99d7&#39;, &#39;type&#39;: &#39;Person&#39;}, {&#39;id&#39;: &#39;https://lux.collections.yale.edu/data/group/7884e996-d5e3-43be-8d2d-5befa7a56a20&#39;, &#39;type&#39;: &#39;Group&#39;}, {&#39;id&#39;: &#39;https://lux.collections.yale.edu/data/person/108153e3-60a2-4814-8b9c-a4eb7c351a1a&#39;, &#39;type&#39;: &#39;Person&#39;}, {&#39;id&#39;: &#39;https://lux.collections.yale.edu/data/person/f7bd3ef2-5070-49be-a1db-b85db0ac59ea&#39;, &#39;type&#39;: &#39;Person&#39;}, {&#39;id&#39;: &#39;https://lux.collections.yale.edu/data/person/a283f46e-1520-42ca-befe-388ca1e7bd9f&#39;, &#39;type&#39;: &#39;Person&#39;}, {&#39;id&#39;: &#39;https://lux.collections.yale.edu/data/person/75fafd60-0b36-4203-8ac0-4be49818293f&#39;, &#39;type&#39;: &#39;Person&#39;}, {&#39;id&#39;: &#39;https://lux.collections.yale.edu/data/person/2a021dc5-c4a7-4a7b-9c14-616a59aa45e1&#39;, &#39;type&#39;: &#39;Person&#39;}, {&#39;id&#39;: &#39;https://lux.collections.yale.edu/data/person/f6e9389d-e43f-473b-8996-b3acabc75ea2&#39;, &#39;type&#39;: &#39;Person&#39;}, {&#39;id&#39;: &#39;https://lux.collections.yale.edu/data/person/e6375375-e6f8-44b9-8b59-f02a2058dcd4&#39;, &#39;type&#39;: &#39;Person&#39;}, {&#39;id&#39;: &#39;https://lux.collections.yale.edu/data/person/d119726e-027e-4829-9b20-e3e57aa14b87&#39;, &#39;type&#39;: &#39;Person&#39;}], &#39;prev&#39;: {&#39;id&#39;: &#39;https://lux.collections.yale.edu/api/search/agent?q=%7B%22AND%22%3A%5B%7B%22name%22%3A%22John%20Adams%22%7D%5D%7D&amp;page=2&amp;pageLength=20&#39;, &#39;type&#39;: &#39;OrderedCollectionPage&#39;}, &#39;next&#39;: {&#39;id&#39;: &#39;https://lux.collections.yale.edu/api/search/agent?q=%7B%22AND%22%3A%5B%7B%22name%22%3A%22John%20Adams%22%7D%5D%7D&amp;page=4&amp;pageLength=20&#39;, &#39;type&#39;: &#39;OrderedCollectionPage&#39;}}]
+</pre></div>
+</div>
+</div>
+</div>
+<p>Each page contains a list of items. We can get the items from a page by using the <code class="docutils literal notranslate"><span class="pre">get_items</span></code> method.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">page1_items</span> <span class="o">=</span> <span class="n">pg</span><span class="o">.</span><span class="n">get_items</span><span class="p">(</span><span class="n">pages</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="n">page1_items</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;id&#39;: &#39;https://lux.collections.yale.edu/data/person/22e467d0-8f37-4fd8-a317-7eb096375ee0&#39;,
+ &#39;type&#39;: &#39;Person&#39;}
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can get the data for an item by using the <code class="docutils literal notranslate"><span class="pre">get_item_data</span></code> method.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">pg</span><span class="o">.</span><span class="n">get_item_data</span><span class="p">(</span><span class="n">page1_items</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;id&#39;: &#39;https://lux.collections.yale.edu/data/person/22e467d0-8f37-4fd8-a317-7eb096375ee0&#39;, &#39;born&#39;: {&#39;type&#39;: &#39;Birth&#39;, &#39;timespan&#39;: {&#39;type&#39;: &#39;TimeSpan&#39;, &#39;end_of_the_end&#39;: &#39;1940-12-31T23:59:59&#39;, &#39;begin_of_the_begin&#39;: &#39;1940-01-01T00:00:00&#39;, &#39;_seconds_since_epoch_begin_of_the_begin&#39;: -946771200, &#39;_seconds_since_epoch_end_of_the_end&#39;: -915148801}}, &#39;type&#39;: &#39;Person&#39;, &#39;_label&#39;: &#39;Adams, J. D. R.&#39;, &#39;@context&#39;: &#39;https://linked.art/ns/v1/linked-art.json&#39;, &#39;equivalent&#39;: [{&#39;id&#39;: &#39;https://d-nb.info/gnd/138381100&#39;, &#39;type&#39;: &#39;Person&#39;, &#39;_label&#39;: &#39;Adams, J. D. R.&#39;}, {&#39;id&#39;: &#39;http://id.loc.gov/authorities/names/no94009355&#39;, &#39;type&#39;: &#39;Person&#39;, &#39;_label&#39;: &#39;Adams, J. D. R.&#39;}, {&#39;id&#39;: &#39;http://viaf.org/viaf/100395370&#39;, &#39;type&#39;: &#39;Person&#39;, &#39;_label&#39;: &#39;Adams, J. D. R.&#39;}, {&#39;id&#39;: &#39;https://linked-art.library.yale.edu/node/5e8de466-b82b-4491-9708-f2da1d8a979e&#39;, &#39;type&#39;: &#39;Person&#39;, &#39;_label&#39;: &#39;Adams, J. D. R.&#39;}], &#39;classified_as&#39;: [{&#39;id&#39;: &#39;https://lux.collections.yale.edu/data/concept/6f652917-4c07-4d51-8209-fcdd4f285343&#39;, &#39;type&#39;: &#39;Type&#39;, &#39;_label&#39;: &#39;Male&#39;, &#39;equivalent&#39;: [{&#39;id&#39;: &#39;http://vocab.getty.edu/aat/300189559&#39;, &#39;type&#39;: &#39;Type&#39;, &#39;_label&#39;: &#39;Male&#39;}], &#39;classified_as&#39;: [{&#39;id&#39;: &#39;https://lux.collections.yale.edu/data/concept/84ed0c0e-2aa8-49b3-ae02-ed84552f570d&#39;, &#39;type&#39;: &#39;Type&#39;, &#39;_label&#39;: &#39;Gender&#39;, &#39;equivalent&#39;: [{&#39;id&#39;: &#39;http://vocab.getty.edu/aat/300055147&#39;, &#39;type&#39;: &#39;Type&#39;, &#39;_label&#39;: &#39;Gender&#39;}]}]}, {&#39;id&#39;: &#39;https://lux.collections.yale.edu/data/concept/03837c1a-3ba7-415d-9d12-a263699c77ee&#39;, &#39;type&#39;: &#39;Type&#39;, &#39;_label&#39;: &#39;Wirtschaftswissenschaftler&#39;, &#39;classified_as&#39;: [{&#39;id&#39;: &#39;https://lux.collections.yale.edu/data/concept/436de922-618f-4afc-afcc-fe15c4ae959c&#39;, &#39;type&#39;: &#39;Type&#39;, &#39;_label&#39;: &#39;Occupation&#39;, &#39;equivalent&#39;: [{&#39;id&#39;: &#39;http://vocab.getty.edu/aat/300263369&#39;, &#39;type&#39;: &#39;Type&#39;, &#39;_label&#39;: &#39;Occupation&#39;}]}]}, {&#39;id&#39;: &#39;https://lux.collections.yale.edu/data/concept/80efddc3-73e4-4f40-bffc-198412420d43&#39;, &#39;type&#39;: &#39;Type&#39;, &#39;_label&#39;: &#39;gb&#39;, &#39;equivalent&#39;: [{&#39;id&#39;: &#39;http://vocab.getty.edu/aat/300111159&#39;, &#39;type&#39;: &#39;Type&#39;, &#39;_label&#39;: &#39;gb&#39;}], &#39;classified_as&#39;: [{&#39;id&#39;: &#39;https://lux.collections.yale.edu/data/concept/05344568-bdd1-4289-90d6-b9fdcdbaaa4c&#39;, &#39;type&#39;: &#39;Type&#39;, &#39;_label&#39;: &#39;Nationality&#39;, &#39;equivalent&#39;: [{&#39;id&#39;: &#39;http://vocab.getty.edu/aat/300379842&#39;, &#39;type&#39;: &#39;Type&#39;, &#39;_label&#39;: &#39;Nationality&#39;}]}]}], &#39;identified_by&#39;: [{&#39;type&#39;: &#39;Name&#39;, &#39;content&#39;: &#39;Adams, J. D. R.&#39;, &#39;classified_as&#39;: [{&#39;id&#39;: &#39;https://lux.collections.yale.edu/data/concept/f7ef5bb4-e7fb-443d-9c6b-371a23e717ec&#39;, &#39;type&#39;: &#39;Type&#39;, &#39;_label&#39;: &#39;Primary Name&#39;, &#39;equivalent&#39;: [{&#39;id&#39;: &#39;http://vocab.getty.edu/aat/300404670&#39;, &#39;type&#39;: &#39;Type&#39;, &#39;_label&#39;: &#39;Primary Name&#39;}]}, {&#39;id&#39;: &#39;https://lux.collections.yale.edu/data/concept/ab99d278-9323-4d84-8e97-1846058fc587&#39;, &#39;type&#39;: &#39;Type&#39;, &#39;_label&#39;: &#39;Sort Name&#39;, &#39;equivalent&#39;: [{&#39;id&#39;: &#39;http://vocab.getty.edu/aat/300451544&#39;, &#39;type&#39;: &#39;Type&#39;, &#39;_label&#39;: &#39;Final: Sort Title&#39;}]}]}, {&#39;type&#39;: &#39;Name&#39;, &#39;content&#39;: &#39;Adams, John Douglas Richard&#39;, &#39;classified_as&#39;: [{&#39;id&#39;: &#39;https://lux.collections.yale.edu/data/concept/c99c4343-b769-4a81-9f28-6aec5d281251&#39;, &#39;type&#39;: &#39;Type&#39;, &#39;_label&#39;: &#39;Alternate Name&#39;, &#39;equivalent&#39;: [{&#39;id&#39;: &#39;http://vocab.getty.edu/aat/300264273&#39;, &#39;type&#39;: &#39;Type&#39;, &#39;_label&#39;: &#39;Alternate Name&#39;}]}]}, {&#39;type&#39;: &#39;Name&#39;, &#39;content&#39;: &#39;John Douglas Richard Adams&#39;, &#39;classified_as&#39;: [{&#39;id&#39;: &#39;https://lux.collections.yale.edu/data/concept/c99c4343-b769-4a81-9f28-6aec5d281251&#39;, &#39;type&#39;: &#39;Type&#39;, &#39;_label&#39;: &#39;Alternate Name&#39;, &#39;equivalent&#39;: [{&#39;id&#39;: &#39;http://vocab.getty.edu/aat/300264273&#39;, &#39;type&#39;: &#39;Type&#39;, &#39;_label&#39;: &#39;Alternate Name&#39;}]}]}, {&#39;type&#39;: &#39;Name&#39;, &#39;content&#39;: &#39;John D. R. Adams&#39;, &#39;classified_as&#39;: []}, {&#39;type&#39;: &#39;Name&#39;, &#39;content&#39;: &#39;Adams, J.D.R.&#39;, &#39;classified_as&#39;: []}, {&#39;type&#39;: &#39;Name&#39;, &#39;content&#39;: &#39;Adams, John D. R. 1940-&#39;}, {&#39;type&#39;: &#39;Name&#39;, &#39;content&#39;: &#39;Adams, J. D. R., juriste&#39;}], &#39;_links&#39;: {&#39;curies&#39;: [{&#39;name&#39;: &#39;la&#39;, &#39;href&#39;: &#39;https://linked.art/api/1.0/rels/{rel}&#39;, &#39;templated&#39;: True}, {&#39;name&#39;: &#39;lux&#39;, &#39;href&#39;: &#39;https://lux.collections.yale.edu/api/rels/{rel}&#39;, &#39;templated&#39;: True}], &#39;self&#39;: {&#39;href&#39;: &#39;https://lux.collections.yale.edu/data/person/22e467d0-8f37-4fd8-a317-7eb096375ee0&#39;}, &#39;lux:agentCreatedPublishedInfluencedWork&#39;: {&#39;href&#39;: &#39;https://lux.collections.yale.edu/api/search/work?q=%7B%22OR%22%3A%5B%7B%22createdBy%22%3A%7B%22id%22%3A%22https%3A%2F%2Flux.collections.yale.edu%2Fdata%2Fperson%2F22e467d0-8f37-4fd8-a317-7eb096375ee0%22%7D%7D%2C%7B%22publishedBy%22%3A%7B%22id%22%3A%22https%3A%2F%2Flux.collections.yale.edu%2Fdata%2Fperson%2F22e467d0-8f37-4fd8-a317-7eb096375ee0%22%7D%7D%2C%7B%22creationInfluencedBy%22%3A%7B%22id%22%3A%22https%3A%2F%2Flux.collections.yale.edu%2Fdata%2Fperson%2F22e467d0-8f37-4fd8-a317-7eb096375ee0%22%7D%7D%5D%7D&#39;, &#39;_estimate&#39;: 1}, &#39;lux:agentWorkCreatedTime&#39;: {&#39;href&#39;: &#39;https://lux.collections.yale.edu/api/facets/work?q=%7B%22OR%22%3A%5B%7B%22createdBy%22%3A%7B%22id%22%3A%22https%3A%2F%2Flux.collections.yale.edu%2Fdata%2Fperson%2F22e467d0-8f37-4fd8-a317-7eb096375ee0%22%7D%7D%2C%7B%22publishedBy%22%3A%7B%22id%22%3A%22https%3A%2F%2Flux.collections.yale.edu%2Fdata%2Fperson%2F22e467d0-8f37-4fd8-a317-7eb096375ee0%22%7D%7D%2C%7B%22creationInfluencedBy%22%3A%7B%22id%22%3A%22https%3A%2F%2Flux.collections.yale.edu%2Fdata%2Fperson%2F22e467d0-8f37-4fd8-a317-7eb096375ee0%22%7D%7D%5D%7D&amp;name=workCreationDate&#39;, &#39;_estimate&#39;: 1}, &#39;lux:agentWorkPublishedTime&#39;: {&#39;href&#39;: &#39;https://lux.collections.yale.edu/api/facets/work?q=%7B%22OR%22%3A%5B%7B%22createdBy%22%3A%7B%22id%22%3A%22https%3A%2F%2Flux.collections.yale.edu%2Fdata%2Fperson%2F22e467d0-8f37-4fd8-a317-7eb096375ee0%22%7D%7D%2C%7B%22publishedBy%22%3A%7B%22id%22%3A%22https%3A%2F%2Flux.collections.yale.edu%2Fdata%2Fperson%2F22e467d0-8f37-4fd8-a317-7eb096375ee0%22%7D%7D%2C%7B%22creationInfluencedBy%22%3A%7B%22id%22%3A%22https%3A%2F%2Flux.collections.yale.edu%2Fdata%2Fperson%2F22e467d0-8f37-4fd8-a317-7eb096375ee0%22%7D%7D%5D%7D&amp;name=workPublicationDate&#39;, &#39;_estimate&#39;: 1}, &#39;lux:agentRelatedAgents&#39;: {&#39;href&#39;: &#39;https://lux.collections.yale.edu/api/related-list/agent?&amp;name=relatedToAgent&amp;uri=https%3A%2F%2Flux.collections.yale.edu%2Fdata%2Fperson%2F22e467d0-8f37-4fd8-a317-7eb096375ee0&#39;, &#39;_estimate&#39;: 1}, &#39;lux:agentRelatedConcepts&#39;: {&#39;href&#39;: &#39;https://lux.collections.yale.edu/api/related-list/concept?&amp;name=relatedToAgent&amp;uri=https%3A%2F%2Flux.collections.yale.edu%2Fdata%2Fperson%2F22e467d0-8f37-4fd8-a317-7eb096375ee0&#39;, &#39;_estimate&#39;: 1}, &#39;lux:agentRelatedPlaces&#39;: {&#39;href&#39;: &#39;https://lux.collections.yale.edu/api/related-list/place?&amp;name=relatedToAgent&amp;uri=https%3A%2F%2Flux.collections.yale.edu%2Fdata%2Fperson%2F22e467d0-8f37-4fd8-a317-7eb096375ee0&#39;, &#39;_estimate&#39;: 1}, &#39;lux:agentRelatedSubjects&#39;: {&#39;href&#39;: &#39;https://lux.collections.yale.edu/api/facets/work?q=%7B%22createdBy%22%3A%7B%22id%22%3A%22https%3A%2F%2Flux.collections.yale.edu%2Fdata%2Fperson%2F22e467d0-8f37-4fd8-a317-7eb096375ee0%22%7D%7D&amp;name=workAboutConceptId&#39;, &#39;_estimate&#39;: 1}, &#39;lux:agentRelatedWorkTypes&#39;: {&#39;href&#39;: &#39;https://lux.collections.yale.edu/api/facets/work?q=%7B%22createdBy%22%3A%7B%22id%22%3A%22https%3A%2F%2Flux.collections.yale.edu%2Fdata%2Fperson%2F22e467d0-8f37-4fd8-a317-7eb096375ee0%22%7D%7D&amp;name=workTypeId&#39;, &#39;_estimate&#39;: 1}}}
+</pre></div>
+</div>
+</div>
+</div>
+<p>Let’s take a look at the label for the first item.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">pg</span><span class="o">.</span><span class="n">get_item_data</span><span class="p">(</span><span class="n">page1_items</span><span class="p">[</span><span class="mi">0</span><span class="p">])[</span><span class="s2">&quot;_label&quot;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Adams, J. D. R.
+</pre></div>
+</div>
+</div>
+</div>
+<section id="bringing-it-all-together">
+<h2><span class="section-number">4.1. </span>Bringing it All Together<a class="headerlink" href="#bringing-it-all-together" title="Link to this heading">#</a></h2>
+<p>We can now bring it all together by iterating over the pages and items. Let’s iterate over the first 2 pages and print the label for each item.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">page</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">pg</span><span class="o">.</span><span class="n">get_page_data_all</span><span class="p">(</span><span class="n">start_page</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">end_page</span><span class="o">=</span><span class="mi">3</span><span class="p">),</span> <span class="mi">1</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Page </span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">:&quot;</span><span class="p">,</span> <span class="n">page</span><span class="p">[</span><span class="s2">&quot;id&quot;</span><span class="p">])</span>
+    <span class="k">for</span> <span class="n">j</span><span class="p">,</span> <span class="n">item</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">pg</span><span class="o">.</span><span class="n">get_items</span><span class="p">(</span><span class="n">page</span><span class="p">)):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Item </span><span class="si">{</span><span class="n">j</span><span class="si">}</span><span class="s2">:&quot;</span><span class="p">,</span> <span class="n">pg</span><span class="o">.</span><span class="n">get_item_data</span><span class="p">(</span><span class="n">item</span><span class="p">)[</span><span class="s2">&quot;_label&quot;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Page 1: https://lux.collections.yale.edu/api/search/agent?q=%7B%22AND%22%3A%5B%7B%22name%22%3A%22John%20Adams%22%7D%5D%7D&amp;page=2&amp;pageLength=20
+Item 0: Adams, J. D. R.
+Item 1: Adams, John W., 1956-
+Item 2: Lowe, John Adams, 1881-
+Item 3: Adams, John Quincy, 1891-
+Item 4: Samuel and John Adams (Firm)
+Item 5: Henry, John A. (John Adams)
+Item 6: Adams, John Stokes, 1864-1954
+Item 7: Adams, John R., 1900-1994
+Item 8: Adams, John Clarke, 1910-2000
+Item 9: Adams, John, 1961-
+Item 10: Adams, John B. (John Ballard), 1836-
+Item 11: Adams, D. J. (David John)
+Item 12: Adams, J. B.
+Item 13: Adams, J. A.
+Item 14: Adams, John, -1866
+Item 15: Adams, John, 1857-1934
+Item 16: Adams, John, Esq. of Waltham Abbey
+Item 17: Brendon, J. A. (John Adams), 1884-
+Item 18: Adams, John W. (John Wagstaff), 1915-1995
+Item 19: Adams, John Crawford
+Page 2: https://lux.collections.yale.edu/api/search/agent?q=%7B%22AND%22%3A%5B%7B%22name%22%3A%22John%20Adams%22%7D%5D%7D&amp;page=3&amp;pageLength=20
+Item 0: McLaughlin, John A. (John Adams), 1943-
+Item 1: J.S. &amp; C. Adams (Firm)
+Item 2: Adams, John, 1765?-1815
+Item 3: Adams, John W. (John William), 1862-1926
+Item 4: Eldridge, John A. (John Adams), 1891-
+Item 5: Adams, R. J. (Richard John), 1970-
+Item 6: Adams, John D. (John David), 1949-
+Item 7: Adams, John G. (John Glover), 1807-1884
+Item 8: Phythian-Adams, W. J. (William John), 1888-1967
+Item 9: Adams, Mr. (John), -1738
+Item 10: Albro, John A. (John Adams), 1799-1866
+Item 11: University of California, Los Angeles. Sir John Adams Foundation
+Item 12: Adams, John Isaac Ira, 1826-1857
+Item 13: Adams, John (Riding master)
+Item 14: Adams, John W., 1929-
+Item 15: Adams, John, approximately 1730-approximately 1800
+Item 16: Adams, A. John
+Item 17: Adams, J. G. (John George)
+Item 18: Adams, John L., 1948-
+Item 19: Thierry, John Adams, 1913-
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./docs/notebooks"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="02_simple_filters.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><span class="section-number">2. </span>Working with Filters</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="03_PeopleGroups.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">1. </span>PeopleGroups</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bringing-it-all-together">4.1. Bringing it All Together</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By William J.B. Mattingly
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
