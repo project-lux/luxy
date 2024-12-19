@@ -104,7 +104,7 @@ class BaseLux:
                 
                 # Validate comparison operators based on relation type
                 relation = valid_options[key]['relation']
-                if relation not in ['number', 'date'] and comp != '==':
+                if relation not in ['float', 'date'] and comp != '==':
                     raise ValueError(f"Comparison operators can only be used with numeric or date filters. '{key}' is of type '{relation}'")
                 
                 if comp not in ['>', '>=', '<', '<=', '==', '!=']:
