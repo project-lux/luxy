@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>1. Complex Filters &#8212; LuxY Documentation</title>
+    <title>1. Simple Filter &#8212; LuxY Documentation</title>
   
   
   
@@ -171,7 +171,7 @@
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Building Filters</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">1. Complex Filters</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">1. Simple Filter</a></li>
 </ul>
 
     </div>
@@ -400,7 +400,7 @@
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Complex Filters</h1>
+    <h1>Simple Filter</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -414,8 +414,202 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section id="complex-filters">
-<h1><span class="section-number">1. </span>Complex Filters<a class="headerlink" href="#complex-filters" title="Link to this heading">#</a></h1>
+  <section id="simple-filter">
+<h1><span class="section-number">1. </span>Simple Filter<a class="headerlink" href="#simple-filter" title="Link to this heading">#</a></h1>
+<p>Now that we have a basic understanding of how to use LuxY, we can start working with filters. In the last notebook, we saw how to build a simple filter using the <code class="docutils literal notranslate"><span class="pre">filter()</span></code> method where we just passed in a single value, the name John. In this notebook, we will explore some of the more complex filters that are available in Lux.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">luxy</span> <span class="kn">import</span> <span class="n">PeopleGroups</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pg</span> <span class="o">=</span> <span class="n">PeopleGroups</span><span class="p">()</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;John&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">pg</span><span class="o">.</span><span class="n">num_results</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>107044
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pg</span><span class="o">.</span><span class="n">list_filters</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Available filters for agent:
+--------------------------------------------------
+
+name (Name) - (text):
+  Description: Enter term(s) to be found within the title or name of the Person or Group. &quot;AND&quot;, &quot;OR&quot;, and &quot;-&quot; do not have special meaning in Advanced Search as they do in Simple Search. Instead use multiple fields connected with &quot;have All of&quot;, &quot;have Any of&quot;, and &quot;have None of&quot; respectively.
+
+text (Anywhere) - (text):
+  Description: Search for People &amp; Groups by terms anywhere in the record. &quot;AND&quot;, &quot;OR&quot;, and &quot;-&quot; do not have special meaning in Advanced Search as they do in Simple Search. Instead use multiple fields connected with &quot;have All of&quot;, &quot;have Any of&quot;, and &quot;have None of&quot; respectively.
+
+startAt (Born/Formed At) - (place):
+  Description: Search for People &amp; Groups that were born or formed in the specified Place.
+
+startDate (Born/Formed Date) - (date):
+  Description: Search People &amp; Groups by the date on which they were born or formed.
+
+carriedOut (Carried Out) - (event):
+  Description: Search for People &amp; Groups that carried out the specified Event.
+
+classification (Categorized As) - (concept):
+  Description: Search for People &amp; Groups that are categorized with the specified Concept or Type terms.
+
+produced (Created Object) - (item):
+  Description: Search for People &amp; Groups that created the specified Objects.
+
+created (Created Works) - (work):
+  Description: Search for People &amp; Groups that authored or created the specified Works.
+
+curated (Curated) - (set):
+  Description: Search for Groups responsible for the curation of Yale&#39;s collections.
+
+endAt (Died/Dissolved At) - (place):
+  Description: Search for People &amp; Groups that died or were dissolved in the specified Place.
+
+endDate (Died/Dissolved Date) - (date):
+  Description: Search for People &amp; Groups by the date on which they died or were dissolved.
+
+encountered (Encountered) - (item):
+  Description: Search for People &amp; Groups that encountered or found the specified Objects.
+
+foundedBy (Founded By) - (agent):
+  Description: Search for Groups by the specified People that were responsible for their foundation.
+
+founded (Founded Group) - (agent):
+  Description: Search for People who were responsible for the foundation of the specified Groups.
+
+gender (Gender) - (concept):
+  Description: Search for People by the specified Gender. This information comes from external sources, and gender information may not match expected results.
+
+hasDigitalImage (Have Digital Image) - (boolean):
+  Description: Search for People &amp; Groups for which digital images are available.
+
+memberOfInverse (Have Member) - (agent):
+  Description: Search for Groups that have the specified People &amp; Groups as members.
+
+id (ID) - (text):
+  Description: Search for People &amp; Groups by their LUX data URI (e.g. starting with https://lux.collections.yale.edu/data/ and followed by a URI path containing a UUID, not the URI with /view/ in it).
+
+identifier (Identifier) - (text):
+  Description: Search for People &amp; Groups by a string identifier or an external authority URI, such as ULAN, VIAF or wikidata.
+
+influenced (Influenced) - (concept):
+  Description: Search for People &amp; Groups that influenced the specified Concepts
+
+influencedProduction (Influenced Creation Of Objects) - (item):
+  Description: Search for People &amp; Groups that influenced the creation of the specified Objects
+
+influencedCreation (Influenced Creation Of Works) - (work):
+  Description: Search for People &amp; Groups that influenced the creation of the specified Works
+
+memberOf (Member of) - (agent):
+  Description: Search for People &amp; Groups that are members of other Groups.
+
+nationality (Nationality) - (concept):
+  Description: Search for People &amp; Groups with the specified Nationality.
+
+occupation (Occupation/Role) - (concept):
+  Description: Search for People &amp; Groups with the specified Occupation or Role.
+
+recordType (Person or Group Class) - (text):
+  Description: Search for records categorized as either a &quot;Person&quot; or a &quot;Group&quot;. Person is an individual either real or fictionalized. Group is an organization, either real or fictionalized, with one or more members.
+
+professionalActivity (Professional Activity Categorized As) - (concept):
+  Description: Search for people and groups that carried out professional activities of the given categorization.
+
+activeAt (Professionally Active At) - (place):
+  Description: Search for People &amp; Groups that were professionally active in the specified Places.
+
+activeDate (Professionally Active Date) - (date):
+  Description: Search for People &amp; Groups by the dates on which they were professionally active.
+
+published (Published) - (work):
+  Description: Search for People &amp; Groups that published the specified Works.
+
+subjectOfAgent (Subject Of) - (work):
+  Description: Search for People &amp; Groups that are the subject of the specified Works.
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pg</span> <span class="o">=</span> <span class="p">(</span><span class="n">PeopleGroups</span><span class="p">()</span>
+      <span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;John&quot;</span><span class="p">)</span>
+      <span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">recordType</span><span class="o">=</span><span class="s2">&quot;person&quot;</span><span class="p">)</span>
+<span class="p">)</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">pg</span><span class="o">.</span><span class="n">num_results</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>103922
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pg</span> <span class="o">=</span> <span class="p">(</span><span class="n">PeopleGroups</span><span class="p">()</span>
+      <span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;John&quot;</span><span class="p">)</span>
+      <span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">recordType</span><span class="o">=</span><span class="s2">&quot;person&quot;</span><span class="p">)</span>
+      <span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">hasDigitalImage</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="p">)</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">pg</span><span class="o">.</span><span class="n">num_results</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>6753
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pg</span> <span class="o">=</span> <span class="p">(</span><span class="n">PeopleGroups</span><span class="p">()</span>
+      <span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;John&quot;</span><span class="p">)</span>
+      <span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">recordType</span><span class="o">=</span><span class="s2">&quot;person&quot;</span><span class="p">)</span>
+      <span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">hasDigitalImage</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+      <span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">endAt</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Amsterdam&quot;</span><span class="p">})</span>
+<span class="p">)</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">pg</span><span class="o">.</span><span class="n">num_results</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>237
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pg</span> <span class="o">=</span> <span class="n">PeopleGroups</span><span class="p">()</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;John&quot;</span><span class="p">,</span>
+                           <span class="n">recordType</span><span class="o">=</span><span class="s2">&quot;person&quot;</span><span class="p">,</span>
+                           <span class="n">hasDigitalImage</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                           <span class="n">endAt</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Amsterdam&quot;</span><span class="p">})</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">pg</span><span class="o">.</span><span class="n">num_results</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>237
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 
     <script type="text/x-thebe-config">

@@ -63,7 +63,7 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'docs/notebooks/01_getting_started';</script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="1. Complex Filters" href="02_simple_filters.html" />
+    <link rel="next" title="1. Simple Filter" href="02_simple_filters.html" />
     <link rel="prev" title="LuxY" href="../intro.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -172,7 +172,7 @@
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Building Filters</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="02_simple_filters.html">1. Complex Filters</a></li>
+<li class="toctree-l1"><a class="reference internal" href="02_simple_filters.html">1. Simple Filter</a></li>
 </ul>
 
     </div>
@@ -785,12 +785,12 @@ subjectOfAgent (Subject Of) - (work):
 <p>Once we have a <code class="docutils literal notranslate"><span class="pre">QueryResult</span></code> object, we can access the metadata about the query, as well as the results. First, let’s look at the number of results and the URL of the query. We can do this using the <code class="docutils literal notranslate"><span class="pre">num_results</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pg</span><span class="o">.</span><span class="n">num_results</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">pg</span><span class="o">.</span><span class="n">num_results</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>107044
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>107044
 </pre></div>
 </div>
 </div>
@@ -798,12 +798,12 @@ subjectOfAgent (Subject Of) - (work):
 <p>Often when working with large datasets, we will want to access the URL of the query. We can do this using the <code class="docutils literal notranslate"><span class="pre">url</span></code> attribute. This will take us to the API JSON results page.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pg</span><span class="o">.</span><span class="n">url</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">pg</span><span class="o">.</span><span class="n">url</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;https://lux.collections.yale.edu/api/search/agent?q=%7B%22AND%22%3A%20%5B%7B%22name%22%3A%20%22John%22%7D%5D%7D&#39;
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>https://lux.collections.yale.edu/api/search/agent?q=%7B%22AND%22%3A%20%5B%7B%22name%22%3A%20%22John%22%7D%5D%7D
 </pre></div>
 </div>
 </div>
@@ -811,12 +811,12 @@ subjectOfAgent (Subject Of) - (work):
 <p>While this is programmatically useful, it is not very user-friendly. The <code class="docutils literal notranslate"><span class="pre">view_url</span></code> attribute returns a URL that will take us to the Lux results page.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pg</span><span class="o">.</span><span class="n">view_url</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">pg</span><span class="o">.</span><span class="n">view_url</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;https://lux.collections.yale.edu/view/results/people?q=%7B%22AND%22%3A%20%5B%7B%22name%22%3A%20%22John%22%7D%5D%7D&#39;
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>https://lux.collections.yale.edu/view/results/people?q=%7B%22AND%22%3A%20%5B%7B%22name%22%3A%20%22John%22%7D%5D%7D
 </pre></div>
 </div>
 </div>
@@ -824,61 +824,12 @@ subjectOfAgent (Subject Of) - (work):
 <p>As we will see a bit later, it is often useful to access the JSON data returned by the API. We can do this using the <code class="docutils literal notranslate"><span class="pre">json</span></code> attribute. This will allow us to do things like exmaine all results by page and even download the data for each object.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pg</span><span class="o">.</span><span class="n">json</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">pg</span><span class="o">.</span><span class="n">json</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;@context&#39;: &#39;https://linked.art/ns/v1/search.json&#39;,
- &#39;id&#39;: &#39;https://lux.collections.yale.edu/api/search/agent?q=%7B%22AND%22%3A%5B%7B%22name%22%3A%22John%22%7D%5D%7D&amp;page=1&amp;pageLength=20&#39;,
- &#39;type&#39;: &#39;OrderedCollectionPage&#39;,
- &#39;partOf&#39;: [{&#39;id&#39;: &#39;https://lux.collections.yale.edu/api/search-estimate/agent?q=%7B%22AND%22%3A%5B%7B%22name%22%3A%22John%22%7D%5D%7D&#39;,
-   &#39;type&#39;: &#39;OrderedCollection&#39;,
-   &#39;label&#39;: {&#39;en&#39;: [&#39;People &amp; Groups&#39;]},
-   &#39;summary&#39;: {&#39;en&#39;: [&#39;Records representing individuals and organizations that match your search.&#39;]},
-   &#39;totalItems&#39;: 107044}],
- &#39;orderedItems&#39;: [{&#39;id&#39;: &#39;https://lux.collections.yale.edu/data/person/e7e1885c-666c-46ef-a44e-d9d65de1946e&#39;,
-   &#39;type&#39;: &#39;Person&#39;},
-  {&#39;id&#39;: &#39;https://lux.collections.yale.edu/data/person/81eff8bf-8b21-4070-8705-799693c8de56&#39;,
-   &#39;type&#39;: &#39;Person&#39;},
-  {&#39;id&#39;: &#39;https://lux.collections.yale.edu/data/person/f46087a4-9c6b-43f8-a6aa-a9b7ebd773b5&#39;,
-   &#39;type&#39;: &#39;Person&#39;},
-  {&#39;id&#39;: &#39;https://lux.collections.yale.edu/data/person/15baa1fc-f6a8-4204-a45c-70b01f8c95e8&#39;,
-   &#39;type&#39;: &#39;Person&#39;},
-  {&#39;id&#39;: &#39;https://lux.collections.yale.edu/data/person/8dd43025-0583-4597-93a3-460be970d68e&#39;,
-   &#39;type&#39;: &#39;Person&#39;},
-  {&#39;id&#39;: &#39;https://lux.collections.yale.edu/data/person/47a93f86-2483-4109-9f83-b9624dfc36e3&#39;,
-   &#39;type&#39;: &#39;Person&#39;},
-  {&#39;id&#39;: &#39;https://lux.collections.yale.edu/data/person/e7ce8ff7-2fad-4ae3-a21e-297482a76849&#39;,
-   &#39;type&#39;: &#39;Person&#39;},
-  {&#39;id&#39;: &#39;https://lux.collections.yale.edu/data/person/3c267f42-4792-4256-990a-abd92f24b63e&#39;,
-   &#39;type&#39;: &#39;Person&#39;},
-  {&#39;id&#39;: &#39;https://lux.collections.yale.edu/data/person/0e77a4ab-a2bf-464b-9cd4-5fa9007ab197&#39;,
-   &#39;type&#39;: &#39;Person&#39;},
-  {&#39;id&#39;: &#39;https://lux.collections.yale.edu/data/person/41ae356b-a58e-4b69-81b8-755acf6979dd&#39;,
-   &#39;type&#39;: &#39;Person&#39;},
-  {&#39;id&#39;: &#39;https://lux.collections.yale.edu/data/person/584ae665-c318-4a31-a514-ea3068e99be5&#39;,
-   &#39;type&#39;: &#39;Person&#39;},
-  {&#39;id&#39;: &#39;https://lux.collections.yale.edu/data/person/607068d3-0e95-4e7f-a1fd-d0e9333cb7d8&#39;,
-   &#39;type&#39;: &#39;Person&#39;},
-  {&#39;id&#39;: &#39;https://lux.collections.yale.edu/data/group/adc84bbb-3d98-4328-bd1b-bb7b532df313&#39;,
-   &#39;type&#39;: &#39;Group&#39;},
-  {&#39;id&#39;: &#39;https://lux.collections.yale.edu/data/person/d82c70e7-4ad6-420a-989d-cdec596220ec&#39;,
-   &#39;type&#39;: &#39;Person&#39;},
-  {&#39;id&#39;: &#39;https://lux.collections.yale.edu/data/person/e3cb13b0-7dad-4eec-b0f7-bad6c609b69b&#39;,
-   &#39;type&#39;: &#39;Person&#39;},
-  {&#39;id&#39;: &#39;https://lux.collections.yale.edu/data/person/a85b781b-0286-4cde-845a-d12a00e0d0c2&#39;,
-   &#39;type&#39;: &#39;Person&#39;},
-  {&#39;id&#39;: &#39;https://lux.collections.yale.edu/data/person/2cdfe011-9d18-4105-8b6e-22b75c6e5f39&#39;,
-   &#39;type&#39;: &#39;Person&#39;},
-  {&#39;id&#39;: &#39;https://lux.collections.yale.edu/data/person/fa4746d1-6186-4353-bb39-ed31b3b9266e&#39;,
-   &#39;type&#39;: &#39;Person&#39;},
-  {&#39;id&#39;: &#39;https://lux.collections.yale.edu/data/person/1699b6c5-3954-46b1-addf-fd0d933c91a9&#39;,
-   &#39;type&#39;: &#39;Person&#39;},
-  {&#39;id&#39;: &#39;https://lux.collections.yale.edu/data/person/9d8353c3-1923-428e-a814-0fb1a779ecec&#39;,
-   &#39;type&#39;: &#39;Person&#39;}],
- &#39;next&#39;: {&#39;id&#39;: &#39;https://lux.collections.yale.edu/api/search/agent?q=%7B%22AND%22%3A%5B%7B%22name%22%3A%22John%22%7D%5D%7D&amp;page=2&amp;pageLength=20&#39;,
-  &#39;type&#39;: &#39;OrderedCollectionPage&#39;}}
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;@context&#39;: &#39;https://linked.art/ns/v1/search.json&#39;, &#39;id&#39;: &#39;https://lux.collections.yale.edu/api/search/agent?q=%7B%22AND%22%3A%5B%7B%22name%22%3A%22John%22%7D%5D%7D&amp;page=1&amp;pageLength=20&#39;, &#39;type&#39;: &#39;OrderedCollectionPage&#39;, &#39;partOf&#39;: [{&#39;id&#39;: &#39;https://lux.collections.yale.edu/api/search-estimate/agent?q=%7B%22AND%22%3A%5B%7B%22name%22%3A%22John%22%7D%5D%7D&#39;, &#39;type&#39;: &#39;OrderedCollection&#39;, &#39;label&#39;: {&#39;en&#39;: [&#39;People &amp; Groups&#39;]}, &#39;summary&#39;: {&#39;en&#39;: [&#39;Records representing individuals and organizations that match your search.&#39;]}, &#39;totalItems&#39;: 107044}], &#39;orderedItems&#39;: [{&#39;id&#39;: &#39;https://lux.collections.yale.edu/data/person/e7e1885c-666c-46ef-a44e-d9d65de1946e&#39;, &#39;type&#39;: &#39;Person&#39;}, {&#39;id&#39;: &#39;https://lux.collections.yale.edu/data/person/81eff8bf-8b21-4070-8705-799693c8de56&#39;, &#39;type&#39;: &#39;Person&#39;}, {&#39;id&#39;: &#39;https://lux.collections.yale.edu/data/person/f46087a4-9c6b-43f8-a6aa-a9b7ebd773b5&#39;, &#39;type&#39;: &#39;Person&#39;}, {&#39;id&#39;: &#39;https://lux.collections.yale.edu/data/person/15baa1fc-f6a8-4204-a45c-70b01f8c95e8&#39;, &#39;type&#39;: &#39;Person&#39;}, {&#39;id&#39;: &#39;https://lux.collections.yale.edu/data/person/8dd43025-0583-4597-93a3-460be970d68e&#39;, &#39;type&#39;: &#39;Person&#39;}, {&#39;id&#39;: &#39;https://lux.collections.yale.edu/data/person/47a93f86-2483-4109-9f83-b9624dfc36e3&#39;, &#39;type&#39;: &#39;Person&#39;}, {&#39;id&#39;: &#39;https://lux.collections.yale.edu/data/person/e7ce8ff7-2fad-4ae3-a21e-297482a76849&#39;, &#39;type&#39;: &#39;Person&#39;}, {&#39;id&#39;: &#39;https://lux.collections.yale.edu/data/person/3c267f42-4792-4256-990a-abd92f24b63e&#39;, &#39;type&#39;: &#39;Person&#39;}, {&#39;id&#39;: &#39;https://lux.collections.yale.edu/data/person/0e77a4ab-a2bf-464b-9cd4-5fa9007ab197&#39;, &#39;type&#39;: &#39;Person&#39;}, {&#39;id&#39;: &#39;https://lux.collections.yale.edu/data/person/41ae356b-a58e-4b69-81b8-755acf6979dd&#39;, &#39;type&#39;: &#39;Person&#39;}, {&#39;id&#39;: &#39;https://lux.collections.yale.edu/data/person/584ae665-c318-4a31-a514-ea3068e99be5&#39;, &#39;type&#39;: &#39;Person&#39;}, {&#39;id&#39;: &#39;https://lux.collections.yale.edu/data/person/607068d3-0e95-4e7f-a1fd-d0e9333cb7d8&#39;, &#39;type&#39;: &#39;Person&#39;}, {&#39;id&#39;: &#39;https://lux.collections.yale.edu/data/group/adc84bbb-3d98-4328-bd1b-bb7b532df313&#39;, &#39;type&#39;: &#39;Group&#39;}, {&#39;id&#39;: &#39;https://lux.collections.yale.edu/data/person/d82c70e7-4ad6-420a-989d-cdec596220ec&#39;, &#39;type&#39;: &#39;Person&#39;}, {&#39;id&#39;: &#39;https://lux.collections.yale.edu/data/person/e3cb13b0-7dad-4eec-b0f7-bad6c609b69b&#39;, &#39;type&#39;: &#39;Person&#39;}, {&#39;id&#39;: &#39;https://lux.collections.yale.edu/data/person/a85b781b-0286-4cde-845a-d12a00e0d0c2&#39;, &#39;type&#39;: &#39;Person&#39;}, {&#39;id&#39;: &#39;https://lux.collections.yale.edu/data/person/2cdfe011-9d18-4105-8b6e-22b75c6e5f39&#39;, &#39;type&#39;: &#39;Person&#39;}, {&#39;id&#39;: &#39;https://lux.collections.yale.edu/data/person/fa4746d1-6186-4353-bb39-ed31b3b9266e&#39;, &#39;type&#39;: &#39;Person&#39;}, {&#39;id&#39;: &#39;https://lux.collections.yale.edu/data/person/1699b6c5-3954-46b1-addf-fd0d933c91a9&#39;, &#39;type&#39;: &#39;Person&#39;}, {&#39;id&#39;: &#39;https://lux.collections.yale.edu/data/person/9d8353c3-1923-428e-a814-0fb1a779ecec&#39;, &#39;type&#39;: &#39;Person&#39;}], &#39;next&#39;: {&#39;id&#39;: &#39;https://lux.collections.yale.edu/api/search/agent?q=%7B%22AND%22%3A%5B%7B%22name%22%3A%22John%22%7D%5D%7D&amp;page=2&amp;pageLength=20&#39;, &#39;type&#39;: &#39;OrderedCollectionPage&#39;}}
 </pre></div>
 </div>
 </div>
@@ -929,7 +880,7 @@ subjectOfAgent (Subject Of) - (work):
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">1. </span>Complex Filters</p>
+        <p class="prev-next-title"><span class="section-number">1. </span>Simple Filter</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
