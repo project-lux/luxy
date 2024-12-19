@@ -13,7 +13,7 @@ config = dict(
     default="item",
     objects="item",
     works="work",
-    people_groups="agent",
+    people="agent",
     places="place",
     concepts="concept",
     events="event",
@@ -176,6 +176,7 @@ class BaseLux:
         self.url = query_url
         # Create a reversed mapping from config values to keys
         reversed_config = {v: k for k, v in config.items()}
+   
         self.view_url = query_url.replace(f"/api/search/{self.name}", f"/view/results/{reversed_config[self.name]}")
     
         self.json = self.get_json(response)
@@ -274,7 +275,7 @@ class BaseLux:
 
 class PeopleGroups(BaseLux):
     def __init__(self):
-        self.name = config["people_groups"]
+        self.name = config["people"]
         super().__init__()
 
 class Objects(BaseLux):
