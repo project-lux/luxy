@@ -1,0 +1,840 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Installation &#8212; LuxY Documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'README';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="docs/intro.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">LuxY Documentation</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="docs/intro.html">
+                    <p align="center">LuxY</p>
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Getting Started</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="docs/notebooks/01_getting_started.html">1. Installing LuxY</a></li>
+
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Getting Started</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="docs/notebooks/02_building_filters.html">1. Building Filters</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/project-lux/luxy" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/project-lux/luxy/edit/main/README.md" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/project-lux/luxy/issues/new?title=Issue%20on%20page%20%2FREADME.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/README.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Installation</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Installation</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#usage">Usage</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#understanding-options">Understanding Options</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#people-groups">People Groups</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#objects">Objects</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#works">Works</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#places">Places</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#concepts">Concepts</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#events">Events</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#collections">Collections</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#working-with-numerical-filters">Working with Numerical Filters</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#working-with-date-filters">Working with Date Filters</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#complex-example">Complex Example</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#expected-output">Expected Output</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#working-with-pagination">Working with Pagination</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#nested-memberof-filters">Nested MemberOf Filters</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#roadmap">Roadmap</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#v-0-0-2">v. 0.0.2</a></li>
+</ul>
+</li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <p><img alt="Lux Logo" src="https://github.com/project-lux/luxy/blob/main/docs/images/luxy-logo.jpg?raw=true" /></p>
+<p><a class="reference external" href="https://badge.fury.io/py/luxy"><img alt="PyPI version" src="https://badge.fury.io/py/luxy.svg" /></a>
+<a class="reference external" href="https://github.com/project-lux/luxy/stargazers"><img alt="GitHub stars" src="https://img.shields.io/github/stars/project-lux/luxy.svg" /></a>
+<a class="reference external" href="https://github.com/project-lux/luxy/releases"><img alt="GitHub release" src="https://img.shields.io/github/v/release/project-lux/luxy" /></a></p>
+<p>LuxY is a Python wrapper for Yale’s <a class="reference external" href="https://lux.collections.yale.edu/">Lux API</a>. Lux allows users to search and filter the collections of Yale’s museums and libraries, as well as external collections. This lets you find and connect with the cultural heritage collections across Yale’s museums, archives, and libraries in new ways and all in one place.</p>
+<p>LuxY gives you a Pythonic way to interact with the Lux API, making it easier to search and filter the collections and even download the data in JSON format. It can handle pagination, nested filters, and more.</p>
+<section id="installation">
+<h1>Installation<a class="headerlink" href="#installation" title="Link to this heading">#</a></h1>
+<p>To get started, install LuxY using pip:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>luxy
+</pre></div>
+</div>
+</section>
+<section id="usage">
+<h1>Usage<a class="headerlink" href="#usage" title="Link to this heading">#</a></h1>
+<p>The classes of LuxY replicate the classes of the Lux API. They are:</p>
+<ol class="arabic simple">
+<li><p>PeopleGroups (agent) - People and Groups that are either individuals or organizations</p></li>
+<li><p>Objects (item) - Physical objects in Yale’s collections</p></li>
+<li><p>Works (work) - Visual and textual works, including images, texts, and other creative expressions</p></li>
+<li><p>Places (place) - Geographic locations and named spaces</p></li>
+<li><p>Concepts (concept) - Types, materials, languages, measurement units, currencies and other conceptual entities</p></li>
+<li><p>Events (event) - Historical events and occurrences</p></li>
+<li><p>Collections (set) - Collections and sets of objects curated by Yale’s institutions</p></li>
+</ol>
+<p>Each of these has common and unique filters that take different data types, from strings to numbers to dates. LuxY also supports nested filters, which are used to filter by multiple levels of the hierarchy. This allows users to create complex queries similar to the ones found in the Lux UI.</p>
+<section id="understanding-options">
+<h2>Understanding Options<a class="headerlink" href="#understanding-options" title="Link to this heading">#</a></h2>
+<p>Each filter has a set of options that can be used to filter the data. These options are stored in the <code class="docutils literal notranslate"><span class="pre">get_options()</span></code> method.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">luxy</span> <span class="kn">import</span> <span class="n">PeopleGroups</span>
+
+<span class="n">options</span> <span class="o">=</span> <span class="n">PeopleGroups</span><span class="p">()</span><span class="o">.</span><span class="n">get_options</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">options</span><span class="p">)</span>
+
+<span class="c1"># pretty print the options</span>
+<span class="n">PeopleGroups</span><span class="p">()</span><span class="o">.</span><span class="n">list_filters</span><span class="p">()</span>
+</pre></div>
+</div>
+</section>
+<section id="people-groups">
+<h2>People Groups<a class="headerlink" href="#people-groups" title="Link to this heading">#</a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">luxy</span> <span class="kn">import</span> <span class="n">PeopleGroups</span>
+
+<span class="n">result</span> <span class="o">=</span> <span class="n">PeopleGroups</span><span class="p">()</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;Rembrandt&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">url</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">view_url</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">json</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="objects">
+<h2>Objects<a class="headerlink" href="#objects" title="Link to this heading">#</a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">luxy</span> <span class="kn">import</span> <span class="n">Objects</span>
+
+<span class="n">result</span> <span class="o">=</span> <span class="n">Objects</span><span class="p">()</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;Rembrandt&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">url</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">view_url</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">json</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="works">
+<h2>Works<a class="headerlink" href="#works" title="Link to this heading">#</a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">luxy</span> <span class="kn">import</span> <span class="n">Works</span>
+
+<span class="n">result</span> <span class="o">=</span> <span class="n">Works</span><span class="p">()</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;Painting&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">url</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">view_url</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">json</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="places">
+<h2>Places<a class="headerlink" href="#places" title="Link to this heading">#</a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">luxy</span> <span class="kn">import</span> <span class="n">Places</span>
+
+<span class="n">result</span> <span class="o">=</span> <span class="n">Places</span><span class="p">()</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;Amsterdam&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">url</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">view_url</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">json</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="concepts">
+<h2>Concepts<a class="headerlink" href="#concepts" title="Link to this heading">#</a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">luxy</span> <span class="kn">import</span> <span class="n">Concepts</span>
+
+<span class="n">result</span> <span class="o">=</span> <span class="n">Concepts</span><span class="p">()</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;gilding&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">url</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">view_url</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">json</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="events">
+<h2>Events<a class="headerlink" href="#events" title="Link to this heading">#</a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">luxy</span> <span class="kn">import</span> <span class="n">Events</span>
+
+<span class="n">result</span> <span class="o">=</span> <span class="n">Events</span><span class="p">()</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;Thirty Years War&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">url</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">view_url</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">json</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="collections">
+<h2>Collections<a class="headerlink" href="#collections" title="Link to this heading">#</a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">luxy</span> <span class="kn">import</span> <span class="n">Collections</span>
+
+<span class="n">result</span> <span class="o">=</span> <span class="n">Collections</span><span class="p">()</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;Letters&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">url</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">view_url</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">json</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="working-with-numerical-filters">
+<h2>Working with Numerical Filters<a class="headerlink" href="#working-with-numerical-filters" title="Link to this heading">#</a></h2>
+<p>Numerical filters are a bit tricky because they require a tuple with the value and the comparison operator.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">luxy</span> <span class="kn">import</span> <span class="n">Objects</span>
+
+<span class="n">result</span> <span class="o">=</span> <span class="n">Objects</span><span class="p">()</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">height</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;&gt;=&quot;</span><span class="p">))</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">url</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">view_url</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">json</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="working-with-date-filters">
+<h2>Working with Date Filters<a class="headerlink" href="#working-with-date-filters" title="Link to this heading">#</a></h2>
+<p>Date filters are a bit tricky because they require a tuple with the value and the comparison operator. The value should be a string in the format of <code class="docutils literal notranslate"><span class="pre">YYYY-MM-DDTHH:MM:SS.SSSZ</span></code>.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">luxy</span> <span class="kn">import</span> <span class="n">Objects</span>
+
+<span class="n">result</span> <span class="o">=</span> <span class="n">Objects</span><span class="p">()</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">encounteredDate</span><span class="o">=</span><span class="p">(</span><span class="s2">&quot;1987-01-01T00:00:00.000Z&quot;</span><span class="p">,</span> <span class="s2">&quot;&gt;=&quot;</span><span class="p">))</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">url</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">view_url</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">json</span><span class="p">)</span>
+</pre></div>
+</div>
+<section id="complex-example">
+<h3>Complex Example<a class="headerlink" href="#complex-example" title="Link to this heading">#</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">luxy</span> <span class="kn">import</span> <span class="n">PeopleGroups</span>
+
+<span class="n">result</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">PeopleGroups</span><span class="p">()</span>
+    <span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">recordType</span><span class="o">=</span><span class="s2">&quot;person&quot;</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">hasDigitalImage</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">text</span><span class="o">=</span><span class="s2">&quot;rembrandt&quot;</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">gender</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;male&quot;</span><span class="p">})</span>
+    <span class="o">.</span><span class="n">get</span><span class="p">()</span>
+<span class="p">)</span>
+
+<span class="c1"># print the number of results</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Number of results:&quot;</span><span class="p">,</span> <span class="n">result</span><span class="o">.</span><span class="n">num_results</span><span class="p">)</span>
+
+<span class="c1"># print the url</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;URL:&quot;</span><span class="p">,</span> <span class="n">result</span><span class="o">.</span><span class="n">url</span><span class="p">)</span>
+
+<span class="c1"># print the json</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;JSON:&quot;</span><span class="p">,</span> <span class="n">result</span><span class="o">.</span><span class="n">json</span><span class="p">)</span>
+</pre></div>
+</div>
+<section id="expected-output">
+<h4>Expected Output<a class="headerlink" href="#expected-output" title="Link to this heading">#</a></h4>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>Number<span class="w"> </span>of<span class="w"> </span>results:<span class="w"> </span><span class="m">131</span>
+URL:<span class="w"> </span>https://lux.collections.yale.edu/api/search/agent?q<span class="o">=</span>%7B%22AND%22%3A%20%5B%7B%22recordType%22%3A%20%22person%22%7D%2C%20%7B%22hasDigitalImage%22%3A%201%7D%2C%20%7B%22text%22%3A%20%22rembrandt%22%7D%2C%20%7B%22gender%22%3A%20%7B%22id%22%3A%20%22https%3A//lux.collections.yale.edu/data/concept/6f652917-4c07-4d51-8209-fcdd4f285343%22%7D%7D%5D%7D
+JSON:<span class="w"> </span><span class="o">{</span><span class="s1">&#39;@context&#39;</span>:<span class="w"> </span><span class="s1">&#39;https://linked.art/ns/v1/search.json&#39;</span>...
+</pre></div>
+</div>
+</section>
+</section>
+</section>
+<section id="working-with-pagination">
+<h2>Working with Pagination<a class="headerlink" href="#working-with-pagination" title="Link to this heading">#</a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">luxy</span> <span class="kn">import</span> <span class="n">PeopleGroups</span>
+
+<span class="n">result</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">PeopleGroups</span><span class="p">()</span>
+    <span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">endAt</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Amsterdam&quot;</span><span class="p">})</span>
+    <span class="o">.</span><span class="n">get</span><span class="p">()</span>
+<span class="p">)</span>
+
+<span class="c1"># print the number of results</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Number of results:&quot;</span><span class="p">,</span> <span class="n">result</span><span class="o">.</span><span class="n">num_results</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Number of pages:&quot;</span><span class="p">,</span> <span class="n">result</span><span class="o">.</span><span class="n">num_pages</span><span class="p">())</span>
+
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">page</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">get_page_data_all</span><span class="p">(),</span> <span class="mi">1</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">i</span> <span class="o">&gt;</span> <span class="mi">2</span><span class="p">:</span> <span class="c1"># Break after 2 pages</span>
+        <span class="k">break</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Page </span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">:&quot;</span><span class="p">,</span> <span class="n">page</span><span class="p">[</span><span class="s2">&quot;id&quot;</span><span class="p">])</span>
+    <span class="k">for</span> <span class="n">j</span><span class="p">,</span> <span class="n">item</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">get_items</span><span class="p">(</span><span class="n">page</span><span class="p">)):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Item </span><span class="si">{</span><span class="n">j</span><span class="si">}</span><span class="s2">:&quot;</span><span class="p">,</span> <span class="n">result</span><span class="o">.</span><span class="n">get_item_data</span><span class="p">(</span><span class="n">item</span><span class="p">)[</span><span class="s2">&quot;_label&quot;</span><span class="p">])</span>
+</pre></div>
+</div>
+</section>
+<section id="nested-memberof-filters">
+<h2>Nested MemberOf Filters<a class="headerlink" href="#nested-memberof-filters" title="Link to this heading">#</a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">result</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">Objects</span><span class="p">()</span>
+    <span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">hasDigitalImage</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">filter</span><span class="p">(</span>
+        <span class="n">OR</span><span class="o">=</span><span class="p">[</span>
+            <span class="n">Objects</span><span class="p">()</span><span class="o">.</span><span class="n">memberOf</span><span class="p">(</span><span class="s2">&quot;Letters&quot;</span><span class="p">,</span> <span class="n">depth</span><span class="o">=</span><span class="mi">2</span><span class="p">),</span>
+            <span class="n">Objects</span><span class="p">()</span><span class="o">.</span><span class="n">memberOf</span><span class="p">(</span><span class="s2">&quot;Letters&quot;</span><span class="p">,</span> <span class="n">depth</span><span class="o">=</span><span class="mi">3</span><span class="p">),</span>
+            <span class="n">Objects</span><span class="p">()</span><span class="o">.</span><span class="n">memberOf</span><span class="p">(</span><span class="s2">&quot;Letters&quot;</span><span class="p">,</span> <span class="n">depth</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+        <span class="p">]</span>
+    <span class="p">)</span>
+    <span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;letter&quot;</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">get</span><span class="p">()</span>
+<span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">url</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">json</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="roadmap">
+<h1>Roadmap<a class="headerlink" href="#roadmap" title="Link to this heading">#</a></h1>
+<section id="v-0-0-2">
+<h2>v. 0.0.2<a class="headerlink" href="#v-0-0-2" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>[x] Add support for People/Groups</p>
+<ul>
+<li><p>[ ] Filter by:</p>
+<ul>
+<li><p>[x] Has Digital Image</p></li>
+<li><p>[x] Gender</p></li>
+<li><p>[x] Nationality (nationality)</p></li>
+<li><p>[x] Person or Group Class</p></li>
+<li><p>[x] Categorized As (classification)</p></li>
+<li><p>[x] Born/Formed At (startAt)</p></li>
+<li><p>[x] Born/Formed Date</p></li>
+<li><p>[x] Carried Out (carriedOut)</p></li>
+<li><p>[x] Created Object (produced)</p></li>
+<li><p>[x] Created Works (created)</p></li>
+<li><p>[x] Curated (curated)</p></li>
+<li><p>[x] Died/Dissolved At (endAt)</p></li>
+<li><p>[x] Died/Dissolved Date</p></li>
+<li><p>[x] Encountered</p></li>
+<li><p>[x] Founded By</p></li>
+<li><p>[x] Founded Group</p></li>
+<li><p>[x] Have Member</p></li>
+<li><p>[x] ID</p></li>
+<li><p>[x] Identifier</p></li>
+<li><p>[x] Influenced (influenced)</p></li>
+<li><p>[x] Influenced Creation Of Objects</p></li>
+<li><p>[x] Influenced Creation Of Works</p></li>
+<li><p>[x] Member Of (memberOf)</p></li>
+<li><p>[x] Occupation/Role (occupation)</p></li>
+<li><p>[x] Professional Activity Categorized As (professionalActivity)</p></li>
+<li><p>[x] Professionally Active At (activeAt)</p></li>
+<li><p>[x] Professionally Active Date</p></li>
+<li><p>[x] Published (published)</p></li>
+<li><p>[x] Subject Of</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>[x] Add support for Objects</p></li>
+<li><p>[x] Add support for Works</p></li>
+<li><p>[x] Add support for Places</p></li>
+<li><p>[x] Add support for Concepts</p></li>
+<li><p>[x] Add support for Events</p></li>
+<li><p>[x] Add support for Pagination</p></li>
+<li><p>[x] Add support for Downloading Page JSON</p></li>
+<li><p>[x] Add support for Downloading Item JSON</p></li>
+<li><p>[x] Add more filters</p></li>
+<li><p>[x] Add support for date filters</p></li>
+<li><p>[x] Add support for numbers</p>
+<ul>
+<li><p>[x] Greater Than</p></li>
+<li><p>[x] Less Than</p></li>
+<li><p>[x] Greater Than or Equal To</p></li>
+<li><p>[x] Less Than or Equal To</p></li>
+<li><p>[x] Equal To</p></li>
+<li><p>[x] Not Equal To</p></li>
+</ul>
+</li>
+<li><p>[x] Add And support for filters</p></li>
+<li><p>[x] Add support for OR filters</p></li>
+<li><p>[x] Add support for have All of # AND</p></li>
+<li><p>[x] Add support for have Any of # OR</p></li>
+<li><p>[x] Add support for have None of # NOT</p></li>
+<li><p>[x] Add more tests</p></li>
+<li><p>[x] Add more documentation</p></li>
+<li><p>[x] Add a check to make sure a filter exists</p></li>
+</ul>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Installation</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#usage">Usage</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#understanding-options">Understanding Options</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#people-groups">People Groups</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#objects">Objects</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#works">Works</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#places">Places</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#concepts">Concepts</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#events">Events</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#collections">Collections</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#working-with-numerical-filters">Working with Numerical Filters</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#working-with-date-filters">Working with Date Filters</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#complex-example">Complex Example</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#expected-output">Expected Output</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#working-with-pagination">Working with Pagination</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#nested-memberof-filters">Nested MemberOf Filters</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#roadmap">Roadmap</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#v-0-0-2">v. 0.0.2</a></li>
+</ul>
+</li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By William J.B. Mattingly
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
