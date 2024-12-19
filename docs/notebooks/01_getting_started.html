@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>1. Installing LuxY &#8212; LuxY Documentation</title>
+    <title>1. Introduction to LuxY &#8212; LuxY Documentation</title>
   
   
   
@@ -63,7 +63,7 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'docs/notebooks/01_getting_started';</script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="1. Building Filters" href="02_building_filters.html" />
+    <link rel="next" title="1. Complex Filters" href="02_simple_filters.html" />
     <link rel="prev" title="LuxY" href="../intro.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -164,14 +164,15 @@
         </ul>
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Getting Started</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">1. Installing LuxY</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">1. Introduction to LuxY</a></li>
+
 
 
 
 </ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Getting Started</span></p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Building Filters</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="02_building_filters.html">1. Building Filters</a></li>
+<li class="toctree-l1"><a class="reference internal" href="02_simple_filters.html">1. Complex Filters</a></li>
 </ul>
 
     </div>
@@ -402,7 +403,7 @@
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Installing LuxY</h1>
+    <h1>Introduction to LuxY</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -412,10 +413,11 @@
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">1. Installing LuxY</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#importing-luxy">2. Importing LuxY</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#getting-options-for-filters">3. Getting Options for Filters</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#building-a-filter">4. Building a Filter</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">1. Introduction to LuxY</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#installing-luxy">2. Installing LuxY</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#importing-luxy">3. Importing LuxY</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#getting-options-for-filters">4. Getting Options for Filters</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#building-a-filter">5. Building a Filter</a></li>
 </ul>
 
             </nav>
@@ -428,8 +430,31 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section id="installing-luxy">
-<h1><span class="section-number">1. </span>Installing LuxY<a class="headerlink" href="#installing-luxy" title="Link to this heading">#</a></h1>
+  <section id="introduction-to-luxy">
+<h1><span class="section-number">1. </span>Introduction to LuxY<a class="headerlink" href="#introduction-to-luxy" title="Link to this heading">#</a></h1>
+<p>LuxY is a Python wrapper for Yale University’s Lux API. The Lux API provides access to Yale’s vast collections data, including information about objects, works, people, places, concepts, events and collections.</p>
+<p>This library makes it easy to:</p>
+<ul class="simple">
+<li><p>Search across Yale’s collections using filters and queries</p></li>
+<li><p>Access detailed metadata about collection items</p></li>
+<li><p>Navigate relationships between different entities (e.g. artists and their works)</p></li>
+<li><p>Build complex queries with an intuitive Python interface</p></li>
+</ul>
+<p>The library provides simple Python classes that map to the main entity types in Lux:</p>
+<ul class="simple">
+<li><p>PeopleGroups - for searching people and organizations</p></li>
+<li><p>Objects - for searching physical objects</p></li>
+<li><p>Works - for searching intellectual/creative works</p></li>
+<li><p>Places - for searching locations</p></li>
+<li><p>Concepts - for searching subjects and concepts</p></li>
+<li><p>Events - for searching historical events</p></li>
+<li><p>Collections - for searching sets/collections</p></li>
+</ul>
+<p>This JupyterBook will walk through the basics of using LuxY to interact with Yale’s collections data.</p>
+</section>
+<section id="installing-luxy">
+<h1><span class="section-number">2. </span>Installing LuxY<a class="headerlink" href="#installing-luxy" title="Link to this heading">#</a></h1>
+<p>LuxY can be installed via pip using the following command:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>luxy<span class="w"> </span>--upgrade
@@ -437,23 +462,29 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Collecting luxy
-  Downloading luxy-0.0.2-py3-none-any.whl.metadata (7.9 kB)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: luxy in /opt/anaconda3/lib/python3.12/site-packages (0.0.2)
+Collecting luxy
+  Downloading luxy-0.0.3-py3-none-any.whl.metadata (8.6 kB)
 Requirement already satisfied: requests&gt;=2.25.0 in /opt/anaconda3/lib/python3.12/site-packages (from luxy) (2.32.3)
 Requirement already satisfied: charset-normalizer&lt;4,&gt;=2 in /opt/anaconda3/lib/python3.12/site-packages (from requests&gt;=2.25.0-&gt;luxy) (3.3.2)
 Requirement already satisfied: idna&lt;4,&gt;=2.5 in /opt/anaconda3/lib/python3.12/site-packages (from requests&gt;=2.25.0-&gt;luxy) (3.7)
 Requirement already satisfied: urllib3&lt;3,&gt;=1.21.1 in /opt/anaconda3/lib/python3.12/site-packages (from requests&gt;=2.25.0-&gt;luxy) (2.2.3)
 Requirement already satisfied: certifi&gt;=2017.4.17 in /opt/anaconda3/lib/python3.12/site-packages (from requests&gt;=2.25.0-&gt;luxy) (2024.8.30)
-Downloading luxy-0.0.2-py3-none-any.whl (11 kB)
+Downloading luxy-0.0.3-py3-none-any.whl (11 kB)
 Installing collected packages: luxy
-Successfully installed luxy-0.0.2
+  Attempting uninstall: luxy
+    Found existing installation: luxy 0.0.2
+    Uninstalling luxy-0.0.2:
+      Successfully uninstalled luxy-0.0.2
+Successfully installed luxy-0.0.3
 </pre></div>
 </div>
 </div>
 </div>
 </section>
 <section id="importing-luxy">
-<h1><span class="section-number">2. </span>Importing LuxY<a class="headerlink" href="#importing-luxy" title="Link to this heading">#</a></h1>
+<h1><span class="section-number">3. </span>Importing LuxY<a class="headerlink" href="#importing-luxy" title="Link to this heading">#</a></h1>
+<p>Now that LuxY is installed, we can import it into our Python environment. To work with LuxY, our main entry points are the classes for each of the entity types. For example, to work with people and organizations, we can import the PeopleGroups class:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">luxy</span> <span class="kn">import</span> <span class="n">PeopleGroups</span>
@@ -463,7 +494,8 @@ Successfully installed luxy-0.0.2
 </div>
 </section>
 <section id="getting-options-for-filters">
-<h1><span class="section-number">3. </span>Getting Options for Filters<a class="headerlink" href="#getting-options-for-filters" title="Link to this heading">#</a></h1>
+<h1><span class="section-number">4. </span>Getting Options for Filters<a class="headerlink" href="#getting-options-for-filters" title="Link to this heading">#</a></h1>
+<p>Understanding what options are available for a filter is key to building effective queries. The <code class="docutils literal notranslate"><span class="pre">get_options()</span></code> method returns a dictionary of all the options available for a filter. The <code class="docutils literal notranslate"><span class="pre">list_filters()</span></code> method returns a list of all the filters available for a class.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">PeopleGroups</span><span class="p">()</span><span class="o">.</span><span class="n">get_options</span><span class="p">()</span>
@@ -630,6 +662,7 @@ Successfully installed luxy-0.0.2
 </div>
 </div>
 </div>
+<p>This is a large dictionary, which can be a bit difficult to parse. The <code class="docutils literal notranslate"><span class="pre">list_filters()</span></code> method returns a list of all the filters available for a class.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">PeopleGroups</span><span class="p">()</span><span class="o">.</span><span class="n">list_filters</span><span class="p">()</span>
@@ -736,9 +769,12 @@ subjectOfAgent (Subject Of) - (work):
 </div>
 </div>
 </div>
+<p>Here, we can see all available filters for the PeopleGroups class. Each class has a different set of filters, and the options for each filter are different. These filters are used to build complex queries, which we will explore in the next section.</p>
 </section>
 <section id="building-a-filter">
-<h1><span class="section-number">4. </span>Building a Filter<a class="headerlink" href="#building-a-filter" title="Link to this heading">#</a></h1>
+<h1><span class="section-number">5. </span>Building a Filter<a class="headerlink" href="#building-a-filter" title="Link to this heading">#</a></h1>
+<p>In order to build a filter, we can use the <code class="docutils literal notranslate"><span class="pre">filter()</span></code> method. This method takes a keyword argument for each filter, and returns a new class with the filter applied. While some data types, like numbers and dates, require specific syntax, most filters can be applied using simple strings.</p>
+<p>Here, we will search for people with the name “John”. This query will return a list of People and Groups with the name “John” in Lux. In order to access the results, we can use the <code class="docutils literal notranslate"><span class="pre">get()</span></code> method. This method returns a <code class="docutils literal notranslate"><span class="pre">QueryResult</span></code> object, which contains the results of the query, as well as metadata about the query.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pg</span> <span class="o">=</span> <span class="n">PeopleGroups</span><span class="p">()</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;John&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
@@ -746,6 +782,7 @@ subjectOfAgent (Subject Of) - (work):
 </div>
 </div>
 </div>
+<p>Once we have a <code class="docutils literal notranslate"><span class="pre">QueryResult</span></code> object, we can access the metadata about the query, as well as the results. First, let’s look at the number of results and the URL of the query. We can do this using the <code class="docutils literal notranslate"><span class="pre">num_results</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pg</span><span class="o">.</span><span class="n">num_results</span>
@@ -758,6 +795,7 @@ subjectOfAgent (Subject Of) - (work):
 </div>
 </div>
 </div>
+<p>Often when working with large datasets, we will want to access the URL of the query. We can do this using the <code class="docutils literal notranslate"><span class="pre">url</span></code> attribute. This will take us to the API JSON results page.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pg</span><span class="o">.</span><span class="n">url</span>
@@ -770,6 +808,7 @@ subjectOfAgent (Subject Of) - (work):
 </div>
 </div>
 </div>
+<p>While this is programmatically useful, it is not very user-friendly. The <code class="docutils literal notranslate"><span class="pre">view_url</span></code> attribute returns a URL that will take us to the Lux results page.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pg</span><span class="o">.</span><span class="n">view_url</span>
@@ -777,12 +816,73 @@ subjectOfAgent (Subject Of) - (work):
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;https://lux.collections.yale.edu/view/results/people_groups?q=%7B%22AND%22%3A%20%5B%7B%22name%22%3A%20%22John%22%7D%5D%7D&#39;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;https://lux.collections.yale.edu/view/results/people?q=%7B%22AND%22%3A%20%5B%7B%22name%22%3A%20%22John%22%7D%5D%7D&#39;
 </pre></div>
 </div>
 </div>
 </div>
-<p>PeopleGroups().filter(name=”John”)</p>
+<p>As we will see a bit later, it is often useful to access the JSON data returned by the API. We can do this using the <code class="docutils literal notranslate"><span class="pre">json</span></code> attribute. This will allow us to do things like exmaine all results by page and even download the data for each object.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pg</span><span class="o">.</span><span class="n">json</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;@context&#39;: &#39;https://linked.art/ns/v1/search.json&#39;,
+ &#39;id&#39;: &#39;https://lux.collections.yale.edu/api/search/agent?q=%7B%22AND%22%3A%5B%7B%22name%22%3A%22John%22%7D%5D%7D&amp;page=1&amp;pageLength=20&#39;,
+ &#39;type&#39;: &#39;OrderedCollectionPage&#39;,
+ &#39;partOf&#39;: [{&#39;id&#39;: &#39;https://lux.collections.yale.edu/api/search-estimate/agent?q=%7B%22AND%22%3A%5B%7B%22name%22%3A%22John%22%7D%5D%7D&#39;,
+   &#39;type&#39;: &#39;OrderedCollection&#39;,
+   &#39;label&#39;: {&#39;en&#39;: [&#39;People &amp; Groups&#39;]},
+   &#39;summary&#39;: {&#39;en&#39;: [&#39;Records representing individuals and organizations that match your search.&#39;]},
+   &#39;totalItems&#39;: 107044}],
+ &#39;orderedItems&#39;: [{&#39;id&#39;: &#39;https://lux.collections.yale.edu/data/person/e7e1885c-666c-46ef-a44e-d9d65de1946e&#39;,
+   &#39;type&#39;: &#39;Person&#39;},
+  {&#39;id&#39;: &#39;https://lux.collections.yale.edu/data/person/81eff8bf-8b21-4070-8705-799693c8de56&#39;,
+   &#39;type&#39;: &#39;Person&#39;},
+  {&#39;id&#39;: &#39;https://lux.collections.yale.edu/data/person/f46087a4-9c6b-43f8-a6aa-a9b7ebd773b5&#39;,
+   &#39;type&#39;: &#39;Person&#39;},
+  {&#39;id&#39;: &#39;https://lux.collections.yale.edu/data/person/15baa1fc-f6a8-4204-a45c-70b01f8c95e8&#39;,
+   &#39;type&#39;: &#39;Person&#39;},
+  {&#39;id&#39;: &#39;https://lux.collections.yale.edu/data/person/8dd43025-0583-4597-93a3-460be970d68e&#39;,
+   &#39;type&#39;: &#39;Person&#39;},
+  {&#39;id&#39;: &#39;https://lux.collections.yale.edu/data/person/47a93f86-2483-4109-9f83-b9624dfc36e3&#39;,
+   &#39;type&#39;: &#39;Person&#39;},
+  {&#39;id&#39;: &#39;https://lux.collections.yale.edu/data/person/e7ce8ff7-2fad-4ae3-a21e-297482a76849&#39;,
+   &#39;type&#39;: &#39;Person&#39;},
+  {&#39;id&#39;: &#39;https://lux.collections.yale.edu/data/person/3c267f42-4792-4256-990a-abd92f24b63e&#39;,
+   &#39;type&#39;: &#39;Person&#39;},
+  {&#39;id&#39;: &#39;https://lux.collections.yale.edu/data/person/0e77a4ab-a2bf-464b-9cd4-5fa9007ab197&#39;,
+   &#39;type&#39;: &#39;Person&#39;},
+  {&#39;id&#39;: &#39;https://lux.collections.yale.edu/data/person/41ae356b-a58e-4b69-81b8-755acf6979dd&#39;,
+   &#39;type&#39;: &#39;Person&#39;},
+  {&#39;id&#39;: &#39;https://lux.collections.yale.edu/data/person/584ae665-c318-4a31-a514-ea3068e99be5&#39;,
+   &#39;type&#39;: &#39;Person&#39;},
+  {&#39;id&#39;: &#39;https://lux.collections.yale.edu/data/person/607068d3-0e95-4e7f-a1fd-d0e9333cb7d8&#39;,
+   &#39;type&#39;: &#39;Person&#39;},
+  {&#39;id&#39;: &#39;https://lux.collections.yale.edu/data/group/adc84bbb-3d98-4328-bd1b-bb7b532df313&#39;,
+   &#39;type&#39;: &#39;Group&#39;},
+  {&#39;id&#39;: &#39;https://lux.collections.yale.edu/data/person/d82c70e7-4ad6-420a-989d-cdec596220ec&#39;,
+   &#39;type&#39;: &#39;Person&#39;},
+  {&#39;id&#39;: &#39;https://lux.collections.yale.edu/data/person/e3cb13b0-7dad-4eec-b0f7-bad6c609b69b&#39;,
+   &#39;type&#39;: &#39;Person&#39;},
+  {&#39;id&#39;: &#39;https://lux.collections.yale.edu/data/person/a85b781b-0286-4cde-845a-d12a00e0d0c2&#39;,
+   &#39;type&#39;: &#39;Person&#39;},
+  {&#39;id&#39;: &#39;https://lux.collections.yale.edu/data/person/2cdfe011-9d18-4105-8b6e-22b75c6e5f39&#39;,
+   &#39;type&#39;: &#39;Person&#39;},
+  {&#39;id&#39;: &#39;https://lux.collections.yale.edu/data/person/fa4746d1-6186-4353-bb39-ed31b3b9266e&#39;,
+   &#39;type&#39;: &#39;Person&#39;},
+  {&#39;id&#39;: &#39;https://lux.collections.yale.edu/data/person/1699b6c5-3954-46b1-addf-fd0d933c91a9&#39;,
+   &#39;type&#39;: &#39;Person&#39;},
+  {&#39;id&#39;: &#39;https://lux.collections.yale.edu/data/person/9d8353c3-1923-428e-a814-0fb1a779ecec&#39;,
+   &#39;type&#39;: &#39;Person&#39;}],
+ &#39;next&#39;: {&#39;id&#39;: &#39;https://lux.collections.yale.edu/api/search/agent?q=%7B%22AND%22%3A%5B%7B%22name%22%3A%22John%22%7D%5D%7D&amp;page=2&amp;pageLength=20&#39;,
+  &#39;type&#39;: &#39;OrderedCollectionPage&#39;}}
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 
     <script type="text/x-thebe-config">
@@ -825,11 +925,11 @@ subjectOfAgent (Subject Of) - (work):
       </div>
     </a>
     <a class="right-next"
-       href="02_building_filters.html"
+       href="02_simple_filters.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">1. </span>Building Filters</p>
+        <p class="prev-next-title"><span class="section-number">1. </span>Complex Filters</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -850,10 +950,11 @@ subjectOfAgent (Subject Of) - (work):
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">1. Installing LuxY</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#importing-luxy">2. Importing LuxY</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#getting-options-for-filters">3. Getting Options for Filters</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#building-a-filter">4. Building a Filter</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">1. Introduction to LuxY</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#installing-luxy">2. Installing LuxY</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#importing-luxy">3. Importing LuxY</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#getting-options-for-filters">4. Getting Options for Filters</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#building-a-filter">5. Building a Filter</a></li>
 </ul>
 
   </nav></div>
