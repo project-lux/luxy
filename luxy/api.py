@@ -266,7 +266,7 @@ class BaseLux:
         print("-" * 50)
         
         for filter_name, details in options.items():
-            print(f"\n{filter_name} ({details["label"]}) - ({details['relation']}):")
+            print(f"\n{filter_name} ({details['label']}) - ({details['relation']}):")
             print(f"  Description: {details['description']}")
             if "values" in details:
                 print("  Possible values:")
