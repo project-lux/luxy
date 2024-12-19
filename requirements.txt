@@ -1,1 +1,2 @@
 luxy
+jupyter-book>=0.9
