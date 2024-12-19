@@ -109,6 +109,18 @@ print(result.url)
 print(result.json)
 ```
 
+## Working with Date Filters
+
+Date filters are a bit tricky because they require a tuple with the value and the comparison operator.
+
+```python
+from luxy import Objects
+
+result = Objects().filter(encounteredDate=("1987-01-01T00:00:00.000Z", ">=")).get()
+print(result.url)
+print(result.json)
+```
+
 ### Complex Example
 ```python
 from luxy import PeopleGroups
@@ -226,7 +238,8 @@ print(result.json)
 - [x] Add support for Pagination
 - [x] Add support for Downloading Page JSON
 - [x] Add support for Downloading Item JSON
-- [ ] Add more filters
+- [x] Add more filters
+- [x] Add support for date filters
 - [x] Add support for numbers
     - [x] Greater Than
     - [x] Less Than

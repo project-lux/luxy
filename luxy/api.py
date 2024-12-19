@@ -87,16 +87,27 @@ class BaseLux:
             # Handle tuple case (value, comparison operator)
             if isinstance(value, tuple) and len(value) == 2:
                 val, comp = value
-                if not isinstance(val, (int, float)):
-                    raise ValueError(f"Comparison operator '{comp}' can only be used with numeric values")
+                
+                # Allow both numeric and date string values
+                if not (isinstance(val, (int, float)) or isinstance(val, str)):
+                    raise ValueError(f"Comparison operator '{comp}' can only be used with numeric values or date strings")
+                
                 if comp not in ['>', '>=', '<', '<=', '==', '!=']:
                     raise ValueError(f"Invalid comparison operator: {comp}")
                 
-                # Create a single filter object with both properties
-                filter_obj = {
-                    key: str(val),
-                    "_comp": comp
-                }
+                # For date strings, ensure they're in the correct format
+                if isinstance(val, str):
+                    # You might want to add date string validation here
+                    filter_obj = {
+                        key: val,  # Keep the date string as is
+                        "_comp": comp
+                    }
+                else:
+                    filter_obj = {
+                        key: str(val),  # Convert numeric values to string
+                        "_comp": comp
+                    }
+                
                 self.filters = [filter_obj]  # Replace any existing filters
             else:
                 # Handle other cases
