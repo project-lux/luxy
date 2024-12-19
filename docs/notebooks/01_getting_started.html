@@ -63,8 +63,8 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'docs/notebooks/01_getting_started';</script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="6. Working with Filters" href="02_simple_filters.html" />
-    <link rel="prev" title="LuxY" href="../intro.html" />
+    <link rel="next" title="2. Working with Filters" href="02_simple_filters.html" />
+    <link rel="prev" title="Workflow and Documentation" href="../intro.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
@@ -141,8 +141,14 @@
   
   
   
+    
+    
+      
+    
+    
+    <img src="../../_static/luxy-logo.jpg" class="logo__image only-light" alt="LuxY Documentation - Home"/>
+    <img src="../../_static/luxy-logo.jpg" class="logo__image only-dark pst-js-only" alt="LuxY Documentation - Home"/>
   
-    <p class="title logo__title">LuxY Documentation</p>
   
 </a></div>
         <div class="sidebar-primary-item">
@@ -158,22 +164,14 @@
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
                 <a class="reference internal" href="../intro.html">
-                    <p align="center">LuxY</p>
+                    <p align="center">Workflow and Documentation</p>
                 </a>
             </li>
         </ul>
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Getting Started</span></p>
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">1. Introduction to LuxY</a></li>
-
-
-
-
-<li class="toctree-l1"><a class="reference internal" href="02_simple_filters.html">6. Working with Filters</a></li>
-
-
-
-
+<li class="toctree-l1"><a class="reference internal" href="02_simple_filters.html">2. Working with Filters</a></li>
 
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">LuxY Classes</span></p>
@@ -425,13 +423,11 @@
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">1. Introduction to LuxY</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#installing-luxy">2. Installing LuxY</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#importing-luxy">3. Importing LuxY</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#getting-options-for-filters">4. Getting Options for Filters</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#building-a-filter">5. Building a Filter</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#installing-luxy">1.1. Installing LuxY</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#importing-luxy">1.2. Importing LuxY</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#getting-options-for-filters">1.3. Getting Options for Filters</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#building-a-filter">1.4. Building a Filter</a></li>
 </ul>
-
             </nav>
         </div>
     </div>
@@ -463,9 +459,8 @@
 <li><p>Collections - for searching sets/collections</p></li>
 </ul>
 <p>This JupyterBook will walk through the basics of using LuxY to interact with Yale’s collections data.</p>
-</section>
 <section id="installing-luxy">
-<h1><span class="section-number">2. </span>Installing LuxY<a class="headerlink" href="#installing-luxy" title="Link to this heading">#</a></h1>
+<h2><span class="section-number">1.1. </span>Installing LuxY<a class="headerlink" href="#installing-luxy" title="Link to this heading">#</a></h2>
 <p>LuxY can be installed via pip using the following command:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -495,7 +490,7 @@ Successfully installed luxy-0.0.3
 </div>
 </section>
 <section id="importing-luxy">
-<h1><span class="section-number">3. </span>Importing LuxY<a class="headerlink" href="#importing-luxy" title="Link to this heading">#</a></h1>
+<h2><span class="section-number">1.2. </span>Importing LuxY<a class="headerlink" href="#importing-luxy" title="Link to this heading">#</a></h2>
 <p>Now that LuxY is installed, we can import it into our Python environment. To work with LuxY, our main entry points are the classes for each of the entity types. For example, to work with people and organizations, we can import the PeopleGroups class:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -506,7 +501,7 @@ Successfully installed luxy-0.0.3
 </div>
 </section>
 <section id="getting-options-for-filters">
-<h1><span class="section-number">4. </span>Getting Options for Filters<a class="headerlink" href="#getting-options-for-filters" title="Link to this heading">#</a></h1>
+<h2><span class="section-number">1.3. </span>Getting Options for Filters<a class="headerlink" href="#getting-options-for-filters" title="Link to this heading">#</a></h2>
 <p>Understanding what options are available for a filter is key to building effective queries. The <code class="docutils literal notranslate"><span class="pre">get_options()</span></code> method returns a dictionary of all the options available for a filter. The <code class="docutils literal notranslate"><span class="pre">list_filters()</span></code> method returns a list of all the filters available for a class.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -784,7 +779,7 @@ subjectOfAgent (Subject Of) - (work):
 <p>Here, we can see all available filters for the PeopleGroups class. Each class has a different set of filters, and the options for each filter are different. These filters are used to build complex queries, which we will explore in the next section.</p>
 </section>
 <section id="building-a-filter">
-<h1><span class="section-number">5. </span>Building a Filter<a class="headerlink" href="#building-a-filter" title="Link to this heading">#</a></h1>
+<h2><span class="section-number">1.4. </span>Building a Filter<a class="headerlink" href="#building-a-filter" title="Link to this heading">#</a></h2>
 <p>In order to build a filter, we can use the <code class="docutils literal notranslate"><span class="pre">filter()</span></code> method. This method takes a keyword argument for each filter, and returns a new class with the filter applied. While some data types, like numbers and dates, require specific syntax, most filters can be applied using simple strings.</p>
 <p>Here, we will search for people with the name “John”. This query will return a list of People and Groups with the name “John” in Lux. In order to access the results, we can use the <code class="docutils literal notranslate"><span class="pre">get()</span></code> method. This method returns a <code class="docutils literal notranslate"><span class="pre">QueryResult</span></code> object, which contains the results of the query, as well as metadata about the query.</p>
 <div class="cell docutils container">
@@ -847,6 +842,7 @@ subjectOfAgent (Subject Of) - (work):
 </div>
 </div>
 </section>
+</section>
 
     <script type="text/x-thebe-config">
     {
@@ -884,7 +880,7 @@ subjectOfAgent (Subject Of) - (work):
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title"><p align="center">LuxY</p></p>
+        <p class="prev-next-title"><p align="center">Workflow and Documentation</p></p>
       </div>
     </a>
     <a class="right-next"
@@ -892,7 +888,7 @@ subjectOfAgent (Subject Of) - (work):
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">6. </span>Working with Filters</p>
+        <p class="prev-next-title"><span class="section-number">2. </span>Working with Filters</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -913,13 +909,11 @@ subjectOfAgent (Subject Of) - (work):
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">1. Introduction to LuxY</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#installing-luxy">2. Installing LuxY</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#importing-luxy">3. Importing LuxY</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#getting-options-for-filters">4. Getting Options for Filters</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#building-a-filter">5. Building a Filter</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#installing-luxy">1.1. Installing LuxY</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#importing-luxy">1.2. Importing LuxY</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#getting-options-for-filters">1.3. Getting Options for Filters</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#building-a-filter">1.4. Building a Filter</a></li>
 </ul>
-
   </nav></div>
 
 </div></div>

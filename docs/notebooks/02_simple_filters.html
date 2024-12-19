@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>6. Working with Filters &#8212; LuxY Documentation</title>
+    <title>2. Working with Filters &#8212; LuxY Documentation</title>
   
   
   
@@ -141,8 +141,14 @@
   
   
   
+    
+    
+      
+    
+    
+    <img src="../../_static/luxy-logo.jpg" class="logo__image only-light" alt="LuxY Documentation - Home"/>
+    <img src="../../_static/luxy-logo.jpg" class="logo__image only-dark pst-js-only" alt="LuxY Documentation - Home"/>
   
-    <p class="title logo__title">LuxY Documentation</p>
   
 </a></div>
         <div class="sidebar-primary-item">
@@ -158,22 +164,14 @@
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
                 <a class="reference internal" href="../intro.html">
-                    <p align="center">LuxY</p>
+                    <p align="center">Workflow and Documentation</p>
                 </a>
             </li>
         </ul>
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Getting Started</span></p>
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="01_getting_started.html">1. Introduction to LuxY</a></li>
-
-
-
-
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">6. Working with Filters</a></li>
-
-
-
-
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">2. Working with Filters</a></li>
 
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">LuxY Classes</span></p>
@@ -425,12 +423,14 @@
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">6. Working with Filters</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#stacking-two-filters">7. Stacking Two Filters</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#working-with-numerical-filters">8. Working with Numerical Filters</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#working-with-date-filters">9. Working with Date Filters</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#working-with-nested-filters">10. Working with Nested Filters</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#working-with-or-filters">11. Working with OR Filters</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">2. Working with Filters</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#stacking-two-filters">2.1. Stacking Two Filters</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#working-with-numerical-filters">2.2. Working with Numerical Filters</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#working-with-date-filters">2.3. Working with Date Filters</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#working-with-nested-filters">2.4. Working with Nested Filters</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#working-with-or-filters">3. Working with OR Filters</a></li>
 </ul>
 
             </nav>
@@ -444,7 +444,7 @@
                 <article class="bd-article">
                   
   <section id="working-with-filters">
-<h1><span class="section-number">6. </span>Working with Filters<a class="headerlink" href="#working-with-filters" title="Link to this heading">#</a></h1>
+<h1><span class="section-number">2. </span>Working with Filters<a class="headerlink" href="#working-with-filters" title="Link to this heading">#</a></h1>
 <p>Now that we have a basic understanding of how to use LuxY, we can start working with filters. In the last notebook, we saw how to build a simple filter using the <code class="docutils literal notranslate"><span class="pre">filter()</span></code> method where we just passed in a single value, the name John. In this notebook, we will explore some of the more complex filters that are available in Lux.</p>
 <p>To begin, let’s import the PeopleGroups class and filter for people named John.</p>
 <div class="cell docutils container">
@@ -574,9 +574,8 @@ subjectOfAgent (Subject Of) - (work):
 </div>
 </div>
 </div>
-</section>
 <section id="stacking-two-filters">
-<h1><span class="section-number">7. </span>Stacking Two Filters<a class="headerlink" href="#stacking-two-filters" title="Link to this heading">#</a></h1>
+<h2><span class="section-number">2.1. </span>Stacking Two Filters<a class="headerlink" href="#stacking-two-filters" title="Link to this heading">#</a></h2>
 <p>It’s common to want to stack filters. For example, we may want to filter for people named John and also filter for people who are of type person. We can do this by chaining the <code class="docutils literal notranslate"><span class="pre">filter()</span></code> method. The reason for this is because in the Lux system, PeopleGroups contain both People and Groups. So when we filter for people, we are actually filtering for both People and Groups. In LuxY, we can create multiple filters two ways. First, we can chain the <code class="docutils literal notranslate"><span class="pre">filter()</span></code> method. This would look like this:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -648,7 +647,7 @@ subjectOfAgent (Subject Of) - (work):
 </div>
 </section>
 <section id="working-with-numerical-filters">
-<h1><span class="section-number">8. </span>Working with Numerical Filters<a class="headerlink" href="#working-with-numerical-filters" title="Link to this heading">#</a></h1>
+<h2><span class="section-number">2.2. </span>Working with Numerical Filters<a class="headerlink" href="#working-with-numerical-filters" title="Link to this heading">#</a></h2>
 <p>When passing filters that are numbers, we can pass in a tuple with the value and the comparison operator. For example, we can filter for objects that are less than 1 units tall. To do this, let’s first import the Objects class. This is the class for physical objects in Yale’s collections.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -673,7 +672,7 @@ subjectOfAgent (Subject Of) - (work):
 </div>
 </section>
 <section id="working-with-date-filters">
-<h1><span class="section-number">9. </span>Working with Date Filters<a class="headerlink" href="#working-with-date-filters" title="Link to this heading">#</a></h1>
+<h2><span class="section-number">2.3. </span>Working with Date Filters<a class="headerlink" href="#working-with-date-filters" title="Link to this heading">#</a></h2>
 <p>When passing filters that are dates, we can pass in a tuple with the value and the comparison operator. For example, we can filter for objects that were encountered after 1987. To do this, let’s first import the Objects class. This is the class for physical objects in Yale’s collections.</p>
 <p>It’s important to note that the date format is in ISO 8601 format. This means that the date is in the format of YYYY-MM-DDTHH:MM:SS.SSSZ.</p>
 <p>Now, let’s filter for objects that were encountered after 1987.</p>
@@ -692,7 +691,7 @@ subjectOfAgent (Subject Of) - (work):
 </div>
 </section>
 <section id="working-with-nested-filters">
-<h1><span class="section-number">10. </span>Working with Nested Filters<a class="headerlink" href="#working-with-nested-filters" title="Link to this heading">#</a></h1>
+<h2><span class="section-number">2.4. </span>Working with Nested Filters<a class="headerlink" href="#working-with-nested-filters" title="Link to this heading">#</a></h2>
 <p>LuxY allows for creating nested filters easily. For example, we can filter for objects that have a digital image and also filter for objects that are part of the Letters collection and also filter for objects that are letters. There are several nested filters available for each class. We’ll explore these in more detail in the Objects notebook. For now, let’s see how to create a nested filter with memberOf as a filter for an Object class.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -709,8 +708,9 @@ subjectOfAgent (Subject Of) - (work):
 </div>
 </div>
 </section>
+</section>
 <section id="working-with-or-filters">
-<h1><span class="section-number">11. </span>Working with OR Filters<a class="headerlink" href="#working-with-or-filters" title="Link to this heading">#</a></h1>
+<h1><span class="section-number">3. </span>Working with OR Filters<a class="headerlink" href="#working-with-or-filters" title="Link to this heading">#</a></h1>
 <p>We can also use OR filters to filter for objects that match any of the filters in the list. For example, we can filter for objects that are part of the Letters collection or the Manuscripts collection.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -801,12 +801,14 @@ subjectOfAgent (Subject Of) - (work):
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">6. Working with Filters</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#stacking-two-filters">7. Stacking Two Filters</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#working-with-numerical-filters">8. Working with Numerical Filters</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#working-with-date-filters">9. Working with Date Filters</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#working-with-nested-filters">10. Working with Nested Filters</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#working-with-or-filters">11. Working with OR Filters</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">2. Working with Filters</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#stacking-two-filters">2.1. Stacking Two Filters</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#working-with-numerical-filters">2.2. Working with Numerical Filters</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#working-with-date-filters">2.3. Working with Date Filters</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#working-with-nested-filters">2.4. Working with Nested Filters</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#working-with-or-filters">3. Working with OR Filters</a></li>
 </ul>
 
   </nav></div>
