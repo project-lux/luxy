@@ -83,34 +83,45 @@ class BaseLux:
         return value
 
     def filter(self, **kwargs):
+        # Get available options for validation
+        valid_options = self.get_options()
+
         for key, value in kwargs.items():
+            # Special handling for OR conditions
+            if key == "OR":
+                if not isinstance(value, list):
+                    raise ValueError("OR filter must be a list of conditions")
+                self.filters.append({"OR": value})
+                continue
+            
+            # Rest of the validation logic for regular filters
+            if key not in valid_options and key not in ["AND", "NOT"]:
+                raise ValueError(f"Invalid filter '{key}' for {self.name}. Use list_filters() to see available options.")
+
             # Handle tuple case (value, comparison operator)
             if isinstance(value, tuple) and len(value) == 2:
                 val, comp = value
                 
-                # Allow both numeric and date string values
-                if not (isinstance(val, (int, float)) or isinstance(val, str)):
-                    raise ValueError(f"Comparison operator '{comp}' can only be used with numeric values or date strings")
+                # Validate comparison operators based on relation type
+                relation = valid_options[key]['relation']
+                if relation not in ['number', 'date'] and comp != '==':
+                    raise ValueError(f"Comparison operators can only be used with numeric or date filters. '{key}' is of type '{relation}'")
                 
                 if comp not in ['>', '>=', '<', '<=', '==', '!=']:
                     raise ValueError(f"Invalid comparison operator: {comp}")
                 
-                # For date strings, ensure they're in the correct format
-                if isinstance(val, str):
-                    # You might want to add date string validation here
-                    filter_obj = {
-                        key: val,  # Keep the date string as is
-                        "_comp": comp
-                    }
-                else:
-                    filter_obj = {
-                        key: str(val),  # Convert numeric values to string
-                        "_comp": comp
-                    }
+                filter_obj = {
+                    key: str(val),
+                    "_comp": comp
+                }
+                self.filters = [filter_obj]
                 
-                self.filters = [filter_obj]  # Replace any existing filters
             else:
-                # Handle other cases
+                # Validate enum values if they exist
+                if "values" in valid_options[key] and value not in valid_options[key]["values"]:
+                    valid_values = ", ".join(repr(v) for v in valid_options[key]["values"])
+                    raise ValueError(f"Invalid value '{value}' for filter '{key}'. Valid values are: {valid_values}")
+                
                 processed_value = self._process_value(value) if not isinstance(value, dict) else self._process_nested_dict(value)
                 self.filters.append({key: processed_value})
         

@@ -254,3 +254,4 @@ print(result.json)
 - [x] Add support for have None of # NOT
 - [x] Add more tests
 - [ ] Add more documentation
+- [ ] Add a check to make sure a filter exists
