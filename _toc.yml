@@ -7,7 +7,7 @@ parts:
   chapters:
   - file: docs/notebooks/01_getting_started.ipynb
 
-- caption: Getting Started
+- caption: Building Filters
   numbered: true
   chapters:
-  - file: docs/notebooks/02_building_filters.ipynb
+  - file: docs/notebooks/02_simple_filters.ipynb
