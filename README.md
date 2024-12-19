@@ -111,7 +111,7 @@ print(result.json)
 
 ## Working with Date Filters
 
-Date filters are a bit tricky because they require a tuple with the value and the comparison operator.
+Date filters are a bit tricky because they require a tuple with the value and the comparison operator. The value should be a string in the format of `YYYY-MM-DDTHH:MM:SS.SSSZ`.
 
 ```python
 from luxy import Objects
@@ -119,6 +119,20 @@ from luxy import Objects
 result = Objects().filter(encounteredDate=("1987-01-01T00:00:00.000Z", ">=")).get()
 print(result.url)
 print(result.json)
+```
+
+## Understanding Options
+
+Each filter has a set of options that can be used to filter the data. These options are stored in the `get_options()` method.
+
+```python
+from luxy import PeopleGroups
+
+options = PeopleGroups().get_options()
+print(options)
+
+# pretty print the options
+PeopleGroups().list_filters()
 ```
 
 ### Complex Example
@@ -199,37 +213,39 @@ print(result.json)
 
 # Roadmap
 
+## v. 0.0.2
+
 - [x] Add support for People/Groups
     - [ ] Filter by:
         - [x] Has Digital Image
         - [x] Gender
-        - [ ] Nationality (nationality)
+        - [x] Nationality (nationality)
         - [x] Person or Group Class
-        - [ ] Categorized As (classification)
+        - [x] Categorized As (classification)
         - [x] Born/Formed At (startAt)
-        - [ ] Born/Formed Date
-        - [ ] Carried Out (carriedOut)
+        - [x] Born/Formed Date
+        - [x] Carried Out (carriedOut)
         - [x] Created Object (produced)
         - [x] Created Works (created)
         - [x] Curated (curated)
         - [x] Died/Dissolved At (endAt)
-        - [ ] Died/Dissolved Date
-        - [ ] Encountered
-        - [ ] Founded By
-        - [ ] Founded Group
-        - [ ] Have Member
-        - [ ] ID
-        - [ ] Identifier
+        - [x] Died/Dissolved Date
+        - [x] Encountered
+        - [x] Founded By
+        - [x] Founded Group
+        - [x] Have Member
+        - [x] ID
+        - [x] Identifier
         - [x] Influenced (influenced)
-        - [ ] Influenced Creation Of Objects
-        - [ ] Influenced Creation Of Works
-        - [ ] Member Of (memberOf)
+        - [x] Influenced Creation Of Objects
+        - [x] Influenced Creation Of Works
+        - [x] Member Of (memberOf)
         - [x] Occupation/Role (occupation)
         - [x] Professional Activity Categorized As (professionalActivity)
         - [x] Professionally Active At (activeAt)
-        - [ ] Professionally Active Date
+        - [x] Professionally Active Date
         - [x] Published (published)
-        - [ ] Subject Of
+        - [x] Subject Of
 - [x] Add support for Objects
 - [x] Add support for Works
 - [x] Add support for Places
@@ -253,5 +269,5 @@ print(result.json)
 - [x] Add support for have Any of # OR
 - [x] Add support for have None of # NOT
 - [x] Add more tests
-- [ ] Add more documentation
-- [ ] Add a check to make sure a filter exists
+- [x] Add more documentation
+- [x] Add a check to make sure a filter exists
