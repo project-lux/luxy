@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>1. Simple Filter &#8212; LuxY Documentation</title>
+    <title>6. Working with Filters &#8212; LuxY Documentation</title>
   
   
   
@@ -63,6 +63,7 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'docs/notebooks/02_simple_filters';</script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="1. PeopleGroups" href="03_PeopleGroups.html" />
     <link rel="prev" title="1. Introduction to LuxY" href="01_getting_started.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -162,16 +163,28 @@
             </li>
         </ul>
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Getting Started</span></p>
-<ul class="nav bd-sidenav">
+<ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="01_getting_started.html">1. Introduction to LuxY</a></li>
 
 
 
 
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">6. Working with Filters</a></li>
+
+
+
+
+
 </ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Building Filters</span></p>
-<ul class="current nav bd-sidenav">
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">1. Simple Filter</a></li>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">LuxY Classes</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="03_PeopleGroups.html">1. PeopleGroups</a></li>
+<li class="toctree-l1"><a class="reference internal" href="04_Objects.html">2. Ojects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="05_Works.html">3. Works</a></li>
+<li class="toctree-l1"><a class="reference internal" href="06_Places.html">4. Places</a></li>
+<li class="toctree-l1"><a class="reference internal" href="07_Events.html">5. Events</a></li>
+<li class="toctree-l1"><a class="reference internal" href="08_Collections.html">6. Collections</a></li>
+<li class="toctree-l1"><a class="reference internal" href="09_Concepts.html">7. Concepts</a></li>
 </ul>
 
     </div>
@@ -389,7 +402,9 @@
 <button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
 </button>
-
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
 </div></div>
       
     </div>
@@ -400,11 +415,25 @@
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Simple Filter</h1>
+    <h1>Working with Filters</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">6. Working with Filters</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#stacking-two-filters">7. Stacking Two Filters</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#working-with-numerical-filters">8. Working with Numerical Filters</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#working-with-date-filters">9. Working with Date Filters</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#working-with-nested-filters">10. Working with Nested Filters</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#working-with-or-filters">11. Working with OR Filters</a></li>
+</ul>
+
+            </nav>
         </div>
     </div>
 </div>
@@ -414,9 +443,10 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section id="simple-filter">
-<h1><span class="section-number">1. </span>Simple Filter<a class="headerlink" href="#simple-filter" title="Link to this heading">#</a></h1>
+  <section id="working-with-filters">
+<h1><span class="section-number">6. </span>Working with Filters<a class="headerlink" href="#working-with-filters" title="Link to this heading">#</a></h1>
 <p>Now that we have a basic understanding of how to use LuxY, we can start working with filters. In the last notebook, we saw how to build a simple filter using the <code class="docutils literal notranslate"><span class="pre">filter()</span></code> method where we just passed in a single value, the name John. In this notebook, we will explore some of the more complex filters that are available in Lux.</p>
+<p>To begin, let’s import the PeopleGroups class and filter for people named John.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">luxy</span> <span class="kn">import</span> <span class="n">PeopleGroups</span>
@@ -437,6 +467,7 @@
 </div>
 </div>
 </div>
+<p>As we can see, we have many results for a query where the name contains the value of “John”. What if we wanted to narrow our search? For PeopleGroups, we have numerous filters to choose from. We’ll explore each of these in our PeopleGroups notebook. For now, let’s use this list of filters to create more complex filters.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pg</span><span class="o">.</span><span class="n">list_filters</span><span class="p">()</span>
@@ -543,6 +574,10 @@ subjectOfAgent (Subject Of) - (work):
 </div>
 </div>
 </div>
+</section>
+<section id="stacking-two-filters">
+<h1><span class="section-number">7. </span>Stacking Two Filters<a class="headerlink" href="#stacking-two-filters" title="Link to this heading">#</a></h1>
+<p>It’s common to want to stack filters. For example, we may want to filter for people named John and also filter for people who are of type person. We can do this by chaining the <code class="docutils literal notranslate"><span class="pre">filter()</span></code> method. The reason for this is because in the Lux system, PeopleGroups contain both People and Groups. So when we filter for people, we are actually filtering for both People and Groups. In LuxY, we can create multiple filters two ways. First, we can chain the <code class="docutils literal notranslate"><span class="pre">filter()</span></code> method. This would look like this:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pg</span> <span class="o">=</span> <span class="p">(</span><span class="n">PeopleGroups</span><span class="p">()</span>
@@ -559,6 +594,22 @@ subjectOfAgent (Subject Of) - (work):
 </div>
 </div>
 </div>
+<p>Second, we can pass in multiple arguments to the <code class="docutils literal notranslate"><span class="pre">filter()</span></code> method. Let’s see how this works.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pg</span> <span class="o">=</span> <span class="n">PeopleGroups</span><span class="p">()</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;John&quot;</span><span class="p">,</span> <span class="n">recordType</span><span class="o">=</span><span class="s2">&quot;person&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">pg</span><span class="o">.</span><span class="n">num_results</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>103922
+</pre></div>
+</div>
+</div>
+</div>
+<p>Notice that in both cases, we get the same number of results. This is because the <code class="docutils literal notranslate"><span class="pre">filter()</span></code> method is a logical AND operation. This means that the filter will return results that match both filters. When passing both filters, we are actually passing the following logic: We want people named John <strong>and</strong> we want people of type person.</p>
+<p>We can further stack filters by adding more filters to the chain. For example, we can filter for people named John and also filter for people who are of type person and also filter for people who have a digital image.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pg</span> <span class="o">=</span> <span class="p">(</span><span class="n">PeopleGroups</span><span class="p">()</span>
@@ -576,6 +627,7 @@ subjectOfAgent (Subject Of) - (work):
 </div>
 </div>
 </div>
+<p>And we can even stack more filters. For example, we can filter for people named John and also filter for people who are of type person and also filter for people who have a digital image and also filter for people who ended their time at Yale in Amsterdam.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pg</span> <span class="o">=</span> <span class="p">(</span><span class="n">PeopleGroups</span><span class="p">()</span>
@@ -594,18 +646,90 @@ subjectOfAgent (Subject Of) - (work):
 </div>
 </div>
 </div>
+</section>
+<section id="working-with-numerical-filters">
+<h1><span class="section-number">8. </span>Working with Numerical Filters<a class="headerlink" href="#working-with-numerical-filters" title="Link to this heading">#</a></h1>
+<p>When passing filters that are numbers, we can pass in a tuple with the value and the comparison operator. For example, we can filter for objects that are less than 1 units tall. To do this, let’s first import the Objects class. This is the class for physical objects in Yale’s collections.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pg</span> <span class="o">=</span> <span class="n">PeopleGroups</span><span class="p">()</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;John&quot;</span><span class="p">,</span>
-                           <span class="n">recordType</span><span class="o">=</span><span class="s2">&quot;person&quot;</span><span class="p">,</span>
-                           <span class="n">hasDigitalImage</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-                           <span class="n">endAt</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Amsterdam&quot;</span><span class="p">})</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">pg</span><span class="o">.</span><span class="n">num_results</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">luxy</span> <span class="kn">import</span> <span class="n">Objects</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now, let’s filter for objects that are less than 1 units tall.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">obj</span> <span class="o">=</span> <span class="n">Objects</span><span class="p">()</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">height</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;&lt;=&quot;</span><span class="p">))</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
+<span class="n">obj</span><span class="o">.</span><span class="n">num_results</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>237
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2412
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="working-with-date-filters">
+<h1><span class="section-number">9. </span>Working with Date Filters<a class="headerlink" href="#working-with-date-filters" title="Link to this heading">#</a></h1>
+<p>When passing filters that are dates, we can pass in a tuple with the value and the comparison operator. For example, we can filter for objects that were encountered after 1987. To do this, let’s first import the Objects class. This is the class for physical objects in Yale’s collections.</p>
+<p>It’s important to note that the date format is in ISO 8601 format. This means that the date is in the format of YYYY-MM-DDTHH:MM:SS.SSSZ.</p>
+<p>Now, let’s filter for objects that were encountered after 1987.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">obj</span> <span class="o">=</span> <span class="n">Objects</span><span class="p">()</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">encounteredDate</span><span class="o">=</span><span class="p">(</span><span class="s2">&quot;1987-01-01T00:00:00.000Z&quot;</span><span class="p">,</span> <span class="s2">&quot;&gt;=&quot;</span><span class="p">))</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
+<span class="n">obj</span><span class="o">.</span><span class="n">num_results</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>211786
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="working-with-nested-filters">
+<h1><span class="section-number">10. </span>Working with Nested Filters<a class="headerlink" href="#working-with-nested-filters" title="Link to this heading">#</a></h1>
+<p>LuxY allows for creating nested filters easily. For example, we can filter for objects that have a digital image and also filter for objects that are part of the Letters collection and also filter for objects that are letters. There are several nested filters available for each class. We’ll explore these in more detail in the Objects notebook. For now, let’s see how to create a nested filter with memberOf as a filter for an Object class.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">obj</span> <span class="o">=</span> <span class="n">Objects</span><span class="p">()</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">memberOf</span><span class="o">=</span><span class="n">Objects</span><span class="p">()</span><span class="o">.</span><span class="n">memberOf</span><span class="p">(</span><span class="s2">&quot;Letters&quot;</span><span class="p">,</span> <span class="n">depth</span><span class="o">=</span><span class="mi">2</span><span class="p">))</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">obj</span><span class="o">.</span><span class="n">num_results</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3020
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="working-with-or-filters">
+<h1><span class="section-number">11. </span>Working with OR Filters<a class="headerlink" href="#working-with-or-filters" title="Link to this heading">#</a></h1>
+<p>We can also use OR filters to filter for objects that match any of the filters in the list. For example, we can filter for objects that are part of the Letters collection or the Manuscripts collection.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">obj</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">Objects</span><span class="p">()</span>
+    <span class="o">.</span><span class="n">filter</span><span class="p">(</span>
+        <span class="n">OR</span><span class="o">=</span><span class="p">[</span>
+            <span class="n">Objects</span><span class="p">()</span><span class="o">.</span><span class="n">memberOf</span><span class="p">(</span><span class="s2">&quot;Letters&quot;</span><span class="p">,</span> <span class="n">depth</span><span class="o">=</span><span class="mi">2</span><span class="p">),</span>
+            <span class="n">Objects</span><span class="p">()</span><span class="o">.</span><span class="n">memberOf</span><span class="p">(</span><span class="s2">&quot;Manuscripts&quot;</span><span class="p">,</span> <span class="n">depth</span><span class="o">=</span><span class="mi">2</span><span class="p">),</span>
+        <span class="p">]</span>
+    <span class="p">)</span>
+    <span class="o">.</span><span class="n">get</span><span class="p">()</span>
+<span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">obj</span><span class="o">.</span><span class="n">num_results</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>795483
 </pre></div>
 </div>
 </div>
@@ -651,12 +775,43 @@ subjectOfAgent (Subject Of) - (work):
         <p class="prev-next-title"><span class="section-number">1. </span>Introduction to LuxY</p>
       </div>
     </a>
+    <a class="right-next"
+       href="03_PeopleGroups.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">1. </span>PeopleGroups</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
 </div>
                 </footer>
               
             </div>
             
             
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">6. Working with Filters</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#stacking-two-filters">7. Stacking Two Filters</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#working-with-numerical-filters">8. Working with Numerical Filters</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#working-with-date-filters">9. Working with Date Filters</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#working-with-nested-filters">10. Working with Nested Filters</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#working-with-or-filters">11. Working with OR Filters</a></li>
+</ul>
+
+  </nav></div>
+
+</div></div>
               
             
           </div>
