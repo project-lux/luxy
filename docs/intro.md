@@ -1,4 +1,4 @@
-<center><img src="../docs/images/luxy-logo.jpg" alt="LuxY Logo" style="width: 600px; height: auto;"></center>
+<center><img src="https://github.com/project-lux/luxy/blob/main/docs/images/luxy-logo.jpg?raw=true" alt="LuxY Logo" style="width: 600px; height: auto;"></center>
 
 ### <p align="center">Workflow and Documentation</p>
 <p align="center">Maintained by William J.B. Mattingly</p>
