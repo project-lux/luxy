@@ -400,7 +400,9 @@
 <button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
 </button>
-
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
 </div></div>
       
     </div>
@@ -416,6 +418,29 @@
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#filter-categories">1.1. Filter Categories</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#text-search-filters">1.1.1. Text Search Filters</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#name-filters">1.1.1.1. Name Filters</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#location-filters">1.2. Location Filters</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#date-filters">1.2.1. Date Filters</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#professional-and-biographical-filters">1.2.2. Professional and Biographical Filters</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#relationship-filters">1.2.3. Relationship Filters</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#creative-work-filters">1.2.4. Creative Work Filters</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#collection-and-curation-filters">1.2.5. Collection and Curation Filters</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#influence-and-subject-filters">1.2.6. Influence and Subject Filters</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
         </div>
     </div>
 </div>
@@ -427,6 +452,705 @@
                   
   <section id="peoplegroups">
 <h1><span class="section-number">1. </span>PeopleGroups<a class="headerlink" href="#peoplegroups" title="Link to this heading">#</a></h1>
+<p>The PeopleGroups class provides an interface to search for people and groups in Yale’s LUX collections database. This class inherits from BaseLux and provides specialized filtering capabilities for searching historical figures, artists, organizations, and other entities in Yale’s collections.</p>
+<p>The PeopleGroups class allows you to search for both individual people and groups (organizations) using a variety of filters. You can search by basic information like names and dates, professional activities, relationships to works and objects, and various biographical details.</p>
+<section id="filter-categories">
+<h2><span class="section-number">1.1. </span>Filter Categories<a class="headerlink" href="#filter-categories" title="Link to this heading">#</a></h2>
+<section id="text-search-filters">
+<h3><span class="section-number">1.1.1. </span>Text Search Filters<a class="headerlink" href="#text-search-filters" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><strong>name</strong>: Search within titles or names of people and groups</p>
+<ul>
+<li><p>Type: text</p></li>
+<li><p>Usage: Search for specific names or partial name matches</p></li>
+<li><p>Example: <code class="docutils literal notranslate"><span class="pre">filter(name=&quot;John</span> <span class="pre">Smith&quot;)</span></code></p></li>
+</ul>
+</li>
+<li><p><strong>text</strong>: Search anywhere in the record</p>
+<ul>
+<li><p>Type: text</p></li>
+<li><p>Usage: Full-text search across all fields</p></li>
+<li><p>Example: <code class="docutils literal notranslate"><span class="pre">filter(text=&quot;artist</span> <span class="pre">painter&quot;)</span></code></p></li>
+</ul>
+</li>
+<li><p><strong>id</strong>: Search by LUX data URI</p>
+<ul>
+<li><p>Type: text</p></li>
+<li><p>Format: UUID v4 (8-4-4-4-12 format)</p></li>
+<li><p>Example: <code class="docutils literal notranslate"><span class="pre">filter(id=&quot;516e445f-ce33-414c-af05-efcc8f1de66a&quot;)</span></code></p></li>
+</ul>
+</li>
+<li><p><strong>identifier</strong>: Search by external identifiers (ULAN, VIAF, Wikidata)</p>
+<ul>
+<li><p>Type: text</p></li>
+<li><p>Example: <code class="docutils literal notranslate"><span class="pre">filter(identifier=&quot;Q123456&quot;)</span></code></p></li>
+</ul>
+</li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">luxy</span> <span class="kn">import</span> <span class="n">PeopleGroups</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section id="name-filters">
+<h4><span class="section-number">1.1.1.1. </span>Name Filters<a class="headerlink" href="#name-filters" title="Link to this heading">#</a></h4>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pg</span> <span class="o">=</span> <span class="n">PeopleGroups</span><span class="p">()</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;John Smith&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">pg</span><span class="o">.</span><span class="n">num_results</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">pg</span><span class="o">.</span><span class="n">view_url</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>720
+https://lux.collections.yale.edu/view/results/people?q=%7B%22AND%22%3A%20%5B%7B%22name%22%3A%20%22John%20Smith%22%7D%5D%7D
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pg</span> <span class="o">=</span> <span class="n">PeopleGroups</span><span class="p">()</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">text</span><span class="o">=</span><span class="s2">&quot;John Smith&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">pg</span><span class="o">.</span><span class="n">num_results</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">pg</span><span class="o">.</span><span class="n">view_url</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1027
+https://lux.collections.yale.edu/view/results/people?q=%7B%22AND%22%3A%20%5B%7B%22text%22%3A%20%22John%20Smith%22%7D%5D%7D
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pg</span> <span class="o">=</span> <span class="n">PeopleGroups</span><span class="p">()</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="s2">&quot;516e445f-ce33-414c-af05-efcc8f1de66a&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">pg</span><span class="o">.</span><span class="n">num_results</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">pg</span><span class="o">.</span><span class="n">view_url</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0
+https://lux.collections.yale.edu/view/results/people?q=%7B%22AND%22%3A%20%5B%7B%22id%22%3A%20%22516e445f-ce33-414c-af05-efcc8f1de66a%22%7D%5D%7D
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pg</span> <span class="o">=</span> <span class="n">PeopleGroups</span><span class="p">()</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">identifier</span><span class="o">=</span><span class="s2">&quot;95296943&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">pg</span><span class="o">.</span><span class="n">num_results</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">pg</span><span class="o">.</span><span class="n">view_url</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0
+https://lux.collections.yale.edu/view/results/people?q=%7B%22AND%22%3A%20%5B%7B%22identifier%22%3A%20%2295296943%22%7D%5D%7D
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+</section>
+<section id="location-filters">
+<h2><span class="section-number">1.2. </span>Location Filters<a class="headerlink" href="#location-filters" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p><strong>startAt</strong>: Place where person was born or group was formed</p>
+<ul>
+<li><p>Type: place reference</p></li>
+<li><p>Example: <code class="docutils literal notranslate"><span class="pre">filter(startAt={&quot;name&quot;:</span> <span class="pre">&quot;Paris&quot;})</span></code></p></li>
+</ul>
+</li>
+<li><p><strong>endAt</strong>: Place where person died or group was dissolved</p>
+<ul>
+<li><p>Type: place reference</p></li>
+<li><p>Example: <code class="docutils literal notranslate"><span class="pre">filter(endAt={&quot;name&quot;:</span> <span class="pre">&quot;London&quot;})</span></code></p></li>
+</ul>
+</li>
+<li><p><strong>activeAt</strong>: Places where professionally active</p>
+<ul>
+<li><p>Type: place reference</p></li>
+<li><p>Example: <code class="docutils literal notranslate"><span class="pre">filter(activeAt={&quot;name&quot;:</span> <span class="pre">&quot;New</span> <span class="pre">York&quot;})</span></code></p></li>
+</ul>
+</li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pg</span> <span class="o">=</span> <span class="n">PeopleGroups</span><span class="p">()</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">startAt</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Paris&quot;</span><span class="p">})</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">pg</span><span class="o">.</span><span class="n">num_results</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">pg</span><span class="o">.</span><span class="n">view_url</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>12559
+https://lux.collections.yale.edu/view/results/people?q=%7B%22AND%22%3A%20%5B%7B%22startAt%22%3A%20%7B%22name%22%3A%20%22Paris%22%7D%7D%5D%7D
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pg</span> <span class="o">=</span> <span class="n">PeopleGroups</span><span class="p">()</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">endAt</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;London&quot;</span><span class="p">})</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">pg</span><span class="o">.</span><span class="n">num_results</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">pg</span><span class="o">.</span><span class="n">view_url</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>12645
+https://lux.collections.yale.edu/view/results/people?q=%7B%22AND%22%3A%20%5B%7B%22endAt%22%3A%20%7B%22name%22%3A%20%22London%22%7D%7D%5D%7D
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pg</span> <span class="o">=</span> <span class="n">PeopleGroups</span><span class="p">()</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">activeAt</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;New York&quot;</span><span class="p">})</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">pg</span><span class="o">.</span><span class="n">num_results</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">pg</span><span class="o">.</span><span class="n">view_url</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>10430
+https://lux.collections.yale.edu/view/results/people?q=%7B%22AND%22%3A%20%5B%7B%22activeAt%22%3A%20%7B%22name%22%3A%20%22New%20York%22%7D%7D%5D%7D
+</pre></div>
+</div>
+</div>
+</div>
+<section id="date-filters">
+<h3><span class="section-number">1.2.1. </span>Date Filters<a class="headerlink" href="#date-filters" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><strong>startDate</strong>: Birth/formation date</p>
+<ul>
+<li><p>Type: date</p></li>
+<li><p>Format: ISO 8601 with millisecond precision and UTC timezone (YYYY-MM-DDT00:00:00.000Z)</p></li>
+<li><p>Supports comparison operators: “==”, “!=”, “&gt;”, “&gt;=”, “&lt;”, “&lt;=”</p></li>
+<li><p>Examples:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">filter(startDate=&quot;1987-01-01T00:00:00.000Z&quot;)</span></code> - Exact date match</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">filter(startDate=(&quot;1987-01-01T00:00:00.000Z&quot;,</span> <span class="pre">&quot;&gt;=&quot;))</span></code> - Born after or on Jan 1, 1987</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">filter(startDate=(&quot;1987-01-01T00:00:00.000Z&quot;,</span> <span class="pre">&quot;&lt;&quot;))</span></code> - Born before 1987</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>endDate</strong>: Death/dissolution date</p>
+<ul>
+<li><p>Type: date</p></li>
+<li><p>Format: ISO 8601 with millisecond precision and UTC timezone</p></li>
+<li><p>Supports same comparison operators</p></li>
+<li><p>Examples:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">filter(endDate=&quot;1987-01-01T00:00:00.000Z&quot;)</span></code> - Exact date match</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">filter(endDate=(&quot;1987-01-01T00:00:00.000Z&quot;,</span> <span class="pre">&quot;&lt;=&quot;))</span></code> - Died on or before Jan 1, 1987</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>activeDate</strong>: Dates of professional activity</p>
+<ul>
+<li><p>Type: date</p></li>
+<li><p>Format: ISO 8601 with millisecond precision and UTC timezone</p></li>
+<li><p>Supports same comparison operators</p></li>
+<li><p>Examples:</p>
+<ul>
+<li><p>Single date: <code class="docutils literal notranslate"><span class="pre">filter(activeDate=&quot;1987-01-01T00:00:00.000Z&quot;)</span></code></p></li>
+<li><p>With comparison: <code class="docutils literal notranslate"><span class="pre">filter(activeDate=(&quot;1987-01-01T00:00:00.000Z&quot;,</span> <span class="pre">&quot;&gt;&quot;))</span></code> - Active after Jan 1, 1987</p></li>
+<li><p>Date range: <code class="docutils literal notranslate"><span class="pre">filter(activeDate=&quot;1987-01-01T00:00:00.000Z/2000-12-31T23:59:59.999Z&quot;)</span></code></p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pg</span> <span class="o">=</span> <span class="n">PeopleGroups</span><span class="p">()</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">startDate</span><span class="o">=</span><span class="p">(</span><span class="s2">&quot;1987-01-01T00:00:00.000Z&quot;</span><span class="p">,</span> <span class="s2">&quot;&gt;=&quot;</span><span class="p">))</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">pg</span><span class="o">.</span><span class="n">num_results</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">pg</span><span class="o">.</span><span class="n">view_url</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>49231
+https://lux.collections.yale.edu/view/results/people?q=%7B%22AND%22%3A%20%5B%7B%22startDate%22%3A%20%221987-01-01T00%3A00%3A00.000Z%22%2C%20%22_comp%22%3A%20%22%3E%3D%22%7D%5D%7D
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pg</span> <span class="o">=</span> <span class="n">PeopleGroups</span><span class="p">()</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">endDate</span><span class="o">=</span><span class="p">(</span><span class="s2">&quot;1987-01-01T00:00:00.000Z&quot;</span><span class="p">,</span> <span class="s2">&quot;&lt;=&quot;</span><span class="p">))</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">pg</span><span class="o">.</span><span class="n">num_results</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">pg</span><span class="o">.</span><span class="n">view_url</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>334524
+https://lux.collections.yale.edu/view/results/people?q=%7B%22AND%22%3A%20%5B%7B%22endDate%22%3A%20%221987-01-01T00%3A00%3A00.000Z%22%2C%20%22_comp%22%3A%20%22%3C%3D%22%7D%5D%7D
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pg</span> <span class="o">=</span> <span class="n">PeopleGroups</span><span class="p">()</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">activeDate</span><span class="o">=</span><span class="p">(</span><span class="s2">&quot;1987-01-01T00:00:00.000Z&quot;</span><span class="p">,</span> <span class="s2">&quot;&gt;&quot;</span><span class="p">))</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">pg</span><span class="o">.</span><span class="n">num_results</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">pg</span><span class="o">.</span><span class="n">view_url</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3545
+https://lux.collections.yale.edu/view/results/people?q=%7B%22AND%22%3A%20%5B%7B%22activeDate%22%3A%20%221987-01-01T00%3A00%3A00.000Z%22%2C%20%22_comp%22%3A%20%22%3E%22%7D%5D%7D
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="professional-and-biographical-filters">
+<h3><span class="section-number">1.2.2. </span>Professional and Biographical Filters<a class="headerlink" href="#professional-and-biographical-filters" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><strong>occupation</strong>: Search by occupation or role</p>
+<ul>
+<li><p>Type: concept reference</p></li>
+<li><p>Example: <code class="docutils literal notranslate"><span class="pre">filter(occupation={&quot;name&quot;:</span> <span class="pre">&quot;Painter&quot;})</span></code></p></li>
+</ul>
+</li>
+<li><p><strong>nationality</strong>: Search by nationality</p>
+<ul>
+<li><p>Type: concept reference</p></li>
+<li><p>Example: <code class="docutils literal notranslate"><span class="pre">filter(nationality={&quot;name&quot;:</span> <span class="pre">&quot;French&quot;})</span></code></p></li>
+</ul>
+</li>
+<li><p><strong>gender</strong>: Search by gender</p>
+<ul>
+<li><p>Type: concept reference</p></li>
+<li><p>Note: Information comes from external sources</p></li>
+<li><p>Example: <code class="docutils literal notranslate"><span class="pre">filter(gender={&quot;name&quot;:</span> <span class="pre">&quot;Female&quot;})</span></code></p></li>
+</ul>
+</li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pg</span> <span class="o">=</span> <span class="n">PeopleGroups</span><span class="p">()</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">occupation</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Painter&quot;</span><span class="p">})</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">pg</span><span class="o">.</span><span class="n">num_results</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">pg</span><span class="o">.</span><span class="n">view_url</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>46499
+https://lux.collections.yale.edu/view/results/people?q=%7B%22AND%22%3A%20%5B%7B%22occupation%22%3A%20%7B%22name%22%3A%20%22Painter%22%7D%7D%5D%7D
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pg</span> <span class="o">=</span> <span class="n">PeopleGroups</span><span class="p">()</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">nationality</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;French&quot;</span><span class="p">})</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">pg</span><span class="o">.</span><span class="n">num_results</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">pg</span><span class="o">.</span><span class="n">view_url</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>126157
+https://lux.collections.yale.edu/view/results/people?q=%7B%22AND%22%3A%20%5B%7B%22nationality%22%3A%20%7B%22name%22%3A%20%22French%22%7D%7D%5D%7D
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pg</span> <span class="o">=</span> <span class="n">PeopleGroups</span><span class="p">()</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">gender</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Female&quot;</span><span class="p">})</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">pg</span><span class="o">.</span><span class="n">num_results</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">pg</span><span class="o">.</span><span class="n">view_url</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>422749
+https://lux.collections.yale.edu/view/results/people?q=%7B%22AND%22%3A%20%5B%7B%22gender%22%3A%20%7B%22name%22%3A%20%22Female%22%7D%7D%5D%7D
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="relationship-filters">
+<h3><span class="section-number">1.2.3. </span>Relationship Filters<a class="headerlink" href="#relationship-filters" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><strong>memberOf</strong>: Groups that people/groups belong to</p>
+<ul>
+<li><p>Type: agent reference</p></li>
+<li><p>Example: <code class="docutils literal notranslate"><span class="pre">filter(memberOf={&quot;name&quot;:</span> <span class="pre">&quot;Impressionist</span> <span class="pre">Movement&quot;})</span></code></p></li>
+</ul>
+</li>
+<li><p><strong>memberOfInverse</strong>: Search for groups containing specific members</p>
+<ul>
+<li><p>Type: agent reference</p></li>
+<li><p>Example: <code class="docutils literal notranslate"><span class="pre">filter(memberOfInverse={&quot;name&quot;:</span> <span class="pre">&quot;Claude</span> <span class="pre">Monet&quot;})</span></code></p></li>
+</ul>
+</li>
+<li><p><strong>foundedBy</strong>: Groups founded by specific people</p>
+<ul>
+<li><p>Type: agent reference</p></li>
+<li><p>Example: <code class="docutils literal notranslate"><span class="pre">filter(foundedBy={&quot;name&quot;:</span> <span class="pre">&quot;John</span> <span class="pre">Smith&quot;})</span></code></p></li>
+</ul>
+</li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pg</span> <span class="o">=</span> <span class="n">PeopleGroups</span><span class="p">()</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">memberOf</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Institut Diderot&quot;</span><span class="p">})</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">pg</span><span class="o">.</span><span class="n">num_results</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">pg</span><span class="o">.</span><span class="n">view_url</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>61
+https://lux.collections.yale.edu/view/results/people?q=%7B%22AND%22%3A%20%5B%7B%22memberOf%22%3A%20%7B%22name%22%3A%20%22Institut%20Diderot%22%7D%7D%5D%7D
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pg</span> <span class="o">=</span> <span class="n">PeopleGroups</span><span class="p">()</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">memberOfInverse</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Gourdeau, Camille&quot;</span><span class="p">})</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">pg</span><span class="o">.</span><span class="n">num_results</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">pg</span><span class="o">.</span><span class="n">view_url</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1
+https://lux.collections.yale.edu/view/results/people?q=%7B%22AND%22%3A%20%5B%7B%22memberOfInverse%22%3A%20%7B%22name%22%3A%20%22Gourdeau%2C%20Camille%22%7D%7D%5D%7D
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pg</span> <span class="o">=</span> <span class="n">PeopleGroups</span><span class="p">()</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">foundedBy</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;John Smith&quot;</span><span class="p">})</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">pg</span><span class="o">.</span><span class="n">num_results</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">pg</span><span class="o">.</span><span class="n">view_url</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1
+https://lux.collections.yale.edu/view/results/people?q=%7B%22AND%22%3A%20%5B%7B%22foundedBy%22%3A%20%7B%22name%22%3A%20%22John%20Smith%22%7D%7D%5D%7D
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="creative-work-filters">
+<h3><span class="section-number">1.2.4. </span>Creative Work Filters<a class="headerlink" href="#creative-work-filters" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><strong>created</strong>: Works created by the person/group</p>
+<ul>
+<li><p>Type: work reference</p></li>
+<li><p>Example: <code class="docutils literal notranslate"><span class="pre">filter(created={&quot;name&quot;:</span> <span class="pre">&quot;Portrait</span> <span class="pre">of</span> <span class="pre">Madame</span> <span class="pre">X&quot;})</span></code></p></li>
+</ul>
+</li>
+<li><p><strong>produced</strong>: Objects created by the person/group</p>
+<ul>
+<li><p>Type: item reference</p></li>
+<li><p>Example: <code class="docutils literal notranslate"><span class="pre">filter(produced={&quot;name&quot;:</span> <span class="pre">&quot;Bronze</span> <span class="pre">Sculpture&quot;})</span></code></p></li>
+</ul>
+</li>
+<li><p><strong>published</strong>: Works published by the person/group</p>
+<ul>
+<li><p>Type: work reference</p></li>
+<li><p>Example: <code class="docutils literal notranslate"><span class="pre">filter(published={&quot;name&quot;:</span> <span class="pre">&quot;Art</span> <span class="pre">History</span> <span class="pre">Journal&quot;})</span></code></p></li>
+</ul>
+</li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pg</span> <span class="o">=</span> <span class="n">PeopleGroups</span><span class="p">()</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">created</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Portrait of Madame X&quot;</span><span class="p">})</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">pg</span><span class="o">.</span><span class="n">num_results</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">pg</span><span class="o">.</span><span class="n">view_url</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1
+https://lux.collections.yale.edu/view/results/people?q=%7B%22AND%22%3A%20%5B%7B%22created%22%3A%20%7B%22name%22%3A%20%22Portrait%20of%20Madame%20X%22%7D%7D%5D%7D
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pg</span> <span class="o">=</span> <span class="n">PeopleGroups</span><span class="p">()</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">produced</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Bronze&quot;</span><span class="p">})</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">pg</span><span class="o">.</span><span class="n">num_results</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">pg</span><span class="o">.</span><span class="n">view_url</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>567
+https://lux.collections.yale.edu/view/results/people?q=%7B%22AND%22%3A%20%5B%7B%22produced%22%3A%20%7B%22name%22%3A%20%22Bronze%22%7D%7D%5D%7D
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pg</span> <span class="o">=</span> <span class="n">PeopleGroups</span><span class="p">()</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">published</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Art&quot;</span><span class="p">})</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">pg</span><span class="o">.</span><span class="n">num_results</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">pg</span><span class="o">.</span><span class="n">view_url</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2044
+https://lux.collections.yale.edu/view/results/people?q=%7B%22AND%22%3A%20%5B%7B%22published%22%3A%20%7B%22name%22%3A%20%22Art%22%7D%7D%5D%7D
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="collection-and-curation-filters">
+<h3><span class="section-number">1.2.5. </span>Collection and Curation Filters<a class="headerlink" href="#collection-and-curation-filters" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><strong>curated</strong>: Collections curated by the group</p>
+<ul>
+<li><p>Type: set reference</p></li>
+<li><p>Example: <code class="docutils literal notranslate"><span class="pre">filter(curated={&quot;name&quot;:</span> <span class="pre">&quot;Modern</span> <span class="pre">Art</span> <span class="pre">Collection&quot;})</span></code></p></li>
+</ul>
+</li>
+<li><p><strong>hasDigitalImage</strong>: Filter for records with digital images</p>
+<ul>
+<li><p>Type: boolean</p></li>
+<li><p>Example: <code class="docutils literal notranslate"><span class="pre">filter(hasDigitalImage=True)</span></code></p></li>
+</ul>
+</li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pg</span> <span class="o">=</span> <span class="n">PeopleGroups</span><span class="p">()</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">curated</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Modern Art Collection&quot;</span><span class="p">})</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">pg</span><span class="o">.</span><span class="n">num_results</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">pg</span><span class="o">.</span><span class="n">view_url</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1
+https://lux.collections.yale.edu/view/results/people?q=%7B%22AND%22%3A%20%5B%7B%22curated%22%3A%20%7B%22name%22%3A%20%22Modern%20Art%20Collection%22%7D%7D%5D%7D
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pg</span> <span class="o">=</span> <span class="n">PeopleGroups</span><span class="p">()</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">hasDigitalImage</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">pg</span><span class="o">.</span><span class="n">num_results</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">pg</span><span class="o">.</span><span class="n">view_url</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>195885
+https://lux.collections.yale.edu/view/results/people?q=%7B%22AND%22%3A%20%5B%7B%22hasDigitalImage%22%3A%201%7D%5D%7D
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="influence-and-subject-filters">
+<h3><span class="section-number">1.2.6. </span>Influence and Subject Filters<a class="headerlink" href="#influence-and-subject-filters" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><strong>influenced</strong>: Concepts influenced by the person/group</p>
+<ul>
+<li><p>Type: concept reference</p></li>
+<li><p>Example: <code class="docutils literal notranslate"><span class="pre">filter(influenced={&quot;name&quot;:</span> <span class="pre">&quot;Cubism&quot;})</span></code></p></li>
+</ul>
+</li>
+<li><p><strong>influencedCreation</strong>: Works influenced by the person/group</p>
+<ul>
+<li><p>Type: work reference</p></li>
+<li><p>Example: <code class="docutils literal notranslate"><span class="pre">filter(influencedCreation={&quot;name&quot;:</span> <span class="pre">&quot;Les</span> <span class="pre">Demoiselles</span> <span class="pre">d'Avignon&quot;})</span></code></p></li>
+</ul>
+</li>
+<li><p><strong>subjectOfAgent</strong>: Works that feature the person/group as subject</p>
+<ul>
+<li><p>Type: work reference</p></li>
+<li><p>Example: <code class="docutils literal notranslate"><span class="pre">filter(subjectOfAgent={&quot;name&quot;:</span> <span class="pre">&quot;Biography</span> <span class="pre">of</span> <span class="pre">Picasso&quot;})</span></code></p></li>
+</ul>
+</li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pg</span> <span class="o">=</span> <span class="n">PeopleGroups</span><span class="p">()</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">influenced</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Fiction&quot;</span><span class="p">})</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">pg</span><span class="o">.</span><span class="n">num_results</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">pg</span><span class="o">.</span><span class="n">view_url</span><span class="p">)</span>
+<span class="n">pg</span> <span class="o">=</span> <span class="n">PeopleGroups</span><span class="p">()</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">influencedCreation</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Lord of the Rings&quot;</span><span class="p">})</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">pg</span><span class="o">.</span><span class="n">num_results</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">pg</span><span class="o">.</span><span class="n">view_url</span><span class="p">)</span>
+<span class="n">pg</span> <span class="o">=</span> <span class="n">PeopleGroups</span><span class="p">()</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">subjectOfAgent</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;The Hobbit&quot;</span><span class="p">})</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">pg</span><span class="o">.</span><span class="n">num_results</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">pg</span><span class="o">.</span><span class="n">view_url</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>13527
+https://lux.collections.yale.edu/view/results/people?q=%7B%22AND%22%3A%20%5B%7B%22influenced%22%3A%20%7B%22name%22%3A%20%22Fiction%22%7D%7D%5D%7D
+0
+https://lux.collections.yale.edu/view/results/people?q=%7B%22AND%22%3A%20%5B%7B%22influencedCreation%22%3A%20%7B%22name%22%3A%20%22Lord%20of%20the%20Rings%22%7D%7D%5D%7D
+2
+https://lux.collections.yale.edu/view/results/people?q=%7B%22AND%22%3A%20%5B%7B%22subjectOfAgent%22%3A%20%7B%22name%22%3A%20%22The%20Hobbit%22%7D%7D%5D%7D
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">luxy</span> <span class="kn">import</span> <span class="n">PeopleGroups</span>
+
+<span class="n">pg</span> <span class="o">=</span> <span class="n">PeopleGroups</span><span class="p">()</span>
+<span class="n">pg</span><span class="o">.</span><span class="n">list_filters</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Available filters for agent:
+--------------------------------------------------
+
+name (Name) - (text):
+  Description: Enter term(s) to be found within the title or name of the Person or Group. &quot;AND&quot;, &quot;OR&quot;, and &quot;-&quot; do not have special meaning in Advanced Search as they do in Simple Search. Instead use multiple fields connected with &quot;have All of&quot;, &quot;have Any of&quot;, and &quot;have None of&quot; respectively.
+
+text (Anywhere) - (text):
+  Description: Search for People &amp; Groups by terms anywhere in the record. &quot;AND&quot;, &quot;OR&quot;, and &quot;-&quot; do not have special meaning in Advanced Search as they do in Simple Search. Instead use multiple fields connected with &quot;have All of&quot;, &quot;have Any of&quot;, and &quot;have None of&quot; respectively.
+
+startAt (Born/Formed At) - (place):
+  Description: Search for People &amp; Groups that were born or formed in the specified Place.
+
+startDate (Born/Formed Date) - (date):
+  Description: Search People &amp; Groups by the date on which they were born or formed.
+
+carriedOut (Carried Out) - (event):
+  Description: Search for People &amp; Groups that carried out the specified Event.
+
+classification (Categorized As) - (concept):
+  Description: Search for People &amp; Groups that are categorized with the specified Concept or Type terms.
+
+produced (Created Object) - (item):
+  Description: Search for People &amp; Groups that created the specified Objects.
+
+created (Created Works) - (work):
+  Description: Search for People &amp; Groups that authored or created the specified Works.
+
+curated (Curated) - (set):
+  Description: Search for Groups responsible for the curation of Yale&#39;s collections.
+
+endAt (Died/Dissolved At) - (place):
+  Description: Search for People &amp; Groups that died or were dissolved in the specified Place.
+
+endDate (Died/Dissolved Date) - (date):
+  Description: Search for People &amp; Groups by the date on which they died or were dissolved.
+
+encountered (Encountered) - (item):
+  Description: Search for People &amp; Groups that encountered or found the specified Objects.
+
+foundedBy (Founded By) - (agent):
+  Description: Search for Groups by the specified People that were responsible for their foundation.
+
+founded (Founded Group) - (agent):
+  Description: Search for People who were responsible for the foundation of the specified Groups.
+
+gender (Gender) - (concept):
+  Description: Search for People by the specified Gender. This information comes from external sources, and gender information may not match expected results.
+
+hasDigitalImage (Have Digital Image) - (boolean):
+  Description: Search for People &amp; Groups for which digital images are available.
+
+memberOfInverse (Have Member) - (agent):
+  Description: Search for Groups that have the specified People &amp; Groups as members.
+
+id (ID) - (text):
+  Description: Search for People &amp; Groups by their LUX data URI (e.g. starting with https://lux.collections.yale.edu/data/ and followed by a URI path containing a UUID, not the URI with /view/ in it).
+
+identifier (Identifier) - (text):
+  Description: Search for People &amp; Groups by a string identifier or an external authority URI, such as ULAN, VIAF or wikidata.
+
+influenced (Influenced) - (concept):
+  Description: Search for People &amp; Groups that influenced the specified Concepts
+
+influencedProduction (Influenced Creation Of Objects) - (item):
+  Description: Search for People &amp; Groups that influenced the creation of the specified Objects
+
+influencedCreation (Influenced Creation Of Works) - (work):
+  Description: Search for People &amp; Groups that influenced the creation of the specified Works
+
+memberOf (Member of) - (agent):
+  Description: Search for People &amp; Groups that are members of other Groups.
+
+nationality (Nationality) - (concept):
+  Description: Search for People &amp; Groups with the specified Nationality.
+
+occupation (Occupation/Role) - (concept):
+  Description: Search for People &amp; Groups with the specified Occupation or Role.
+
+recordType (Person or Group Class) - (text):
+  Description: Search for records categorized as either a &quot;Person&quot; or a &quot;Group&quot;. Person is an individual either real or fictionalized. Group is an organization, either real or fictionalized, with one or more members.
+
+professionalActivity (Professional Activity Categorized As) - (concept):
+  Description: Search for people and groups that carried out professional activities of the given categorization.
+
+activeAt (Professionally Active At) - (place):
+  Description: Search for People &amp; Groups that were professionally active in the specified Places.
+
+activeDate (Professionally Active Date) - (date):
+  Description: Search for People &amp; Groups by the dates on which they were professionally active.
+
+published (Published) - (work):
+  Description: Search for People &amp; Groups that published the specified Works.
+
+subjectOfAgent (Subject Of) - (work):
+  Description: Search for People &amp; Groups that are the subject of the specified Works.
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -483,6 +1207,37 @@
             </div>
             
             
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#filter-categories">1.1. Filter Categories</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#text-search-filters">1.1.1. Text Search Filters</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#name-filters">1.1.1.1. Name Filters</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#location-filters">1.2. Location Filters</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#date-filters">1.2.1. Date Filters</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#professional-and-biographical-filters">1.2.2. Professional and Biographical Filters</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#relationship-filters">1.2.3. Relationship Filters</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#creative-work-filters">1.2.4. Creative Work Filters</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#collection-and-curation-filters">1.2.5. Collection and Curation Filters</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#influence-and-subject-filters">1.2.6. Influence and Subject Filters</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
               
             
           </div>
