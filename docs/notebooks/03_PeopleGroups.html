@@ -691,7 +691,6 @@ https://lux.collections.yale.edu/view/results/people?q=%7B%22AND%22%3A%20%5B%7B%
 <li><p>Supports comparison operators: “==”, “!=”, “&gt;”, “&gt;=”, “&lt;”, “&lt;=”</p></li>
 <li><p>Examples:</p>
 <ul>
-<li><p><code class="docutils literal notranslate"><span class="pre">filter(startDate=&quot;1987-01-01T00:00:00.000Z&quot;)</span></code> - Exact date match</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">filter(startDate=(&quot;1987-01-01T00:00:00.000Z&quot;,</span> <span class="pre">&quot;&gt;=&quot;))</span></code> - Born after or on Jan 1, 1987</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">filter(startDate=(&quot;1987-01-01T00:00:00.000Z&quot;,</span> <span class="pre">&quot;&lt;&quot;))</span></code> - Born before 1987</p></li>
 </ul>
@@ -705,7 +704,6 @@ https://lux.collections.yale.edu/view/results/people?q=%7B%22AND%22%3A%20%5B%7B%
 <li><p>Supports same comparison operators</p></li>
 <li><p>Examples:</p>
 <ul>
-<li><p><code class="docutils literal notranslate"><span class="pre">filter(endDate=&quot;1987-01-01T00:00:00.000Z&quot;)</span></code> - Exact date match</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">filter(endDate=(&quot;1987-01-01T00:00:00.000Z&quot;,</span> <span class="pre">&quot;&lt;=&quot;))</span></code> - Died on or before Jan 1, 1987</p></li>
 </ul>
 </li>
@@ -718,9 +716,7 @@ https://lux.collections.yale.edu/view/results/people?q=%7B%22AND%22%3A%20%5B%7B%
 <li><p>Supports same comparison operators</p></li>
 <li><p>Examples:</p>
 <ul>
-<li><p>Single date: <code class="docutils literal notranslate"><span class="pre">filter(activeDate=&quot;1987-01-01T00:00:00.000Z&quot;)</span></code></p></li>
 <li><p>With comparison: <code class="docutils literal notranslate"><span class="pre">filter(activeDate=(&quot;1987-01-01T00:00:00.000Z&quot;,</span> <span class="pre">&quot;&gt;&quot;))</span></code> - Active after Jan 1, 1987</p></li>
-<li><p>Date range: <code class="docutils literal notranslate"><span class="pre">filter(activeDate=&quot;1987-01-01T00:00:00.000Z/2000-12-31T23:59:59.999Z&quot;)</span></code></p></li>
 </ul>
 </li>
 </ul>
