@@ -509,39 +509,47 @@
 <div class="admonition-text-search-filters-quick-reference admonition">
 <p class="admonition-title">Text Search Filters Quick Reference</p>
 <details>
-<summary>Click to expand/summary>
-<ul class="simple">
-<li><p><strong>name</strong>: Search within titles or names of people and groups</p>
-<ul>
-<li><p>Type: text</p></li>
-<li><p>Usage: Search for specific names or partial name matches</p></li>
-<li><p>Example: <code class="docutils literal notranslate"><span class="pre">filter(name=&quot;John</span> <span class="pre">Adams&quot;)</span></code></p></li>
-</ul>
-</li>
-<li><p><strong>text</strong>: Search anywhere in the record</p>
-<ul>
-<li><p>Type: text</p></li>
-<li><p>Usage: Full-text search across all fields</p></li>
-<li><p>Example: <code class="docutils literal notranslate"><span class="pre">filter(text=&quot;John</span> <span class="pre">Adams&quot;)</span></code></p></li>
-</ul>
-</li>
-<li><p><strong>id</strong>: Search by LUX data URI</p>
-<ul>
-<li><p>Type: text</p></li>
-<li><p>Format: UUID v4 (8-4-4-4-12 format)</p></li>
-<li><p>Example: <code class="docutils literal notranslate"><span class="pre">filter(id=&quot;https://lux.collections.yale.edu/data/person/977a4f7a-5d26-4965-8dd9-3fb0eaa4267e&quot;)</span></code></p></li>
-</ul>
-</li>
-<li><p><strong>identifier</strong>: Search by external identifiers (ULAN, VIAF, Wikidata)</p>
-<ul>
-<li><p>Type: text</p></li>
-<li><p>Example: <code class="docutils literal notranslate"><span class="pre">filter(identifier=&quot;http://www.wikidata.org/entity/Q11806&quot;)</span></code></p></li>
-</ul>
-</li>
-</ul>
-</details>
+<summary>Click to expand</summary>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Filter</p></th>
+<th class="head"><p>Description</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Usage/Format</p></th>
+<th class="head"><p>Example</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>name</strong></p></td>
+<td><p>Search within titles or names of people and groups</p></td>
+<td><p>text</p></td>
+<td><p>Search for specific names or partial name matches</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">filter(name=&quot;John</span> <span class="pre">Adams&quot;)</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>text</strong></p></td>
+<td><p>Search anywhere in the record</p></td>
+<td><p>text</p></td>
+<td><p>Full-text search across all fields</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">filter(text=&quot;John</span> <span class="pre">Adams&quot;)</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><strong>id</strong></p></td>
+<td><p>Search by LUX data URI</p></td>
+<td><p>text</p></td>
+<td><p>UUID v4 (8-4-4-4-12 format)</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">filter(id=&quot;https://lux.collections.yale.edu/data/person/977a4f7a-5d26-4965-8dd9-3fb0eaa4267e&quot;)</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>identifier</strong></p></td>
+<td><p>Search by external identifiers (ULAN, VIAF, Wikidata)</p></td>
+<td><p>text</p></td>
+<td><p>External identifier strings</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">filter(identifier=&quot;http://www.wikidata.org/entity/Q11806&quot;)</span></code></p></td>
+</tr>
+</tbody>
+</table>
 </div>
+</details>
 <p>To do explore this via the API, we need to first import the PeopleGroups class.</p>
+</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">luxy</span> <span class="kn">import</span> <span class="n">PeopleGroups</span>
