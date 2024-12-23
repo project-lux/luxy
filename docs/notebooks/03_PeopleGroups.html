@@ -506,21 +506,23 @@
 <li><p>id</p></li>
 <li><p>identifier</p></li>
 </ul>
+<div class="admonition-text-search-filters-quick-reference admonition">
+<p class="admonition-title">Text Search Filters Quick Reference</p>
 <details>
-<summary>Text Search Filters Quick Reference</summary>
+<summary>Click to expand/summary>
 <ul class="simple">
 <li><p><strong>name</strong>: Search within titles or names of people and groups</p>
 <ul>
 <li><p>Type: text</p></li>
 <li><p>Usage: Search for specific names or partial name matches</p></li>
-<li><p>Example: <code class="docutils literal notranslate"><span class="pre">filter(name=&quot;John</span> <span class="pre">Smith&quot;)</span></code></p></li>
+<li><p>Example: <code class="docutils literal notranslate"><span class="pre">filter(name=&quot;John</span> <span class="pre">Adams&quot;)</span></code></p></li>
 </ul>
 </li>
 <li><p><strong>text</strong>: Search anywhere in the record</p>
 <ul>
 <li><p>Type: text</p></li>
 <li><p>Usage: Full-text search across all fields</p></li>
-<li><p>Example: <code class="docutils literal notranslate"><span class="pre">filter(text=&quot;artist</span> <span class="pre">painter&quot;)</span></code></p></li>
+<li><p>Example: <code class="docutils literal notranslate"><span class="pre">filter(text=&quot;John</span> <span class="pre">Adams&quot;)</span></code></p></li>
 </ul>
 </li>
 <li><p><strong>id</strong>: Search by LUX data URI</p>
@@ -538,6 +540,7 @@
 </li>
 </ul>
 </details>
+</div>
 <p>To do explore this via the API, we need to first import the PeopleGroups class.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -552,7 +555,7 @@
 <p>For example, searching for “John Smith” will return any people or groups that have “John Smith” in their name or title. If we were to do this via the API, we would get the following results:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pg</span> <span class="o">=</span> <span class="n">PeopleGroups</span><span class="p">()</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;John Smith&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pg</span> <span class="o">=</span> <span class="n">PeopleGroups</span><span class="p">()</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;John Adams&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="n">pg</span><span class="o">.</span><span class="n">num_results</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">pg</span><span class="o">.</span><span class="n">view_url</span><span class="p">)</span>
@@ -560,8 +563,8 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>720
-https://lux.collections.yale.edu/view/results/people?q=%7B%22AND%22%3A%20%5B%7B%22name%22%3A%20%22John%20Smith%22%7D%5D%7D
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>276
+https://lux.collections.yale.edu/view/results/people?q=%7B%22AND%22%3A%20%5B%7B%22name%22%3A%20%22John%20Adams%22%7D%5D%7D
 </pre></div>
 </div>
 </div>
@@ -569,9 +572,11 @@ https://lux.collections.yale.edu/view/results/people?q=%7B%22AND%22%3A%20%5B%7B%
 </section>
 <section id="text-filter">
 <h3><span class="section-number">1.1.2. </span>text Filter<a class="headerlink" href="#text-filter" title="Link to this heading">#</a></h3>
+<p>The <code class="docutils literal notranslate"><span class="pre">text</span></code> filter allows you to search anywhere in the record. This filter is useful when you want to find specific individuals or organizations by their name. The search is case-insensitive and supports partial matches.</p>
+<p>For example, searching for “John Adams” will return any people or groups that have “John Adams” in their name, title, or any other text field. If we were to do this via the API, we would get the following results:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pg</span> <span class="o">=</span> <span class="n">PeopleGroups</span><span class="p">()</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">text</span><span class="o">=</span><span class="s2">&quot;John Smith&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pg</span> <span class="o">=</span> <span class="n">PeopleGroups</span><span class="p">()</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">text</span><span class="o">=</span><span class="s2">&quot;John Adams&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="n">pg</span><span class="o">.</span><span class="n">num_results</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">pg</span><span class="o">.</span><span class="n">view_url</span><span class="p">)</span>
@@ -579,8 +584,8 @@ https://lux.collections.yale.edu/view/results/people?q=%7B%22AND%22%3A%20%5B%7B%
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1027
-https://lux.collections.yale.edu/view/results/people?q=%7B%22AND%22%3A%20%5B%7B%22text%22%3A%20%22John%20Smith%22%7D%5D%7D
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>381
+https://lux.collections.yale.edu/view/results/people?q=%7B%22AND%22%3A%20%5B%7B%22text%22%3A%20%22John%20Adams%22%7D%5D%7D
 </pre></div>
 </div>
 </div>
@@ -588,6 +593,8 @@ https://lux.collections.yale.edu/view/results/people?q=%7B%22AND%22%3A%20%5B%7B%
 </section>
 <section id="id-filter">
 <h3><span class="section-number">1.1.3. </span>id Filter<a class="headerlink" href="#id-filter" title="Link to this heading">#</a></h3>
+<p>In both of the examples above, we had numerous matches because we were searching for a very common name. In order to get a more specific result, we can use the <code class="docutils literal notranslate"><span class="pre">id</span></code> filter. The <code class="docutils literal notranslate"><span class="pre">id</span></code> filter allows you to search by the LUX data URI. This filter is useful when you want to find a specific individual or organization by their unique identifier.</p>
+<p>For example, searching for “John Adams” will return the specific individual or organization that has the LUX data URI “https://lux.collections.yale.edu/data/person/977a4f7a-5d26-4965-8dd9-3fb0eaa4267e”. If we were to do this via the API, we would get the following results:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pg</span> <span class="o">=</span> <span class="n">PeopleGroups</span><span class="p">()</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="s2">&quot;https://lux.collections.yale.edu/data/person/977a4f7a-5d26-4965-8dd9-3fb0eaa4267e&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
@@ -607,6 +614,8 @@ https://lux.collections.yale.edu/view/results/people?q=%7B%22AND%22%3A%20%5B%7B%
 </section>
 <section id="identifier-filter">
 <h3><span class="section-number">1.1.4. </span>identifier Filter<a class="headerlink" href="#identifier-filter" title="Link to this heading">#</a></h3>
+<p>Another way to get a more specific result is to use the <code class="docutils literal notranslate"><span class="pre">identifier</span></code> filter. The <code class="docutils literal notranslate"><span class="pre">identifier</span></code> filter allows you to search by external identifiers (ULAN, VIAF, Wikidata). This filter is useful when you want to find a specific individual or organization by their unique identifier.</p>
+<p>For example, searching for “John Adams” will return the specific individual or organization that has the ULAN identifier “http://www.wikidata.org/entity/Q11806”. If we were to do this via the API, we would get the following results:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pg</span> <span class="o">=</span> <span class="n">PeopleGroups</span><span class="p">()</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">identifier</span><span class="o">=</span><span class="s2">&quot;http://www.wikidata.org/entity/Q11806&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
