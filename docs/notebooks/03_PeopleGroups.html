@@ -428,6 +428,7 @@
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#text-filter">1.1.2. text Filter</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id-filter">1.1.3. id Filter</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#identifier-filter">1.1.4. identifier Filter</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#recordtype-filter">1.1.5. recordType Filter</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#location-filters">1.2. Location Filters</a><ul class="nav section-nav flex-column">
@@ -505,6 +506,7 @@
 <li><p>text</p></li>
 <li><p>id</p></li>
 <li><p>identifier</p></li>
+<li><p>recordType</p></li>
 </ul>
 <div class="admonition-text-search-filters-quick-reference admonition">
 <p class="admonition-title">Text Search Filters Quick Reference</p>
@@ -544,13 +546,19 @@
 <td><p>External identifier strings</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">filter(identifier=&quot;http://www.wikidata.org/entity/Q11806&quot;)</span></code></p></td>
 </tr>
+<tr class="row-even"><td><p><strong>recordType</strong></p></td>
+<td><p>Search by record type</p></td>
+<td><p>text</p></td>
+<td><p>“person”, “group”</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">filter(recordType=&quot;person&quot;)</span></code></p></td>
+</tr>
 </tbody>
 </table>
 </div>
 </details>
-<p>To do explore this via the API, we need to first import the PeopleGroups class.</p>
 </div>
-<div class="cell docutils container">
+<br>
+To do explore this via the API, we need to first import the PeopleGroups class.<div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">luxy</span> <span class="kn">import</span> <span class="n">PeopleGroups</span>
 </pre></div>
@@ -636,6 +644,27 @@ https://lux.collections.yale.edu/view/results/people?q=%7B%22AND%22%3A%20%5B%7B%
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1
 https://lux.collections.yale.edu/view/results/people?q=%7B%22AND%22%3A%20%5B%7B%22identifier%22%3A%20%22http%3A//www.wikidata.org/entity/Q11806%22%7D%5D%7D
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="recordtype-filter">
+<h3><span class="section-number">1.1.5. </span>recordType Filter<a class="headerlink" href="#recordtype-filter" title="Link to this heading">#</a></h3>
+<p>The <code class="docutils literal notranslate"><span class="pre">recordType</span></code> filter allows you to search by the type of record. This filter is useful when you want to find a specific individual or organization by their type.</p>
+<p>For example, searching for “John Adams” and “group” will return the specific organizations that have the name “John Adams”. If we were to do this via the API, we would get the following results:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pg</span> <span class="o">=</span> <span class="n">PeopleGroups</span><span class="p">()</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;John Adams&quot;</span><span class="p">,</span> <span class="n">recordType</span><span class="o">=</span><span class="s2">&quot;group&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">pg</span><span class="o">.</span><span class="n">num_results</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">pg</span><span class="o">.</span><span class="n">view_url</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>11
+https://lux.collections.yale.edu/view/results/people?q=%7B%22AND%22%3A%20%5B%7B%22name%22%3A%20%22John%20Adams%22%7D%2C%20%7B%22recordType%22%3A%20%22group%22%7D%5D%7D
 </pre></div>
 </div>
 </div>
@@ -1269,6 +1298,7 @@ https://lux.collections.yale.edu/view/results/people?q=%7B%22AND%22%3A%20%5B%7B%
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#text-filter">1.1.2. text Filter</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id-filter">1.1.3. id Filter</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#identifier-filter">1.1.4. identifier Filter</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#recordtype-filter">1.1.5. recordType Filter</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#location-filters">1.2. Location Filters</a><ul class="nav section-nav flex-column">
