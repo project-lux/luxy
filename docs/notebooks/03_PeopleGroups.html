@@ -423,20 +423,54 @@
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#filter-categories">1.1. Filter Categories</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#text-search-filters">1.1.1. Text Search Filters</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#name-filters">1.1.1.1. Name Filters</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#text-search-filters">1.1. Text Search Filters</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#name-filter">1.1.1. name Filter</a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#text-filter">1.2. text Filter</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id-filter">1.2.1. id Filter</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#identifier-filter">1.2.2. identifier Filter</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#location-filters">1.2. Location Filters</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#date-filters">1.2.1. Date Filters</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#professional-and-biographical-filters">1.2.2. Professional and Biographical Filters</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#relationship-filters">1.2.3. Relationship Filters</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#creative-work-filters">1.2.4. Creative Work Filters</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#collection-and-curation-filters">1.2.5. Collection and Curation Filters</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#influence-and-subject-filters">1.2.6. Influence and Subject Filters</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#location-filters">1.3. Location Filters</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#startat-filter">1.3.1. startAt Filter</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#endat-filter">1.3.2. endAt Filter</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#activeat-filter">1.3.3. activeAt Filter</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#date-filters">1.4. Date Filters</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#startdate-filter">1.4.1. startDate Filter</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#enddate-filter">1.4.2. endDate Filter</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#activedate-filter">1.4.3. activeDate Filter</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#professional-and-biographical-filters">1.5. Professional and Biographical Filters</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#occupation-filter">1.5.1. occupation Filter</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#nationality-filter">1.5.2. nationality Filter</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#gender-filter">1.5.3. gender Filter</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#relationship-filters">1.6. Relationship Filters</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#memberof-filter">1.6.1. memberOf Filter</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#memberofinverse-filter">1.6.2. memberOfInverse Filter</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#foundedby-filter">1.6.3. foundedBy Filter</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#creative-work-filters">1.7. Creative Work Filters</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#created-filter">1.7.1. created Filter</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#produced-filter">1.7.2. produced Filter</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#published-filter">1.7.3. published Filter</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#collection-and-curation-filters">1.8. Collection and Curation Filters</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#curated-filter">1.8.1. curated Filter</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hasdigitalimage-filter">1.8.2. hasDigitalImage Filter</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#influence-and-subject-filters">1.9. Influence and Subject Filters</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#influenced-filter">1.9.1. influenced Filter</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#influencedcreation-filter">1.9.2. influencedCreation Filter</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#subjectofagent-filter">1.9.3. subjectOfAgent Filter</a></li>
 </ul>
 </li>
 </ul>
@@ -454,10 +488,8 @@
 <h1><span class="section-number">1. </span>PeopleGroups<a class="headerlink" href="#peoplegroups" title="Link to this heading">#</a></h1>
 <p>The PeopleGroups class provides an interface to search for people and groups in Yale’s LUX collections database. This class inherits from BaseLux and provides specialized filtering capabilities for searching historical figures, artists, organizations, and other entities in Yale’s collections.</p>
 <p>The PeopleGroups class allows you to search for both individual people and groups (organizations) using a variety of filters. You can search by basic information like names and dates, professional activities, relationships to works and objects, and various biographical details.</p>
-<section id="filter-categories">
-<h2><span class="section-number">1.1. </span>Filter Categories<a class="headerlink" href="#filter-categories" title="Link to this heading">#</a></h2>
 <section id="text-search-filters">
-<h3><span class="section-number">1.1.1. </span>Text Search Filters<a class="headerlink" href="#text-search-filters" title="Link to this heading">#</a></h3>
+<h2><span class="section-number">1.1. </span>Text Search Filters<a class="headerlink" href="#text-search-filters" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p><strong>name</strong>: Search within titles or names of people and groups</p>
 <ul>
@@ -494,8 +526,8 @@
 </div>
 </div>
 </div>
-<section id="name-filters">
-<h4><span class="section-number">1.1.1.1. </span>Name Filters<a class="headerlink" href="#name-filters" title="Link to this heading">#</a></h4>
+<section id="name-filter">
+<h3><span class="section-number">1.1.1. </span>name Filter<a class="headerlink" href="#name-filter" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pg</span> <span class="o">=</span> <span class="n">PeopleGroups</span><span class="p">()</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;John Smith&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
@@ -512,6 +544,10 @@ https://lux.collections.yale.edu/view/results/people?q=%7B%22AND%22%3A%20%5B%7B%
 </div>
 </div>
 </div>
+</section>
+</section>
+<section id="text-filter">
+<h2><span class="section-number">1.2. </span>text Filter<a class="headerlink" href="#text-filter" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pg</span> <span class="o">=</span> <span class="n">PeopleGroups</span><span class="p">()</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">text</span><span class="o">=</span><span class="s2">&quot;John Smith&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
@@ -528,6 +564,8 @@ https://lux.collections.yale.edu/view/results/people?q=%7B%22AND%22%3A%20%5B%7B%
 </div>
 </div>
 </div>
+<section id="id-filter">
+<h3><span class="section-number">1.2.1. </span>id Filter<a class="headerlink" href="#id-filter" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pg</span> <span class="o">=</span> <span class="n">PeopleGroups</span><span class="p">()</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="s2">&quot;516e445f-ce33-414c-af05-efcc8f1de66a&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
@@ -544,6 +582,9 @@ https://lux.collections.yale.edu/view/results/people?q=%7B%22AND%22%3A%20%5B%7B%
 </div>
 </div>
 </div>
+</section>
+<section id="identifier-filter">
+<h3><span class="section-number">1.2.2. </span>identifier Filter<a class="headerlink" href="#identifier-filter" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pg</span> <span class="o">=</span> <span class="n">PeopleGroups</span><span class="p">()</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">identifier</span><span class="o">=</span><span class="s2">&quot;95296943&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
@@ -562,9 +603,8 @@ https://lux.collections.yale.edu/view/results/people?q=%7B%22AND%22%3A%20%5B%7B%
 </div>
 </section>
 </section>
-</section>
 <section id="location-filters">
-<h2><span class="section-number">1.2. </span>Location Filters<a class="headerlink" href="#location-filters" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">1.3. </span>Location Filters<a class="headerlink" href="#location-filters" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p><strong>startAt</strong>: Place where person was born or group was formed</p>
 <ul>
@@ -585,6 +625,8 @@ https://lux.collections.yale.edu/view/results/people?q=%7B%22AND%22%3A%20%5B%7B%
 </ul>
 </li>
 </ul>
+<section id="startat-filter">
+<h3><span class="section-number">1.3.1. </span>startAt Filter<a class="headerlink" href="#startat-filter" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pg</span> <span class="o">=</span> <span class="n">PeopleGroups</span><span class="p">()</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">startAt</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Paris&quot;</span><span class="p">})</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
@@ -601,6 +643,9 @@ https://lux.collections.yale.edu/view/results/people?q=%7B%22AND%22%3A%20%5B%7B%
 </div>
 </div>
 </div>
+</section>
+<section id="endat-filter">
+<h3><span class="section-number">1.3.2. </span>endAt Filter<a class="headerlink" href="#endat-filter" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pg</span> <span class="o">=</span> <span class="n">PeopleGroups</span><span class="p">()</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">endAt</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;London&quot;</span><span class="p">})</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
@@ -617,6 +662,9 @@ https://lux.collections.yale.edu/view/results/people?q=%7B%22AND%22%3A%20%5B%7B%
 </div>
 </div>
 </div>
+</section>
+<section id="activeat-filter">
+<h3><span class="section-number">1.3.3. </span>activeAt Filter<a class="headerlink" href="#activeat-filter" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pg</span> <span class="o">=</span> <span class="n">PeopleGroups</span><span class="p">()</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">activeAt</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;New York&quot;</span><span class="p">})</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
@@ -633,8 +681,10 @@ https://lux.collections.yale.edu/view/results/people?q=%7B%22AND%22%3A%20%5B%7B%
 </div>
 </div>
 </div>
+</section>
+</section>
 <section id="date-filters">
-<h3><span class="section-number">1.2.1. </span>Date Filters<a class="headerlink" href="#date-filters" title="Link to this heading">#</a></h3>
+<h2><span class="section-number">1.4. </span>Date Filters<a class="headerlink" href="#date-filters" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p><strong>startDate</strong>: Birth/formation date</p>
 <ul>
@@ -678,6 +728,8 @@ https://lux.collections.yale.edu/view/results/people?q=%7B%22AND%22%3A%20%5B%7B%
 </ul>
 </li>
 </ul>
+<section id="startdate-filter">
+<h3><span class="section-number">1.4.1. </span>startDate Filter<a class="headerlink" href="#startdate-filter" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pg</span> <span class="o">=</span> <span class="n">PeopleGroups</span><span class="p">()</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">startDate</span><span class="o">=</span><span class="p">(</span><span class="s2">&quot;1987-01-01T00:00:00.000Z&quot;</span><span class="p">,</span> <span class="s2">&quot;&gt;=&quot;</span><span class="p">))</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
@@ -694,6 +746,9 @@ https://lux.collections.yale.edu/view/results/people?q=%7B%22AND%22%3A%20%5B%7B%
 </div>
 </div>
 </div>
+</section>
+<section id="enddate-filter">
+<h3><span class="section-number">1.4.2. </span>endDate Filter<a class="headerlink" href="#enddate-filter" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pg</span> <span class="o">=</span> <span class="n">PeopleGroups</span><span class="p">()</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">endDate</span><span class="o">=</span><span class="p">(</span><span class="s2">&quot;1987-01-01T00:00:00.000Z&quot;</span><span class="p">,</span> <span class="s2">&quot;&lt;=&quot;</span><span class="p">))</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
@@ -710,6 +765,9 @@ https://lux.collections.yale.edu/view/results/people?q=%7B%22AND%22%3A%20%5B%7B%
 </div>
 </div>
 </div>
+</section>
+<section id="activedate-filter">
+<h3><span class="section-number">1.4.3. </span>activeDate Filter<a class="headerlink" href="#activedate-filter" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pg</span> <span class="o">=</span> <span class="n">PeopleGroups</span><span class="p">()</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">activeDate</span><span class="o">=</span><span class="p">(</span><span class="s2">&quot;1987-01-01T00:00:00.000Z&quot;</span><span class="p">,</span> <span class="s2">&quot;&gt;&quot;</span><span class="p">))</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
@@ -727,8 +785,9 @@ https://lux.collections.yale.edu/view/results/people?q=%7B%22AND%22%3A%20%5B%7B%
 </div>
 </div>
 </section>
+</section>
 <section id="professional-and-biographical-filters">
-<h3><span class="section-number">1.2.2. </span>Professional and Biographical Filters<a class="headerlink" href="#professional-and-biographical-filters" title="Link to this heading">#</a></h3>
+<h2><span class="section-number">1.5. </span>Professional and Biographical Filters<a class="headerlink" href="#professional-and-biographical-filters" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p><strong>occupation</strong>: Search by occupation or role</p>
 <ul>
@@ -750,6 +809,8 @@ https://lux.collections.yale.edu/view/results/people?q=%7B%22AND%22%3A%20%5B%7B%
 </ul>
 </li>
 </ul>
+<section id="occupation-filter">
+<h3><span class="section-number">1.5.1. </span>occupation Filter<a class="headerlink" href="#occupation-filter" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pg</span> <span class="o">=</span> <span class="n">PeopleGroups</span><span class="p">()</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">occupation</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Painter&quot;</span><span class="p">})</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
@@ -766,6 +827,9 @@ https://lux.collections.yale.edu/view/results/people?q=%7B%22AND%22%3A%20%5B%7B%
 </div>
 </div>
 </div>
+</section>
+<section id="nationality-filter">
+<h3><span class="section-number">1.5.2. </span>nationality Filter<a class="headerlink" href="#nationality-filter" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pg</span> <span class="o">=</span> <span class="n">PeopleGroups</span><span class="p">()</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">nationality</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;French&quot;</span><span class="p">})</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
@@ -782,6 +846,9 @@ https://lux.collections.yale.edu/view/results/people?q=%7B%22AND%22%3A%20%5B%7B%
 </div>
 </div>
 </div>
+</section>
+<section id="gender-filter">
+<h3><span class="section-number">1.5.3. </span>gender Filter<a class="headerlink" href="#gender-filter" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pg</span> <span class="o">=</span> <span class="n">PeopleGroups</span><span class="p">()</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">gender</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Female&quot;</span><span class="p">})</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
@@ -799,8 +866,9 @@ https://lux.collections.yale.edu/view/results/people?q=%7B%22AND%22%3A%20%5B%7B%
 </div>
 </div>
 </section>
+</section>
 <section id="relationship-filters">
-<h3><span class="section-number">1.2.3. </span>Relationship Filters<a class="headerlink" href="#relationship-filters" title="Link to this heading">#</a></h3>
+<h2><span class="section-number">1.6. </span>Relationship Filters<a class="headerlink" href="#relationship-filters" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p><strong>memberOf</strong>: Groups that people/groups belong to</p>
 <ul>
@@ -821,6 +889,8 @@ https://lux.collections.yale.edu/view/results/people?q=%7B%22AND%22%3A%20%5B%7B%
 </ul>
 </li>
 </ul>
+<section id="memberof-filter">
+<h3><span class="section-number">1.6.1. </span>memberOf Filter<a class="headerlink" href="#memberof-filter" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pg</span> <span class="o">=</span> <span class="n">PeopleGroups</span><span class="p">()</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">memberOf</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Institut Diderot&quot;</span><span class="p">})</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
@@ -837,6 +907,9 @@ https://lux.collections.yale.edu/view/results/people?q=%7B%22AND%22%3A%20%5B%7B%
 </div>
 </div>
 </div>
+</section>
+<section id="memberofinverse-filter">
+<h3><span class="section-number">1.6.2. </span>memberOfInverse Filter<a class="headerlink" href="#memberofinverse-filter" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pg</span> <span class="o">=</span> <span class="n">PeopleGroups</span><span class="p">()</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">memberOfInverse</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Gourdeau, Camille&quot;</span><span class="p">})</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
@@ -853,6 +926,9 @@ https://lux.collections.yale.edu/view/results/people?q=%7B%22AND%22%3A%20%5B%7B%
 </div>
 </div>
 </div>
+</section>
+<section id="foundedby-filter">
+<h3><span class="section-number">1.6.3. </span>foundedBy Filter<a class="headerlink" href="#foundedby-filter" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pg</span> <span class="o">=</span> <span class="n">PeopleGroups</span><span class="p">()</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">foundedBy</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;John Smith&quot;</span><span class="p">})</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
@@ -870,8 +946,9 @@ https://lux.collections.yale.edu/view/results/people?q=%7B%22AND%22%3A%20%5B%7B%
 </div>
 </div>
 </section>
+</section>
 <section id="creative-work-filters">
-<h3><span class="section-number">1.2.4. </span>Creative Work Filters<a class="headerlink" href="#creative-work-filters" title="Link to this heading">#</a></h3>
+<h2><span class="section-number">1.7. </span>Creative Work Filters<a class="headerlink" href="#creative-work-filters" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p><strong>created</strong>: Works created by the person/group</p>
 <ul>
@@ -892,6 +969,8 @@ https://lux.collections.yale.edu/view/results/people?q=%7B%22AND%22%3A%20%5B%7B%
 </ul>
 </li>
 </ul>
+<section id="created-filter">
+<h3><span class="section-number">1.7.1. </span>created Filter<a class="headerlink" href="#created-filter" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pg</span> <span class="o">=</span> <span class="n">PeopleGroups</span><span class="p">()</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">created</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Portrait of Madame X&quot;</span><span class="p">})</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
@@ -908,6 +987,9 @@ https://lux.collections.yale.edu/view/results/people?q=%7B%22AND%22%3A%20%5B%7B%
 </div>
 </div>
 </div>
+</section>
+<section id="produced-filter">
+<h3><span class="section-number">1.7.2. </span>produced Filter<a class="headerlink" href="#produced-filter" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pg</span> <span class="o">=</span> <span class="n">PeopleGroups</span><span class="p">()</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">produced</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Bronze&quot;</span><span class="p">})</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
@@ -924,6 +1006,9 @@ https://lux.collections.yale.edu/view/results/people?q=%7B%22AND%22%3A%20%5B%7B%
 </div>
 </div>
 </div>
+</section>
+<section id="published-filter">
+<h3><span class="section-number">1.7.3. </span>published Filter<a class="headerlink" href="#published-filter" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pg</span> <span class="o">=</span> <span class="n">PeopleGroups</span><span class="p">()</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">published</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Art&quot;</span><span class="p">})</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
@@ -941,8 +1026,9 @@ https://lux.collections.yale.edu/view/results/people?q=%7B%22AND%22%3A%20%5B%7B%
 </div>
 </div>
 </section>
+</section>
 <section id="collection-and-curation-filters">
-<h3><span class="section-number">1.2.5. </span>Collection and Curation Filters<a class="headerlink" href="#collection-and-curation-filters" title="Link to this heading">#</a></h3>
+<h2><span class="section-number">1.8. </span>Collection and Curation Filters<a class="headerlink" href="#collection-and-curation-filters" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p><strong>curated</strong>: Collections curated by the group</p>
 <ul>
@@ -957,6 +1043,8 @@ https://lux.collections.yale.edu/view/results/people?q=%7B%22AND%22%3A%20%5B%7B%
 </ul>
 </li>
 </ul>
+<section id="curated-filter">
+<h3><span class="section-number">1.8.1. </span>curated Filter<a class="headerlink" href="#curated-filter" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pg</span> <span class="o">=</span> <span class="n">PeopleGroups</span><span class="p">()</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">curated</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Modern Art Collection&quot;</span><span class="p">})</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
@@ -973,6 +1061,9 @@ https://lux.collections.yale.edu/view/results/people?q=%7B%22AND%22%3A%20%5B%7B%
 </div>
 </div>
 </div>
+</section>
+<section id="hasdigitalimage-filter">
+<h3><span class="section-number">1.8.2. </span>hasDigitalImage Filter<a class="headerlink" href="#hasdigitalimage-filter" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pg</span> <span class="o">=</span> <span class="n">PeopleGroups</span><span class="p">()</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">hasDigitalImage</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
@@ -990,8 +1081,9 @@ https://lux.collections.yale.edu/view/results/people?q=%7B%22AND%22%3A%20%5B%7B%
 </div>
 </div>
 </section>
+</section>
 <section id="influence-and-subject-filters">
-<h3><span class="section-number">1.2.6. </span>Influence and Subject Filters<a class="headerlink" href="#influence-and-subject-filters" title="Link to this heading">#</a></h3>
+<h2><span class="section-number">1.9. </span>Influence and Subject Filters<a class="headerlink" href="#influence-and-subject-filters" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p><strong>influenced</strong>: Concepts influenced by the person/group</p>
 <ul>
@@ -1012,17 +1104,11 @@ https://lux.collections.yale.edu/view/results/people?q=%7B%22AND%22%3A%20%5B%7B%
 </ul>
 </li>
 </ul>
+<section id="influenced-filter">
+<h3><span class="section-number">1.9.1. </span>influenced Filter<a class="headerlink" href="#influenced-filter" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pg</span> <span class="o">=</span> <span class="n">PeopleGroups</span><span class="p">()</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">influenced</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Fiction&quot;</span><span class="p">})</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="n">pg</span><span class="o">.</span><span class="n">num_results</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">pg</span><span class="o">.</span><span class="n">view_url</span><span class="p">)</span>
-<span class="n">pg</span> <span class="o">=</span> <span class="n">PeopleGroups</span><span class="p">()</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">influencedCreation</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Lord of the Rings&quot;</span><span class="p">})</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="n">pg</span><span class="o">.</span><span class="n">num_results</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">pg</span><span class="o">.</span><span class="n">view_url</span><span class="p">)</span>
-<span class="n">pg</span> <span class="o">=</span> <span class="n">PeopleGroups</span><span class="p">()</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">subjectOfAgent</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;The Hobbit&quot;</span><span class="p">})</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="n">pg</span><span class="o">.</span><span class="n">num_results</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">pg</span><span class="o">.</span><span class="n">view_url</span><span class="p">)</span>
@@ -1032,119 +1118,44 @@ https://lux.collections.yale.edu/view/results/people?q=%7B%22AND%22%3A%20%5B%7B%
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>13527
 https://lux.collections.yale.edu/view/results/people?q=%7B%22AND%22%3A%20%5B%7B%22influenced%22%3A%20%7B%22name%22%3A%20%22Fiction%22%7D%7D%5D%7D
-0
-https://lux.collections.yale.edu/view/results/people?q=%7B%22AND%22%3A%20%5B%7B%22influencedCreation%22%3A%20%7B%22name%22%3A%20%22Lord%20of%20the%20Rings%22%7D%7D%5D%7D
-2
-https://lux.collections.yale.edu/view/results/people?q=%7B%22AND%22%3A%20%5B%7B%22subjectOfAgent%22%3A%20%7B%22name%22%3A%20%22The%20Hobbit%22%7D%7D%5D%7D
 </pre></div>
 </div>
 </div>
 </div>
+</section>
+<section id="influencedcreation-filter">
+<h3><span class="section-number">1.9.2. </span>influencedCreation Filter<a class="headerlink" href="#influencedcreation-filter" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">luxy</span> <span class="kn">import</span> <span class="n">PeopleGroups</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pg</span> <span class="o">=</span> <span class="n">PeopleGroups</span><span class="p">()</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">influencedCreation</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Lord of the Rings&quot;</span><span class="p">})</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
 
-<span class="n">pg</span> <span class="o">=</span> <span class="n">PeopleGroups</span><span class="p">()</span>
-<span class="n">pg</span><span class="o">.</span><span class="n">list_filters</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">pg</span><span class="o">.</span><span class="n">num_results</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">pg</span><span class="o">.</span><span class="n">view_url</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Available filters for agent:
---------------------------------------------------
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0
+https://lux.collections.yale.edu/view/results/people?q=%7B%22AND%22%3A%20%5B%7B%22influencedCreation%22%3A%20%7B%22name%22%3A%20%22Lord%20of%20the%20Rings%22%7D%7D%5D%7D
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="subjectofagent-filter">
+<h3><span class="section-number">1.9.3. </span>subjectOfAgent Filter<a class="headerlink" href="#subjectofagent-filter" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pg</span> <span class="o">=</span> <span class="n">PeopleGroups</span><span class="p">()</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">subjectOfAgent</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;The Hobbit&quot;</span><span class="p">})</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
 
-name (Name) - (text):
-  Description: Enter term(s) to be found within the title or name of the Person or Group. &quot;AND&quot;, &quot;OR&quot;, and &quot;-&quot; do not have special meaning in Advanced Search as they do in Simple Search. Instead use multiple fields connected with &quot;have All of&quot;, &quot;have Any of&quot;, and &quot;have None of&quot; respectively.
-
-text (Anywhere) - (text):
-  Description: Search for People &amp; Groups by terms anywhere in the record. &quot;AND&quot;, &quot;OR&quot;, and &quot;-&quot; do not have special meaning in Advanced Search as they do in Simple Search. Instead use multiple fields connected with &quot;have All of&quot;, &quot;have Any of&quot;, and &quot;have None of&quot; respectively.
-
-startAt (Born/Formed At) - (place):
-  Description: Search for People &amp; Groups that were born or formed in the specified Place.
-
-startDate (Born/Formed Date) - (date):
-  Description: Search People &amp; Groups by the date on which they were born or formed.
-
-carriedOut (Carried Out) - (event):
-  Description: Search for People &amp; Groups that carried out the specified Event.
-
-classification (Categorized As) - (concept):
-  Description: Search for People &amp; Groups that are categorized with the specified Concept or Type terms.
-
-produced (Created Object) - (item):
-  Description: Search for People &amp; Groups that created the specified Objects.
-
-created (Created Works) - (work):
-  Description: Search for People &amp; Groups that authored or created the specified Works.
-
-curated (Curated) - (set):
-  Description: Search for Groups responsible for the curation of Yale&#39;s collections.
-
-endAt (Died/Dissolved At) - (place):
-  Description: Search for People &amp; Groups that died or were dissolved in the specified Place.
-
-endDate (Died/Dissolved Date) - (date):
-  Description: Search for People &amp; Groups by the date on which they died or were dissolved.
-
-encountered (Encountered) - (item):
-  Description: Search for People &amp; Groups that encountered or found the specified Objects.
-
-foundedBy (Founded By) - (agent):
-  Description: Search for Groups by the specified People that were responsible for their foundation.
-
-founded (Founded Group) - (agent):
-  Description: Search for People who were responsible for the foundation of the specified Groups.
-
-gender (Gender) - (concept):
-  Description: Search for People by the specified Gender. This information comes from external sources, and gender information may not match expected results.
-
-hasDigitalImage (Have Digital Image) - (boolean):
-  Description: Search for People &amp; Groups for which digital images are available.
-
-memberOfInverse (Have Member) - (agent):
-  Description: Search for Groups that have the specified People &amp; Groups as members.
-
-id (ID) - (text):
-  Description: Search for People &amp; Groups by their LUX data URI (e.g. starting with https://lux.collections.yale.edu/data/ and followed by a URI path containing a UUID, not the URI with /view/ in it).
-
-identifier (Identifier) - (text):
-  Description: Search for People &amp; Groups by a string identifier or an external authority URI, such as ULAN, VIAF or wikidata.
-
-influenced (Influenced) - (concept):
-  Description: Search for People &amp; Groups that influenced the specified Concepts
-
-influencedProduction (Influenced Creation Of Objects) - (item):
-  Description: Search for People &amp; Groups that influenced the creation of the specified Objects
-
-influencedCreation (Influenced Creation Of Works) - (work):
-  Description: Search for People &amp; Groups that influenced the creation of the specified Works
-
-memberOf (Member of) - (agent):
-  Description: Search for People &amp; Groups that are members of other Groups.
-
-nationality (Nationality) - (concept):
-  Description: Search for People &amp; Groups with the specified Nationality.
-
-occupation (Occupation/Role) - (concept):
-  Description: Search for People &amp; Groups with the specified Occupation or Role.
-
-recordType (Person or Group Class) - (text):
-  Description: Search for records categorized as either a &quot;Person&quot; or a &quot;Group&quot;. Person is an individual either real or fictionalized. Group is an organization, either real or fictionalized, with one or more members.
-
-professionalActivity (Professional Activity Categorized As) - (concept):
-  Description: Search for people and groups that carried out professional activities of the given categorization.
-
-activeAt (Professionally Active At) - (place):
-  Description: Search for People &amp; Groups that were professionally active in the specified Places.
-
-activeDate (Professionally Active Date) - (date):
-  Description: Search for People &amp; Groups by the dates on which they were professionally active.
-
-published (Published) - (work):
-  Description: Search for People &amp; Groups that published the specified Works.
-
-subjectOfAgent (Subject Of) - (work):
-  Description: Search for People &amp; Groups that are the subject of the specified Works.
+<span class="nb">print</span><span class="p">(</span><span class="n">pg</span><span class="o">.</span><span class="n">num_results</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">pg</span><span class="o">.</span><span class="n">view_url</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2
+https://lux.collections.yale.edu/view/results/people?q=%7B%22AND%22%3A%20%5B%7B%22subjectOfAgent%22%3A%20%7B%22name%22%3A%20%22The%20Hobbit%22%7D%7D%5D%7D
 </pre></div>
 </div>
 </div>
@@ -1218,20 +1229,54 @@ subjectOfAgent (Subject Of) - (work):
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#filter-categories">1.1. Filter Categories</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#text-search-filters">1.1.1. Text Search Filters</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#name-filters">1.1.1.1. Name Filters</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#text-search-filters">1.1. Text Search Filters</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#name-filter">1.1.1. name Filter</a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#text-filter">1.2. text Filter</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id-filter">1.2.1. id Filter</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#identifier-filter">1.2.2. identifier Filter</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#location-filters">1.2. Location Filters</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#date-filters">1.2.1. Date Filters</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#professional-and-biographical-filters">1.2.2. Professional and Biographical Filters</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#relationship-filters">1.2.3. Relationship Filters</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#creative-work-filters">1.2.4. Creative Work Filters</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#collection-and-curation-filters">1.2.5. Collection and Curation Filters</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#influence-and-subject-filters">1.2.6. Influence and Subject Filters</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#location-filters">1.3. Location Filters</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#startat-filter">1.3.1. startAt Filter</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#endat-filter">1.3.2. endAt Filter</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#activeat-filter">1.3.3. activeAt Filter</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#date-filters">1.4. Date Filters</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#startdate-filter">1.4.1. startDate Filter</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#enddate-filter">1.4.2. endDate Filter</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#activedate-filter">1.4.3. activeDate Filter</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#professional-and-biographical-filters">1.5. Professional and Biographical Filters</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#occupation-filter">1.5.1. occupation Filter</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#nationality-filter">1.5.2. nationality Filter</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#gender-filter">1.5.3. gender Filter</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#relationship-filters">1.6. Relationship Filters</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#memberof-filter">1.6.1. memberOf Filter</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#memberofinverse-filter">1.6.2. memberOfInverse Filter</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#foundedby-filter">1.6.3. foundedBy Filter</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#creative-work-filters">1.7. Creative Work Filters</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#created-filter">1.7.1. created Filter</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#produced-filter">1.7.2. produced Filter</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#published-filter">1.7.3. published Filter</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#collection-and-curation-filters">1.8. Collection and Curation Filters</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#curated-filter">1.8.1. curated Filter</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hasdigitalimage-filter">1.8.2. hasDigitalImage Filter</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#influence-and-subject-filters">1.9. Influence and Subject Filters</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#influenced-filter">1.9.1. influenced Filter</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#influencedcreation-filter">1.9.2. influencedCreation Filter</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#subjectofagent-filter">1.9.3. subjectOfAgent Filter</a></li>
 </ul>
 </li>
 </ul>
