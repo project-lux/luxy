@@ -673,28 +673,52 @@ https://lux.collections.yale.edu/view/results/people?q=%7B%22AND%22%3A%20%5B%7B%
 </section>
 <section id="location-filters">
 <h2><span class="section-number">1.2. </span>Location Filters<a class="headerlink" href="#location-filters" title="Link to this heading">#</a></h2>
+<p>Location filters are filters that take a place reference as input. Unlike string filters, place references require you to map an attribute to a place via a dictionary.</p>
 <ul class="simple">
-<li><p><strong>startAt</strong>: Place where person was born or group was formed</p>
-<ul>
-<li><p>Type: place reference</p></li>
-<li><p>Example: <code class="docutils literal notranslate"><span class="pre">filter(startAt={&quot;name&quot;:</span> <span class="pre">&quot;Paris&quot;})</span></code></p></li>
+<li><p>startAt</p></li>
+<li><p>endAt</p></li>
+<li><p>activeAt</p></li>
 </ul>
-</li>
-<li><p><strong>endAt</strong>: Place where person died or group was dissolved</p>
-<ul>
-<li><p>Type: place reference</p></li>
-<li><p>Example: <code class="docutils literal notranslate"><span class="pre">filter(endAt={&quot;name&quot;:</span> <span class="pre">&quot;London&quot;})</span></code></p></li>
-</ul>
-</li>
-<li><p><strong>activeAt</strong>: Places where professionally active</p>
-<ul>
-<li><p>Type: place reference</p></li>
-<li><p>Example: <code class="docutils literal notranslate"><span class="pre">filter(activeAt={&quot;name&quot;:</span> <span class="pre">&quot;New</span> <span class="pre">York&quot;})</span></code></p></li>
-</ul>
-</li>
-</ul>
-<section id="startat-filter">
+<div class="admonition-location-filters-quick-reference admonition">
+<p class="admonition-title">Location Filters Quick Reference</p>
+<details>
+<summary>Click to expand</summary>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Filter</p></th>
+<th class="head"><p>Description</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Usage/Format</p></th>
+<th class="head"><p>Example</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>startAt</strong></p></td>
+<td><p>Search within titles or names of people and groups</p></td>
+<td><p>place reference</p></td>
+<td><p>Search for specific names or partial name matches</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">filter(startAt={&quot;name&quot;:</span> <span class="pre">&quot;Paris&quot;})</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>endAt</strong></p></td>
+<td><p>Search anywhere in the record</p></td>
+<td><p>place reference</p></td>
+<td><p>Full-text search across all fields</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">filter(endAt={&quot;name&quot;:</span> <span class="pre">&quot;London&quot;})</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><strong>activeAt</strong></p></td>
+<td><p>Search by LUX data URI</p></td>
+<td><p>place reference</p></td>
+<td><p>UUID v4 (8-4-4-4-12 format)</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">filter(activeAt={&quot;name&quot;:</span> <span class="pre">&quot;New</span> <span class="pre">York&quot;})</span></code></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</details>
+</div>
+<br><section id="startat-filter">
 <h3><span class="section-number">1.2.1. </span>startAt Filter<a class="headerlink" href="#startat-filter" title="Link to this heading">#</a></h3>
+<p>The <code class="docutils literal notranslate"><span class="pre">startAt</span></code> filter allows you to search for people or groups that were born or formed in a specific place.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pg</span> <span class="o">=</span> <span class="n">PeopleGroups</span><span class="p">()</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">startAt</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Paris&quot;</span><span class="p">})</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
@@ -714,6 +738,7 @@ https://lux.collections.yale.edu/view/results/people?q=%7B%22AND%22%3A%20%5B%7B%
 </section>
 <section id="endat-filter">
 <h3><span class="section-number">1.2.2. </span>endAt Filter<a class="headerlink" href="#endat-filter" title="Link to this heading">#</a></h3>
+<p>The <code class="docutils literal notranslate"><span class="pre">endAt</span></code> filter allows you to search for people or groups that were died or dissolved in a specific place.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pg</span> <span class="o">=</span> <span class="n">PeopleGroups</span><span class="p">()</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">endAt</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;London&quot;</span><span class="p">})</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
@@ -733,6 +758,7 @@ https://lux.collections.yale.edu/view/results/people?q=%7B%22AND%22%3A%20%5B%7B%
 </section>
 <section id="activeat-filter">
 <h3><span class="section-number">1.2.3. </span>activeAt Filter<a class="headerlink" href="#activeat-filter" title="Link to this heading">#</a></h3>
+<p>The <code class="docutils literal notranslate"><span class="pre">activeAt</span></code> filter allows you to search for people or groups that were active in a specific place.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pg</span> <span class="o">=</span> <span class="n">PeopleGroups</span><span class="p">()</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">activeAt</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;New York&quot;</span><span class="p">})</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
