@@ -696,19 +696,19 @@ https://lux.collections.yale.edu/view/results/people?q=%7B%22AND%22%3A%20%5B%7B%
 <tr class="row-even"><td><p><strong>startAt</strong></p></td>
 <td><p>Search within titles or names of people and groups</p></td>
 <td><p>place reference</p></td>
-<td><p>Search for specific names or partial name matches</p></td>
+<td><p>Search for people or groups born or formed in a specific place</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">filter(startAt={&quot;name&quot;:</span> <span class="pre">&quot;Paris&quot;})</span></code></p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>endAt</strong></p></td>
 <td><p>Search anywhere in the record</p></td>
 <td><p>place reference</p></td>
-<td><p>Full-text search across all fields</p></td>
+<td><p>Search for people or groups died or dissolved in a specific place</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">filter(endAt={&quot;name&quot;:</span> <span class="pre">&quot;London&quot;})</span></code></p></td>
 </tr>
 <tr class="row-even"><td><p><strong>activeAt</strong></p></td>
 <td><p>Search by LUX data URI</p></td>
 <td><p>place reference</p></td>
-<td><p>UUID v4 (8-4-4-4-12 format)</p></td>
+<td><p>Search for people or groups active in a specific place</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">filter(activeAt={&quot;name&quot;:</span> <span class="pre">&quot;New</span> <span class="pre">York&quot;})</span></code></p></td>
 </tr>
 </tbody>
@@ -779,47 +779,65 @@ https://lux.collections.yale.edu/view/results/people?q=%7B%22AND%22%3A%20%5B%7B%
 </section>
 <section id="date-filters">
 <h2><span class="section-number">1.3. </span>Date Filters<a class="headerlink" href="#date-filters" title="Link to this heading">#</a></h2>
+<p>Date filters are filters that take a ISO 8601 with millisecond precision and UTC timezone date as input. These include the following:</p>
 <ul class="simple">
-<li><p><strong>startDate</strong>: Birth/formation date</p>
+<li><p>startDate</p></li>
+<li><p>endDate</p></li>
+<li><p>activeDate</p></li>
+</ul>
+<p>Since dates are temporal, we can use comparison operators to filter the dates. The comparison operators are:</p>
 <ul>
-<li><p>Type: date</p></li>
-<li><p>Format: ISO 8601 with millisecond precision and UTC timezone (YYYY-MM-DDT00:00:00.000Z)</p></li>
-<li><p>Supports comparison operators: “==”, “!=”, “&gt;”, “&gt;=”, “&lt;”, “&lt;=”</p></li>
-<li><p>Examples:</p>
-<ul>
-<li><p><code class="docutils literal notranslate"><span class="pre">filter(startDate=(&quot;1987-01-01T00:00:00.000Z&quot;,</span> <span class="pre">&quot;&gt;=&quot;))</span></code> - Born after or on Jan 1, 1987</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">filter(startDate=(&quot;1987-01-01T00:00:00.000Z&quot;,</span> <span class="pre">&quot;&lt;&quot;))</span></code> - Born before 1987</p></li>
-</ul>
+<li><p>==</p></li>
+<li><p>!=</p></li>
+<li></li>
+<li><blockquote>
+<div><p>=</p>
+</div></blockquote>
 </li>
+<li><p>&lt;</p></li>
+<li><p>&lt;=</p></li>
 </ul>
-</li>
-<li><p><strong>endDate</strong>: Death/dissolution date</p>
-<ul>
-<li><p>Type: date</p></li>
-<li><p>Format: ISO 8601 with millisecond precision and UTC timezone</p></li>
-<li><p>Supports same comparison operators</p></li>
-<li><p>Examples:</p>
-<ul>
-<li><p><code class="docutils literal notranslate"><span class="pre">filter(endDate=(&quot;1987-01-01T00:00:00.000Z&quot;,</span> <span class="pre">&quot;&lt;=&quot;))</span></code> - Died on or before Jan 1, 1987</p></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p><strong>activeDate</strong>: Dates of professional activity</p>
-<ul>
-<li><p>Type: date</p></li>
-<li><p>Format: ISO 8601 with millisecond precision and UTC timezone</p></li>
-<li><p>Supports same comparison operators</p></li>
-<li><p>Examples:</p>
-<ul>
-<li><p>With comparison: <code class="docutils literal notranslate"><span class="pre">filter(activeDate=(&quot;1987-01-01T00:00:00.000Z&quot;,</span> <span class="pre">&quot;&gt;&quot;))</span></code> - Active after Jan 1, 1987</p></li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<section id="startdate-filter">
+<p>Date filters are formatted as a tuple with the date and the comparison operator. Both are required.</p>
+<div class="admonition-date-filters-quick-reference admonition">
+<p class="admonition-title">Date Filters Quick Reference</p>
+<details>
+<summary>Click to expand</summary>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Filter</p></th>
+<th class="head"><p>Description</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Usage/Format</p></th>
+<th class="head"><p>Example</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>startDate</strong>: Birth/formation date</p></td>
+<td><p>date</p></td>
+<td><p>Search for people or groups born or formed in a specific date</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">filter(startDate=(&quot;1987-01-01T00:00:00.000Z&quot;,</span> <span class="pre">&quot;&gt;=&quot;))</span></code></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>endDate</strong>: Death/dissolution date</p></td>
+<td><p>date</p></td>
+<td><p>Search for people or groups died or dissolved in a specific date</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">filter(endDate=(&quot;1987-01-01T00:00:00.000Z&quot;,</span> <span class="pre">&quot;&lt;=&quot;))</span></code></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><strong>activeDate</strong>: Dates of professional activity</p></td>
+<td><p>date</p></td>
+<td><p>Search for people or groups active in a specific date</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">filter(activeDate=(&quot;1987-01-01T00:00:00.000Z&quot;,</span> <span class="pre">&quot;&gt;&quot;))</span></code></p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</details>
+</div>
+<br><section id="startdate-filter">
 <h3><span class="section-number">1.3.1. </span>startDate Filter<a class="headerlink" href="#startdate-filter" title="Link to this heading">#</a></h3>
+<p>The <code class="docutils literal notranslate"><span class="pre">startDate</span></code> filter allows you to search for people or groups that were born or formed in a specific date.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pg</span> <span class="o">=</span> <span class="n">PeopleGroups</span><span class="p">()</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">startDate</span><span class="o">=</span><span class="p">(</span><span class="s2">&quot;1987-01-01T00:00:00.000Z&quot;</span><span class="p">,</span> <span class="s2">&quot;&gt;=&quot;</span><span class="p">))</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
@@ -839,6 +857,7 @@ https://lux.collections.yale.edu/view/results/people?q=%7B%22AND%22%3A%20%5B%7B%
 </section>
 <section id="enddate-filter">
 <h3><span class="section-number">1.3.2. </span>endDate Filter<a class="headerlink" href="#enddate-filter" title="Link to this heading">#</a></h3>
+<p>The <code class="docutils literal notranslate"><span class="pre">endDate</span></code> filter allows you to search for people or groups that were died or dissolved in a specific date.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pg</span> <span class="o">=</span> <span class="n">PeopleGroups</span><span class="p">()</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">endDate</span><span class="o">=</span><span class="p">(</span><span class="s2">&quot;1987-01-01T00:00:00.000Z&quot;</span><span class="p">,</span> <span class="s2">&quot;&lt;=&quot;</span><span class="p">))</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
@@ -858,6 +877,7 @@ https://lux.collections.yale.edu/view/results/people?q=%7B%22AND%22%3A%20%5B%7B%
 </section>
 <section id="activedate-filter">
 <h3><span class="section-number">1.3.3. </span>activeDate Filter<a class="headerlink" href="#activedate-filter" title="Link to this heading">#</a></h3>
+<p>The <code class="docutils literal notranslate"><span class="pre">activeDate</span></code> filter allows you to search for people or groups that were active in a specific date.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pg</span> <span class="o">=</span> <span class="n">PeopleGroups</span><span class="p">()</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">activeDate</span><span class="o">=</span><span class="p">(</span><span class="s2">&quot;1987-01-01T00:00:00.000Z&quot;</span><span class="p">,</span> <span class="s2">&quot;&gt;&quot;</span><span class="p">))</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
@@ -878,29 +898,53 @@ https://lux.collections.yale.edu/view/results/people?q=%7B%22AND%22%3A%20%5B%7B%
 </section>
 <section id="professional-and-biographical-filters">
 <h2><span class="section-number">1.4. </span>Professional and Biographical Filters<a class="headerlink" href="#professional-and-biographical-filters" title="Link to this heading">#</a></h2>
+<p>Professional and biographical filters are filters that take a concept reference as input. These include the following:</p>
 <ul class="simple">
-<li><p><strong>occupation</strong>: Search by occupation or role</p>
-<ul>
-<li><p>Type: concept reference</p></li>
-<li><p>Example: <code class="docutils literal notranslate"><span class="pre">filter(occupation={&quot;name&quot;:</span> <span class="pre">&quot;Painter&quot;})</span></code></p></li>
+<li><p>occupation</p></li>
+<li><p>nationality</p></li>
+<li><p>gender</p></li>
 </ul>
-</li>
-<li><p><strong>nationality</strong>: Search by nationality</p>
-<ul>
-<li><p>Type: concept reference</p></li>
-<li><p>Example: <code class="docutils literal notranslate"><span class="pre">filter(nationality={&quot;name&quot;:</span> <span class="pre">&quot;French&quot;})</span></code></p></li>
-</ul>
-</li>
-<li><p><strong>gender</strong>: Search by gender</p>
-<ul>
-<li><p>Type: concept reference</p></li>
-<li><p>Note: Information comes from external sources</p></li>
-<li><p>Example: <code class="docutils literal notranslate"><span class="pre">filter(gender={&quot;name&quot;:</span> <span class="pre">&quot;Female&quot;})</span></code></p></li>
-</ul>
-</li>
-</ul>
-<section id="occupation-filter">
+<p>Like the Location filters, the professional and biographical filter attributes are mapped via a dictionary. The dictionary key is the attribute, such as name, and its value.</p>
+<div class="admonition-professional-and-biographical-filters-quick-reference admonition">
+<p class="admonition-title">Professional and Biographical Filters Quick Reference</p>
+<details>
+<summary>Click to expand</summary>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Filter</p></th>
+<th class="head"><p>Description</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Usage/Format</p></th>
+<th class="head"><p>Example</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>occupation</strong>: Search by occupation or role</p></td>
+<td><p>concept reference</p></td>
+<td><p>Search for people or groups with a specific occupation or role</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">filter(occupation={&quot;name&quot;:</span> <span class="pre">&quot;Painter&quot;})</span></code></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>nationality</strong>: Search by nationality</p></td>
+<td><p>concept reference</p></td>
+<td><p>Search for people or groups with a specific nationality</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">filter(nationality={&quot;name&quot;:</span> <span class="pre">&quot;French&quot;})</span></code></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><strong>gender</strong>: Search by gender</p></td>
+<td><p>concept reference</p></td>
+<td><p>Search for people or groups with a specific gender</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">filter(gender={&quot;name&quot;:</span> <span class="pre">&quot;Female&quot;})</span></code></p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</details>
+</div>
+<br><section id="occupation-filter">
 <h3><span class="section-number">1.4.1. </span>occupation Filter<a class="headerlink" href="#occupation-filter" title="Link to this heading">#</a></h3>
+<p>The <code class="docutils literal notranslate"><span class="pre">occupation</span></code> filter allows you to search for people or groups with a specific occupation or role.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pg</span> <span class="o">=</span> <span class="n">PeopleGroups</span><span class="p">()</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">occupation</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Painter&quot;</span><span class="p">})</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
@@ -920,6 +964,7 @@ https://lux.collections.yale.edu/view/results/people?q=%7B%22AND%22%3A%20%5B%7B%
 </section>
 <section id="nationality-filter">
 <h3><span class="section-number">1.4.2. </span>nationality Filter<a class="headerlink" href="#nationality-filter" title="Link to this heading">#</a></h3>
+<p>The <code class="docutils literal notranslate"><span class="pre">nationality</span></code> filter allows you to search for people or groups with a specific nationality.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pg</span> <span class="o">=</span> <span class="n">PeopleGroups</span><span class="p">()</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">nationality</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;French&quot;</span><span class="p">})</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
@@ -939,6 +984,7 @@ https://lux.collections.yale.edu/view/results/people?q=%7B%22AND%22%3A%20%5B%7B%
 </section>
 <section id="gender-filter">
 <h3><span class="section-number">1.4.3. </span>gender Filter<a class="headerlink" href="#gender-filter" title="Link to this heading">#</a></h3>
+<p>The <code class="docutils literal notranslate"><span class="pre">gender</span></code> filter allows you to search for people or groups with a specific gender.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pg</span> <span class="o">=</span> <span class="n">PeopleGroups</span><span class="p">()</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">gender</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Female&quot;</span><span class="p">})</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
