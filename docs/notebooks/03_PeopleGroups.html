@@ -515,42 +515,36 @@
 <div class="pst-scrollable-table-container"><table class="table">
 <thead>
 <tr class="row-odd"><th class="head"><p>Filter</p></th>
-<th class="head"><p>Description</p></th>
 <th class="head"><p>Type</p></th>
-<th class="head"><p>Usage/Format</p></th>
+<th class="head"><p>Description</p></th>
 <th class="head"><p>Example</p></th>
 </tr>
 </thead>
 <tbody>
 <tr class="row-even"><td><p><strong>name</strong></p></td>
-<td><p>Search within titles or names of people and groups</p></td>
 <td><p>text</p></td>
-<td><p>Search for specific names or partial name matches</p></td>
+<td><p>Search within titles or names of people and groups</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">filter(name=&quot;John</span> <span class="pre">Adams&quot;)</span></code></p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>text</strong></p></td>
-<td><p>Search anywhere in the record</p></td>
 <td><p>text</p></td>
-<td><p>Full-text search across all fields</p></td>
+<td><p>Search anywhere in the record</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">filter(text=&quot;John</span> <span class="pre">Adams&quot;)</span></code></p></td>
 </tr>
 <tr class="row-even"><td><p><strong>id</strong></p></td>
-<td><p>Search by LUX data URI</p></td>
 <td><p>text</p></td>
+<td><p>Search by LUX data URI</p></td>
 <td><p>UUID v4 (8-4-4-4-12 format)</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">filter(id=&quot;https://lux.collections.yale.edu/data/person/977a4f7a-5d26-4965-8dd9-3fb0eaa4267e&quot;)</span></code></p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>identifier</strong></p></td>
-<td><p>Search by external identifiers (ULAN, VIAF, Wikidata)</p></td>
 <td><p>text</p></td>
+<td><p>Search by external identifiers (ULAN, VIAF, Wikidata)</p></td>
 <td><p>External identifier strings</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">filter(identifier=&quot;http://www.wikidata.org/entity/Q11806&quot;)</span></code></p></td>
 </tr>
 <tr class="row-even"><td><p><strong>recordType</strong></p></td>
-<td><p>Search by record type</p></td>
 <td><p>text</p></td>
+<td><p>Search by record type</p></td>
 <td><p>“person”, “group”</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">filter(recordType=&quot;person&quot;)</span></code></p></td>
 </tr>
 </tbody>
 </table>
@@ -686,21 +680,18 @@ https://lux.collections.yale.edu/view/results/people?q=%7B%22AND%22%3A%20%5B%7B%
 <div class="pst-scrollable-table-container"><table class="table">
 <thead>
 <tr class="row-odd"><th class="head"><p>Filter</p></th>
-<th class="head"><p>Description</p></th>
 <th class="head"><p>Type</p></th>
-<th class="head"><p>Usage/Format</p></th>
+<th class="head"><p>Description</p></th>
 <th class="head"><p>Example</p></th>
 </tr>
 </thead>
 <tbody>
 <tr class="row-even"><td><p><strong>startAt</strong></p></td>
-<td><p>Search within titles or names of people and groups</p></td>
 <td><p>place reference</p></td>
 <td><p>Search for people or groups born or formed in a specific place</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">filter(startAt={&quot;name&quot;:</span> <span class="pre">&quot;Paris&quot;})</span></code></p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>endAt</strong></p></td>
-<td><p>Search anywhere in the record</p></td>
 <td><p>place reference</p></td>
 <td><p>Search for people or groups died or dissolved in a specific place</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">filter(endAt={&quot;name&quot;:</span> <span class="pre">&quot;London&quot;})</span></code></p></td>
@@ -709,7 +700,6 @@ https://lux.collections.yale.edu/view/results/people?q=%7B%22AND%22%3A%20%5B%7B%
 <td><p>Search by LUX data URI</p></td>
 <td><p>place reference</p></td>
 <td><p>Search for people or groups active in a specific place</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">filter(activeAt={&quot;name&quot;:</span> <span class="pre">&quot;New</span> <span class="pre">York&quot;})</span></code></p></td>
 </tr>
 </tbody>
 </table>
@@ -802,35 +792,31 @@ https://lux.collections.yale.edu/view/results/people?q=%7B%22AND%22%3A%20%5B%7B%
 <div class="pst-scrollable-table-container"><table class="table">
 <thead>
 <tr class="row-odd"><th class="head"><p>Filter</p></th>
-<th class="head"><p>Description</p></th>
 <th class="head"><p>Type</p></th>
-<th class="head"><p>Usage/Format</p></th>
+<th class="head"><p>Description</p></th>
 <th class="head"><p>Example</p></th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><strong>startDate</strong>: Birth/formation date</p></td>
+<tr class="row-even"><td><p><strong>startDate</strong></p></td>
 <td><p>date</p></td>
-<td><p>Search for people or groups born or formed in a specific date</p></td>
+<td><p>Search for people or groups by birth/formation date. Accepts ISO 8601 date and comparison operator.</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">filter(startDate=(&quot;1987-01-01T00:00:00.000Z&quot;,</span> <span class="pre">&quot;&gt;=&quot;))</span></code></p></td>
-<td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>endDate</strong>: Death/dissolution date</p></td>
+<tr class="row-odd"><td><p><strong>endDate</strong></p></td>
 <td><p>date</p></td>
-<td><p>Search for people or groups died or dissolved in a specific date</p></td>
+<td><p>Search for people or groups by death/dissolution date. Accepts ISO 8601 date and comparison operator.</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">filter(endDate=(&quot;1987-01-01T00:00:00.000Z&quot;,</span> <span class="pre">&quot;&lt;=&quot;))</span></code></p></td>
-<td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><strong>activeDate</strong>: Dates of professional activity</p></td>
+<tr class="row-even"><td><p><strong>activeDate</strong></p></td>
 <td><p>date</p></td>
-<td><p>Search for people or groups active in a specific date</p></td>
+<td><p>Search for people or groups by dates of professional activity. Accepts ISO 8601 date and comparison operator.</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">filter(activeDate=(&quot;1987-01-01T00:00:00.000Z&quot;,</span> <span class="pre">&quot;&gt;&quot;))</span></code></p></td>
-<td><p></p></td>
 </tr>
 </tbody>
 </table>
 </div>
-</details>
+<h1 class="rubric" id="id1"></details></h1>
 </div>
 <br><section id="startdate-filter">
 <h3><span class="section-number">1.3.1. </span>startDate Filter<a class="headerlink" href="#startdate-filter" title="Link to this heading">#</a></h3>
@@ -909,30 +895,26 @@ https://lux.collections.yale.edu/view/results/people?q=%7B%22AND%22%3A%20%5B%7B%
 <div class="pst-scrollable-table-container"><table class="table">
 <thead>
 <tr class="row-odd"><th class="head"><p>Filter</p></th>
-<th class="head"><p>Description</p></th>
 <th class="head"><p>Type</p></th>
-<th class="head"><p>Usage/Format</p></th>
+<th class="head"><p>Description</p></th>
 <th class="head"><p>Example</p></th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><strong>occupation</strong>: Search by occupation or role</p></td>
+<tr class="row-even"><td><p><strong>occupation</strong></p></td>
 <td><p>concept reference</p></td>
 <td><p>Search for people or groups with a specific occupation or role</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">filter(occupation={&quot;name&quot;:</span> <span class="pre">&quot;Painter&quot;})</span></code></p></td>
-<td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>nationality</strong>: Search by nationality</p></td>
+<tr class="row-odd"><td><p><strong>nationality</strong></p></td>
 <td><p>concept reference</p></td>
 <td><p>Search for people or groups with a specific nationality</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">filter(nationality={&quot;name&quot;:</span> <span class="pre">&quot;French&quot;})</span></code></p></td>
-<td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><strong>gender</strong>: Search by gender</p></td>
+<tr class="row-even"><td><p><strong>gender</strong></p></td>
 <td><p>concept reference</p></td>
 <td><p>Search for people or groups with a specific gender</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">filter(gender={&quot;name&quot;:</span> <span class="pre">&quot;Female&quot;})</span></code></p></td>
-<td><p></p></td>
 </tr>
 </tbody>
 </table>
@@ -1002,27 +984,46 @@ https://lux.collections.yale.edu/view/results/people?q=%7B%22AND%22%3A%20%5B%7B%
 </section>
 <section id="relationship-filters">
 <h2><span class="section-number">1.5. </span>Relationship Filters<a class="headerlink" href="#relationship-filters" title="Link to this heading">#</a></h2>
+<p>Relationship filters are filters that take an agent reference as input. These include the following:</p>
 <ul class="simple">
-<li><p><strong>memberOf</strong>: Groups that people/groups belong to</p>
-<ul>
-<li><p>Type: agent reference</p></li>
-<li><p>Example: <code class="docutils literal notranslate"><span class="pre">filter(memberOf={&quot;name&quot;:</span> <span class="pre">&quot;Impressionist</span> <span class="pre">Movement&quot;})</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">memberOf</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">memberOfInverse</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">foundedBy</span></code></p></li>
 </ul>
-</li>
-<li><p><strong>memberOfInverse</strong>: Search for groups containing specific members</p>
-<ul>
-<li><p>Type: agent reference</p></li>
-<li><p>Example: <code class="docutils literal notranslate"><span class="pre">filter(memberOfInverse={&quot;name&quot;:</span> <span class="pre">&quot;Claude</span> <span class="pre">Monet&quot;})</span></code></p></li>
-</ul>
-</li>
-<li><p><strong>foundedBy</strong>: Groups founded by specific people</p>
-<ul>
-<li><p>Type: agent reference</p></li>
-<li><p>Example: <code class="docutils literal notranslate"><span class="pre">filter(foundedBy={&quot;name&quot;:</span> <span class="pre">&quot;John</span> <span class="pre">Smith&quot;})</span></code></p></li>
-</ul>
-</li>
-</ul>
-<section id="memberof-filter">
+<div class="admonition-relationship-filters-quick-reference admonition">
+<p class="admonition-title">Relationship Filters Quick Reference</p>
+<details>
+<summary>Click to expand</summary>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Filter</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+<th class="head"><p>Example</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>memberOf</strong></p></td>
+<td><p>agent reference</p></td>
+<td><p>Groups that people/groups belong to</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">filter(memberOf={&quot;name&quot;:</span> <span class="pre">&quot;Impressionist</span> <span class="pre">Movement&quot;})</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>memberOfInverse</strong></p></td>
+<td><p>agent reference</p></td>
+<td><p>Search for groups containing specific members</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">filter(memberOfInverse={&quot;name&quot;:</span> <span class="pre">&quot;Claude</span> <span class="pre">Monet&quot;})</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><strong>foundedBy</strong></p></td>
+<td><p>agent reference</p></td>
+<td><p>Groups founded by specific people</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">filter(foundedBy={&quot;name&quot;:</span> <span class="pre">&quot;John</span> <span class="pre">Smith&quot;})</span></code></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</details>
+</div>
+<br><section id="memberof-filter">
 <h3><span class="section-number">1.5.1. </span>memberOf Filter<a class="headerlink" href="#memberof-filter" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1082,27 +1083,46 @@ https://lux.collections.yale.edu/view/results/people?q=%7B%22AND%22%3A%20%5B%7B%
 </section>
 <section id="creative-work-filters">
 <h2><span class="section-number">1.6. </span>Creative Work Filters<a class="headerlink" href="#creative-work-filters" title="Link to this heading">#</a></h2>
+<p>Creative work filters are filters that take a work reference as input. These include the following:</p>
 <ul class="simple">
-<li><p><strong>created</strong>: Works created by the person/group</p>
-<ul>
-<li><p>Type: work reference</p></li>
-<li><p>Example: <code class="docutils literal notranslate"><span class="pre">filter(created={&quot;name&quot;:</span> <span class="pre">&quot;Portrait</span> <span class="pre">of</span> <span class="pre">Madame</span> <span class="pre">X&quot;})</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">created</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">produced</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">published</span></code></p></li>
 </ul>
-</li>
-<li><p><strong>produced</strong>: Objects created by the person/group</p>
-<ul>
-<li><p>Type: item reference</p></li>
-<li><p>Example: <code class="docutils literal notranslate"><span class="pre">filter(produced={&quot;name&quot;:</span> <span class="pre">&quot;Bronze</span> <span class="pre">Sculpture&quot;})</span></code></p></li>
-</ul>
-</li>
-<li><p><strong>published</strong>: Works published by the person/group</p>
-<ul>
-<li><p>Type: work reference</p></li>
-<li><p>Example: <code class="docutils literal notranslate"><span class="pre">filter(published={&quot;name&quot;:</span> <span class="pre">&quot;Art</span> <span class="pre">History</span> <span class="pre">Journal&quot;})</span></code></p></li>
-</ul>
-</li>
-</ul>
-<section id="created-filter">
+<div class="admonition-creative-work-filters-quick-reference admonition">
+<p class="admonition-title">Creative Work Filters Quick Reference</p>
+<details>
+<summary>Click to expand</summary>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Filter</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+<th class="head"><p>Example</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>created</strong></p></td>
+<td><p>work reference</p></td>
+<td><p>Works created by the person/group</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">filter(created={&quot;name&quot;:</span> <span class="pre">&quot;Portrait</span> <span class="pre">of</span> <span class="pre">Madame</span> <span class="pre">X&quot;})</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>produced</strong></p></td>
+<td><p>item reference</p></td>
+<td><p>Objects created by the person/group</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">filter(produced={&quot;name&quot;:</span> <span class="pre">&quot;Bronze</span> <span class="pre">Sculpture&quot;})</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><strong>published</strong></p></td>
+<td><p>work reference</p></td>
+<td><p>Works published by the person/group</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">filter(published={&quot;name&quot;:</span> <span class="pre">&quot;Art</span> <span class="pre">History</span> <span class="pre">Journal&quot;})</span></code></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</details>
+</div>
+<br><section id="created-filter">
 <h3><span class="section-number">1.6.1. </span>created Filter<a class="headerlink" href="#created-filter" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1162,21 +1182,40 @@ https://lux.collections.yale.edu/view/results/people?q=%7B%22AND%22%3A%20%5B%7B%
 </section>
 <section id="collection-and-curation-filters">
 <h2><span class="section-number">1.7. </span>Collection and Curation Filters<a class="headerlink" href="#collection-and-curation-filters" title="Link to this heading">#</a></h2>
+<p>Collection and curation filters are filters that take a set reference as input. These include the following:</p>
 <ul class="simple">
-<li><p><strong>curated</strong>: Collections curated by the group</p>
-<ul>
-<li><p>Type: set reference</p></li>
-<li><p>Example: <code class="docutils literal notranslate"><span class="pre">filter(curated={&quot;name&quot;:</span> <span class="pre">&quot;Modern</span> <span class="pre">Art</span> <span class="pre">Collection&quot;})</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">curated</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">hasDigitalImage</span></code></p></li>
 </ul>
-</li>
-<li><p><strong>hasDigitalImage</strong>: Filter for records with digital images</p>
-<ul>
-<li><p>Type: boolean</p></li>
-<li><p>Example: <code class="docutils literal notranslate"><span class="pre">filter(hasDigitalImage=True)</span></code></p></li>
-</ul>
-</li>
-</ul>
-<section id="curated-filter">
+<div class="admonition-collection-and-curation-filters-quick-reference admonition">
+<p class="admonition-title">Collection and Curation Filters Quick Reference</p>
+<details>
+<summary>Click to expand</summary>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Filter</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+<th class="head"><p>Example</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>curated</strong></p></td>
+<td><p>set reference</p></td>
+<td><p>Collections curated by the group</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">filter(curated={&quot;name&quot;:</span> <span class="pre">&quot;Modern</span> <span class="pre">Art</span> <span class="pre">Collection&quot;})</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>hasDigitalImage</strong></p></td>
+<td><p>boolean</p></td>
+<td><p>Filter for records with digital images</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">filter(hasDigitalImage=True)</span></code></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</details>
+</div>
+<br><section id="curated-filter">
 <h3><span class="section-number">1.7.1. </span>curated Filter<a class="headerlink" href="#curated-filter" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1217,27 +1256,46 @@ https://lux.collections.yale.edu/view/results/people?q=%7B%22AND%22%3A%20%5B%7B%
 </section>
 <section id="influence-and-subject-filters">
 <h2><span class="section-number">1.8. </span>Influence and Subject Filters<a class="headerlink" href="#influence-and-subject-filters" title="Link to this heading">#</a></h2>
+<p>Influence and subject filters are filters that take a concept or work reference as input. These include the following:</p>
 <ul class="simple">
-<li><p><strong>influenced</strong>: Concepts influenced by the person/group</p>
-<ul>
-<li><p>Type: concept reference</p></li>
-<li><p>Example: <code class="docutils literal notranslate"><span class="pre">filter(influenced={&quot;name&quot;:</span> <span class="pre">&quot;Cubism&quot;})</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">influenced</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">influencedCreation</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">subjectOfAgent</span></code></p></li>
 </ul>
-</li>
-<li><p><strong>influencedCreation</strong>: Works influenced by the person/group</p>
-<ul>
-<li><p>Type: work reference</p></li>
-<li><p>Example: <code class="docutils literal notranslate"><span class="pre">filter(influencedCreation={&quot;name&quot;:</span> <span class="pre">&quot;Les</span> <span class="pre">Demoiselles</span> <span class="pre">d'Avignon&quot;})</span></code></p></li>
-</ul>
-</li>
-<li><p><strong>subjectOfAgent</strong>: Works that feature the person/group as subject</p>
-<ul>
-<li><p>Type: work reference</p></li>
-<li><p>Example: <code class="docutils literal notranslate"><span class="pre">filter(subjectOfAgent={&quot;name&quot;:</span> <span class="pre">&quot;Biography</span> <span class="pre">of</span> <span class="pre">Picasso&quot;})</span></code></p></li>
-</ul>
-</li>
-</ul>
-<section id="influenced-filter">
+<div class="admonition-influence-and-subject-filters-quick-reference admonition">
+<p class="admonition-title">Influence and Subject Filters Quick Reference</p>
+<details>
+<summary>Click to expand</summary>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Filter</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+<th class="head"><p>Example</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>influenced</strong></p></td>
+<td><p>concept reference</p></td>
+<td><p>Concepts influenced by the person/group</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">filter(influenced={&quot;name&quot;:</span> <span class="pre">&quot;Cubism&quot;})</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>influencedCreation</strong></p></td>
+<td><p>work reference</p></td>
+<td><p>Works influenced by the person/group</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">filter(influencedCreation={&quot;name&quot;:</span> <span class="pre">&quot;Les</span> <span class="pre">Demoiselles</span> <span class="pre">d'Avignon&quot;})</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><strong>subjectOfAgent</strong></p></td>
+<td><p>work reference</p></td>
+<td><p>Works that feature the person/group as subject</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">filter(subjectOfAgent={&quot;name&quot;:</span> <span class="pre">&quot;Biography</span> <span class="pre">of</span> <span class="pre">Picasso&quot;})</span></code></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</details>
+</div>
+<br><section id="influenced-filter">
 <h3><span class="section-number">1.8.1. </span>influenced Filter<a class="headerlink" href="#influenced-filter" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
