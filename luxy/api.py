@@ -21,9 +21,23 @@ config = dict(
     lux_config="https://lux.collections.yale.edu/api/advanced-search-config"
 )
 
+# Add at module level, near other globals
+_cached_lux_config = None
+
 def get_lux_config():
+    global _cached_lux_config
+    if _cached_lux_config is not None:
+        return _cached_lux_config
+        
+    print("Fetching current Lux config...")
     response = requests.get(config["lux_config"])
-    return response.json()
+    _cached_lux_config = response.json()
+    return _cached_lux_config
+
+# Optional: Add this function if you want to force a refresh
+def clear_lux_config_cache():
+    global _cached_lux_config
+    _cached_lux_config = None
 
 class FilterBuilder:
     def __init__(self, path=None):
