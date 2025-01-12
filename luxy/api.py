@@ -94,8 +94,21 @@ class BaseLux:
                 self.filters.append({"OR": value})
                 continue
             
+            # Special handling for NOT conditions
+            if key == "NOT":
+                if not isinstance(value, list):
+                    raise ValueError("NOT filter must be a list of conditions")
+                not_conditions = []
+                for condition in value:
+                    if isinstance(condition, dict):
+                        not_conditions.append(condition)
+                    else:
+                        not_conditions.append(condition)
+                self.filters.append({"NOT": not_conditions})
+                continue
+            
             # Rest of the validation logic for regular filters
-            if key not in valid_options and key not in ["AND", "NOT"]:
+            if key not in valid_options:
                 raise ValueError(f"Invalid filter '{key}' for {self.name}. Use list_filters() to see available options.")
 
             # Handle tuple case (value, comparison operator)
@@ -145,9 +158,9 @@ class BaseLux:
         query_ands = []
         
         for filter_dict in self.filters:
-            # If it's already an OR condition, append as is
-            if "OR" in filter_dict:
-                query_ands.append({"OR": filter_dict["OR"]})
+            # If it's already an OR or NOT condition, append as is
+            if "OR" in filter_dict or "NOT" in filter_dict:
+                query_ands.append(filter_dict)
             # If it contains both a value and _comp, keep them together
             elif "_comp" in filter_dict:
                 query_ands.append(filter_dict)
