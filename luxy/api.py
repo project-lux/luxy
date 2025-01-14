@@ -18,7 +18,8 @@ config = dict(
     concepts="concept",
     events="event",
     set="set",
-    lux_config="https://lux.collections.yale.edu/api/advanced-search-config"
+    lux_config="https://lux.collections.yale.edu/api/advanced-search-config",
+    default_field="text"
 )
 
 # Add at module level, near other globals
@@ -44,28 +45,45 @@ class FilterBuilder:
         self.path = path or []
 
     def __getattr__(self, name):
+        # Create a new path by appending the requested attribute
         new_path = self.path + [name]
+        # Return a new instance with the updated path
         return FilterBuilder(new_path)
 
-    def __call__(self, value, depth=None):
+    def __call__(self, value=None, depth=None):
+        # If no value is provided, return self to allow for chaining
+        if value is None:
+            return self
+            
+        # Keep existing depth-based functionality
         if depth is not None:
             if depth < 1:
                 raise ValueError("Depth must be at least 1")
             
-            # Use the last path element for nesting
             if not self.path:
                 raise ValueError("No path specified for depth-based nesting")
             
             nest_key = self.path[-1]
             
-            # Create nested structure based on depth
-            current = {"name": value}
+            if isinstance(value, dict):
+                current = value
+            else:
+                current = {config["default_field"]: value}
+            
             for _ in range(depth):
                 current = {nest_key: current}
             return current
         
-        # Original behavior for non-depth calls
-        current = {"name": value}
+        # Handle direct calls without depth
+        current = {config["default_field"]: value} if not isinstance(value, dict) else value
+        for key in reversed(self.path):
+            current = {key: current}
+        return current
+
+    def name(self, value):
+        # Special method to handle the final .name() call
+        current = {config["default_field"]: value}
+        # Build nested structure based on path
         for key in reversed(self.path):
             current = {key: current}
         return current
@@ -101,24 +119,25 @@ class BaseLux:
         valid_options = self.get_options()
 
         for key, value in kwargs.items():
-            # Special handling for OR conditions
-            if key == "OR":
+            # Handle logical operators (OR, AND, NOT)
+            if key in ("OR", "AND", "NOT"):
                 if not isinstance(value, list):
-                    raise ValueError("OR filter must be a list of conditions")
-                self.filters.append({"OR": value})
-                continue
-            
-            # Special handling for NOT conditions
-            if key == "NOT":
-                if not isinstance(value, list):
-                    raise ValueError("NOT filter must be a list of conditions")
-                not_conditions = []
+                    raise ValueError(f"{key} filter must be a list of conditions")
+                
+                processed_conditions = []
                 for condition in value:
-                    if isinstance(condition, dict):
-                        not_conditions.append(condition)
+                    if isinstance(condition, FilterBuilder):
+                        # FilterBuilder instances already return the correct dictionary structure
+                        processed_conditions.append(condition)
+                    elif isinstance(condition, BaseLux):
+                        # Extract filters from the BaseLux instance
+                        processed_conditions.extend(condition.filters)
+                    elif isinstance(condition, dict):
+                        processed_conditions.append(condition)
                     else:
-                        not_conditions.append(condition)
-                self.filters.append({"NOT": not_conditions})
+                        processed_conditions.append(condition)
+                
+                self.filters.append({key: processed_conditions})
                 continue
             
             # Rest of the validation logic for regular filters
