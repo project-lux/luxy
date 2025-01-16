@@ -41,14 +41,53 @@ def clear_lux_config_cache():
     _cached_lux_config = None
 
 class FilterBuilder:
-    def __init__(self, path=None):
+    def __init__(self, path=None, filter_class=None):
         self.path = path or []
+        self.filter_class = filter_class
+        
+        # Get valid options and config if filter_class is provided
+        self.valid_options = None
+        self.lux_config = None
+        if filter_class:
+            try:
+                self.valid_options = filter_class().get_options()
+                self.lux_config = get_lux_config()
+            except:
+                pass
 
     def __getattr__(self, name):
+        if self.valid_options and self.lux_config:
+            if not self.path:
+                # Validate first level filter
+                if name not in self.valid_options:
+                    valid_filters = ", ".join(sorted(self.valid_options.keys()))
+                    raise AttributeError(
+                        f"Invalid filter '{name}'. Valid filters are: {valid_filters}"
+                    )
+            else:
+                # Validate nested relationships
+                current_term = self.path[-1]
+                current_config = self.lux_config["terms"]
+                
+                # Find the current term's configuration
+                for entity_type in current_config:
+                    if current_term in current_config[entity_type]:
+                        term_config = current_config[entity_type][current_term]
+                        # Check if the next relation is valid
+                        if "relation" in term_config:
+                            relation_type = term_config["relation"]
+                            relation_config = current_config.get(relation_type, {})
+                            if name not in relation_config:
+                                valid_relations = ", ".join(sorted(relation_config.keys()))
+                                raise AttributeError(
+                                    f"Invalid nested filter '{name}' for '{current_term}'. "
+                                    f"Valid options are: {valid_relations}"
+                                )
+                        break
+        
         # Create a new path by appending the requested attribute
         new_path = self.path + [name]
-        # Return a new instance with the updated path
-        return FilterBuilder(new_path)
+        return FilterBuilder(new_path, self.filter_class)
 
     def __call__(self, value=None, depth=None):
         # If no value is provided, return self to allow for chaining
