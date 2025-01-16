@@ -44,7 +44,8 @@ class FilterBuilder:
     def __init__(self, path=None, filter_class=None):
         self.path = path or []
         self.filter_class = filter_class
-        
+        self.downstream = None
+
         # Get valid options and config if filter_class is provided
         self.valid_options = None
         self.lux_config = None
@@ -54,6 +55,11 @@ class FilterBuilder:
                 self.lux_config = get_lux_config()
             except:
                 pass
+            if path and path[0] not in self.valid_options:
+                valid_filters = ", ".join(sorted(self.valid_options.keys()))
+                raise AttributeError(
+                    f"Invalid filter '{path[0]}'. Valid filters are: {valid_filters}"
+                )
 
     def __getattr__(self, name):
         if self.valid_options and self.lux_config:
@@ -87,7 +93,19 @@ class FilterBuilder:
         
         # Create a new path by appending the requested attribute
         new_path = self.path + [name]
-        return FilterBuilder(new_path, self.filter_class)
+        fb2 = FilterBuilder(new_path, self.filter_class)
+        self.downstream = fb2
+        return fb2
+
+    def get_downstream_query(self):
+        ds = self.downstream
+        q = None
+        while ds is not None:
+            if type(ds) == dict:
+                return ds
+            q = ds()
+            ds = ds.downstream
+        return q
 
     def __call__(self, value=None, depth=None):
         # If no value is provided, return self to allow for chaining
@@ -117,6 +135,7 @@ class FilterBuilder:
         current = {config["default_field"]: value} if not isinstance(value, dict) else value
         for key in reversed(self.path):
             current = {key: current}
+        self.downstream = current
         return current
 
     def name(self, value):
@@ -137,6 +156,21 @@ class BaseLux:
         self.broader = FilterBuilder(["broader"])
         self._cached_response = None
         self._cached_query_dict = None
+
+
+    def __getattr__(self, name):
+        if not name in self.__dict__:
+            try:
+                f = FilterBuilder([name], filter_class=self.__class__)
+                if not f:
+                    return AttributeError(name)
+                else:
+                    self.filters.append(f)
+            except:
+                raise
+            return f
+        else:
+            return self.__dict__[name]
 
     def _encode_query(self, query: str):
         return urllib.parse.quote(json.dumps(query))
@@ -231,6 +265,9 @@ class BaseLux:
         
         for filter_dict in self.filters:
             # If it's already an OR or NOT condition, append as is
+            if isinstance(filter_dict, FilterBuilder):
+                filter_dict = filter_dict.get_downstream_query()
+
             if "OR" in filter_dict or "NOT" in filter_dict:
                 query_ands.append(filter_dict)
             # If it contains both a value and _comp, keep them together
