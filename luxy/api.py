@@ -137,6 +137,13 @@ class BaseLux:
         self.broader = FilterBuilder(["broader"])
         self._cached_response = None
         self._cached_query_dict = None
+        
+    def __getattr__(self, name):
+        if not name in self.__dict__:
+            f = FilterBuilder([name], filter_class=self.__class__)
+            return f
+        else:
+            return self.__dict__[name]
 
     def _encode_query(self, query: str):
         return urllib.parse.quote(json.dumps(query))
