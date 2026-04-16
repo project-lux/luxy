@@ -1,15 +1,21 @@
 import logging
 import warnings
 import urllib.parse
-import requests
+import os
 import json
+
+import requests
+from requests.adapters import HTTPAdapter
+from urllib3.util.retry import Retry
 
 logger = logging.getLogger(__name__)
 
+__version__ = "0.0.7"
+
 config = dict(
     lux_url="https://lux.collections.yale.edu/api",
-    max_retries=0,
-    retry_backoff_factor=0.1,
+    max_retries=3,
+    retry_backoff_factor=0.3,
     default="item",
     objects="item",
     works="work",
@@ -22,20 +28,56 @@ config = dict(
     default_field="text"
 )
 
-# Add at module level, near other globals
 _cached_lux_config = None
+
+def _create_session():
+    """Create a requests.Session with retry logic and a luxy User-Agent."""
+    session = requests.Session()
+    session.headers.update({
+        "User-Agent": f"Mozilla/5.0 (compatible; luxy/{__version__}; +https://github.com/project-lux/luxy)",
+        "Accept": "application/json",
+    })
+    retry = Retry(
+        total=config["max_retries"],
+        backoff_factor=config["retry_backoff_factor"],
+        status_forcelist=[429, 500, 502, 503, 504],
+    )
+    adapter = HTTPAdapter(max_retries=retry)
+    session.mount("https://", adapter)
+    session.mount("http://", adapter)
+    return session
+
+session = _create_session()
+
+def _load_local_config():
+    """Load the bundled config.json as a fallback when the API is unreachable."""
+    config_path = os.path.join(os.path.dirname(__file__), "..", "docs", "config.json")
+    config_path = os.path.normpath(config_path)
+    if os.path.exists(config_path):
+        with open(config_path, "r") as f:
+            return json.load(f)
+    return None
 
 def get_lux_config():
     global _cached_lux_config
     if _cached_lux_config is not None:
         return _cached_lux_config
-        
-    print("Fetching current Lux config...")
-    response = requests.get(config["lux_config"])
-    _cached_lux_config = response.json()
+
+    logger.info("Fetching current Lux config...")
+    try:
+        response = session.get(config["lux_config"])
+        response.raise_for_status()
+        _cached_lux_config = response.json()
+    except (requests.RequestException, ValueError) as exc:
+        logger.warning("Could not fetch remote Lux config (%s), falling back to local copy.", exc)
+        _cached_lux_config = _load_local_config()
+        if _cached_lux_config is None:
+            raise ConnectionError(
+                "Failed to fetch the Lux config from the API and no local fallback found. "
+                "Check your network connection or reinstall luxy."
+            ) from exc
     return _cached_lux_config
 
-# Optional: Add this function if you want to force a refresh
 def clear_lux_config_cache():
     global _cached_lux_config
     _cached_lux_config = None
@@ -229,21 +271,16 @@ class BaseLux:
         return result
 
     def get(self):
-        # Check if there are any filters
         if not self.filters:
             raise ValueError("No filters specified. Please add at least one filter before calling get()")
 
-        # Build the query
         query_ands = []
         
         for filter_dict in self.filters:
-            # If it's already an OR or NOT condition, append as is
             if "OR" in filter_dict or "NOT" in filter_dict:
                 query_ands.append(filter_dict)
-            # If it contains both a value and _comp, keep them together
             elif "_comp" in filter_dict:
                 query_ands.append(filter_dict)
-            # Otherwise process as normal
             else:
                 for key, value in filter_dict.items():
                     processed_value = self._process_value(value)
@@ -251,24 +288,19 @@ class BaseLux:
 
         query_dict = {"AND": query_ands} if query_ands else {}
 
-        # If we have a cached response and the query hasn't changed, return cached data
         if self._cached_response and self._cached_query_dict == query_dict:
             logger.warning("Returning cached data...")
             return self
 
-        # Otherwise, make the request and cache the results
         query_url = self._query_builder(self._encode_query(query_dict))
-        response = requests.get(query_url)
+        response = session.get(query_url)
+        response.raise_for_status()
         
-        # Cache the results
         self._cached_query_dict = query_dict
         self._cached_response = response
         
-        # Update instance attributes
         self.url = query_url
-        # Create a reversed mapping from config values to keys
         reversed_config = {v: k for k, v in config.items()}
-   
         self.view_url = query_url.replace(f"/api/search/{self.name}", f"/view/results/{reversed_config[self.name]}")
     
         self.json = self.get_json(response)
@@ -302,7 +334,8 @@ class BaseLux:
         return page_urls
     
     def get_page_data(self, page_url):
-        response = requests.get(page_url)
+        response = session.get(page_url)
+        response.raise_for_status()
         return self.get_json(response)
     
     def get_page_data_all(self, start_page=0, end_page=None):

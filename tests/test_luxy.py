@@ -14,17 +14,17 @@ from luxy import (
 def test_filter_builder_basic():
     fb = FilterBuilder()
     result = fb.someField("test")
-    assert result == {"someField": {"name": "test"}}
+    assert result == {"someField": {"text": "test"}}
 
 def test_filter_builder_nested():
     fb = FilterBuilder()
     result = fb.parent.child("test")
-    assert result == {"parent": {"child": {"name": "test"}}}
+    assert result == {"parent": {"child": {"text": "test"}}}
 
 def test_filter_builder_depth():
     fb = FilterBuilder()
     result = fb.memberOf("test", depth=2)
-    assert result == {"memberOf": {"memberOf": {"name": "test"}}}
+    assert result == {"memberOf": {"memberOf": {"text": "test"}}}
 
 def test_filter_builder_invalid_depth():
     fb = FilterBuilder()
