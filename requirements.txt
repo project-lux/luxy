@@ -1,2 +1,3 @@
 luxy
+luxql @ git+https://github.com/project-lux/luxql.git@main#egg=luxql
 jupyter-book>=0.9

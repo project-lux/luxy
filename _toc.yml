@@ -19,3 +19,8 @@ parts:
   - file: docs/notebooks/07_Events.ipynb
   - file: docs/notebooks/08_Collections.ipynb
   - file: docs/notebooks/09_Concepts.ipynb
+
+- caption: Advanced
+  numbered: true
+  chapters:
+  - file: docs/notebooks/10_advanced_features.ipynb
